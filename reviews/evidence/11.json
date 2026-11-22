@@ -1,0 +1,41 @@
+{
+  "chapter": "11",
+  "claims": [
+    {
+      "id": "growth-scope",
+      "claim": "收入增长需要区分有机业务、并购并表、处置、汇率和产品价格/销量组合影响。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "CFA Institute 2026 Financial Analysis Techniques；横向与纵向比较及增长分析",
+      "status": "verified",
+      "notes": "具体有机增长调整依赖公司披露；本文案例为简化教学示例。"
+    },
+    {
+      "id": "business-combination",
+      "claim": "企业合并区分同一控制与非同一控制，合并日和购买日等口径影响报表比较。",
+      "kind": "accounting_rule",
+      "source_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46228.htm",
+      "locator": "企业会计准则第20号，第2条、第5条、第10条及相关计量条款",
+      "status": "verified",
+      "notes": "文章不把并购并表收入直接等同于可持续内生增长。"
+    },
+    {
+      "id": "sgr",
+      "claim": "在稳定经营政策和资本结构假设下，可持续增长模型与ROE、留存率有关。",
+      "kind": "derived",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "Financial Analysis Techniques；SGR公式为本章明确口径下的代数推导",
+      "status": "derived",
+      "notes": "本文明确采用期末权益ROE的 g=(ROE×b)/(1−ROE×b)，不同ROE分母约定会改变表达。"
+    },
+    {
+      "id": "example",
+      "claim": "1000收入、1300报告收入、200新增并表收入得到报告增长30%、简化有机增长10%。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构数据",
+      "status": "illustrative",
+      "notes": "非真实企业财务数据。"
+    }
+  ]
+}

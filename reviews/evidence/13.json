@@ -1,0 +1,32 @@
+{
+  "chapter": "13",
+  "claims": [
+    {
+      "id": "dupont",
+      "claim": "杜邦分析可以分解ROE；五因素模型将税负、利息负担、经营利润率、资产周转和杠杆分开。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "CFA Institute 2026 Financial Analysis Techniques; learning outcomes on five-component DuPont",
+      "status": "verified",
+      "notes": "具体分子分母必须在模型中保持一致。"
+    },
+    {
+      "id": "fscore",
+      "claim": "Piotroski（2000）原始F-Score研究将历史财务信号用于高账面市值比股票样本，结论应限定在其研究设计和历史样本背景。",
+      "kind": "research_basis",
+      "source_url": "https://www.ivey.uwo.ca/media/3775523/value_investing_the_use_of_historical_financial_statement_information.pdf",
+      "locator": "Journal of Accounting Research, Vol.38 Supplement (2000), pp.1–41; sample and research design",
+      "status": "verified",
+      "notes": "不将历史样本回报外推为当前市场或所有行业的保证。"
+    },
+    {
+      "id": "example",
+      "claim": "五因素案例90/300=30%，各因子乘积也为30%。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构数据",
+      "status": "illustrative",
+      "notes": "90/120×120/150×150/1000×1000/750×750/300=30%。"
+    }
+  ]
+}

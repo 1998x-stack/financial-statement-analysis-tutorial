@@ -52,7 +52,7 @@ for path in pages:
     d = Document()
     d.feed(source)
     if d.title != 1: err(f"{path.name}: expected one title")
-    if d.h1 != 1 and (path.name == "index.html" and path.parent == DOCS or path.stem.isdigit() and int(path.stem) <= 10):
+    if d.h1 != 1 and (path.name == "index.html" and path.parent == DOCS or path.stem.isdigit() and int(path.stem) <= 15):
         err(f"{path}: expected one H1")
     if d.figures > d.captions: err(f"{path}: each figure needs caption")
     for link in d.links:
@@ -66,7 +66,7 @@ for path in pages:
             err(f"{path.relative_to(ROOT)}: broken anchor #{target.fragment}")
     for img in d.images:
         if not img.get("alt"): err(f"{path.relative_to(ROOT)}: image missing alt")
-    if path.stem.isdigit() and int(path.stem) <= 10:
+    if path.stem.isdigit() and int(path.stem) <= 15:
         if d.figures < 2: err(f"{path.name}: expected at least 2 teaching figures")
         if source.count("<section ") < 5: err(f"{path.name}: article too short or no semantic sections")
         if "教学虚构" not in source: err(f"{path.name}: missing fictional-data disclaimer")
@@ -83,9 +83,29 @@ for svg in sorted((DOCS / "assets" / "figures").glob("*.svg")):
     except ET.ParseError as e:
         err(f"{svg.name}: XML parse error {e}")
 
+for i in range(11,16):
+    ledger = ROOT / "reviews" / "evidence" / f"{i}.json"
+    if not ledger.is_file():
+        err(f"missing evidence ledger {ledger.relative_to(ROOT)}")
+        continue
+    try:
+        record = json.loads(ledger.read_text(encoding="utf-8"))
+        if record.get("chapter") != f"{i:02}" and record.get("chapter") != str(i):
+            err(f"{ledger.name}: chapter number mismatch")
+        claims = record.get("claims", [])
+        if not claims:
+            err(f"{ledger.name}: no evidence claims")
+        for claim in claims:
+            if claim.get("status") not in {"verified", "derived", "illustrative", "unverified"}:
+                err(f"{ledger.name}: invalid evidence status")
+            if claim.get("status") == "verified" and not claim.get("source_url"):
+                err(f"{ledger.name}: verified claim has no source URL")
+    except (json.JSONDecodeError, OSError) as e:
+        err(f"{ledger.name}: invalid evidence ledger: {e}")
+
 for i in range(1,29):
     if not (ROOT/f"{i:02}.html").exists(): err(f"legacy redirect {i:02}.html absent")
 if errors:
     print("\n".join("ERROR: "+m for m in errors))
     sys.exit(1)
-print(f"OK: {len(pages)} pages, {len(list((DOCS/'assets'/'figures').glob('*.svg')))} SVG files, 28 redirects, all local links")
+print(f"OK: {len(pages)} pages, {len(list((DOCS/'assets'/'figures').glob('*.svg')))} SVG files, 28 redirects, 5 evidence ledgers, all local links")
