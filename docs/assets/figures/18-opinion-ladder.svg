@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t18a d18a">
+<title id="t18a">审计意见四类类型与两类不改变意见类型的段落</title>
+<desc id="d18a">无保留意见适用于报表整体公允，可另设强调事项段或持续经营重大不确定性段落；保留意见适用于重大但不广泛的错报或证据受限；否定意见适用于错报重大且广泛；无法表示意见适用于无法获取充分适当审计证据且影响重大且广泛。强调事项段与其他事项段不改变意见类型。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">偏离无保留意见的程度递增（分类示意）</text>
+<rect x="30" y="60" width="140" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="100" y="88" text-anchor="middle" font-size="15" fill="#116d69">无保留意见</text>
+<rect x="180" y="60" width="630" height="46" rx="4" fill="#fffefa" stroke="#d9e1db"/>
+<text x="196" y="88" font-size="15" fill="#1c3133">报表在所有重大方面公允；可另设强调事项段或持续经营重大不确定性段落</text>
+<rect x="30" y="118" width="140" height="46" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="100" y="146" text-anchor="middle" font-size="15" fill="#b66a38">保留意见</text>
+<rect x="180" y="118" width="630" height="46" rx="4" fill="#fffefa" stroke="#d9e1db"/>
+<text x="196" y="146" font-size="15" fill="#1c3133">存在重大但不广泛的错报，或证据受限但影响不广泛</text>
+<rect x="30" y="176" width="140" height="46" rx="4" fill="#fbeee9" stroke="#9e493b"/>
+<text x="100" y="204" text-anchor="middle" font-size="15" fill="#9e493b">否定意见</text>
+<rect x="180" y="176" width="630" height="46" rx="4" fill="#fffefa" stroke="#d9e1db"/>
+<text x="196" y="204" font-size="15" fill="#1c3133">错报重大且广泛，报表整体不可直接使用</text>
+<rect x="30" y="234" width="140" height="46" rx="4" fill="#fbeee9" stroke="#9e493b"/>
+<text x="100" y="262" text-anchor="middle" font-size="15" fill="#9e493b">无法表示意见</text>
+<rect x="180" y="234" width="630" height="46" rx="4" fill="#fffefa" stroke="#d9e1db"/>
+<text x="196" y="262" font-size="15" fill="#1c3133">无法获取充分、适当的审计证据，且影响重大且广泛</text>
+<rect x="180" y="296" width="300" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="330" y="324" text-anchor="middle" font-size="15" fill="#116d69">强调事项段：不改变意见类型</text>
+<rect x="500" y="296" width="310" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="655" y="324" text-anchor="middle" font-size="15" fill="#116d69">其他事项段：同样不改变类型</text>
+<text x="30" y="374" font-size="15" fill="#577173">意见类型取决于错报是否“重大且广泛”，与公司盈利多少、股价高低无关；本图不含任何具体公司。</text>
+<text x="30" y="396" font-size="15" fill="#577173">非标意见不等于造假，标准意见也不等于不存在错报；两类情形的认定都需监管或司法程序。</text>
+</svg>

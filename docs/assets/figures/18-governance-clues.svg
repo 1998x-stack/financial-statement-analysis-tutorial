@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t18b d18b">
+<title id="t18b">五项治理线索对应的公开来源与需核对内容</title>
+<desc id="d18b">股权质押比例查质押公告与定期报告，需看平仓线与补充质押能力；关联交易占比查关联方附注，需看定价依据与回避表决；独立董事履职查董事会决议与异议；内部控制审计意见查内控审计报告，需看缺陷内容与整改计划；资金占用与担保查重大事项公告与其他应收款明细。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">治理线索：每一条都能指向一个公开来源</text>
+<text x="30" y="76" font-size="15" font-weight="700" fill="#116d69">线索</text>
+<text x="230" y="76" font-size="15" font-weight="700" fill="#116d69">公开来源</text>
+<text x="500" y="76" font-size="15" font-weight="700" fill="#116d69">需核对的内容</text>
+<line x1="30" y1="88" x2="810" y2="88" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="120" font-size="15" fill="#1c3133">股权质押比例</text>
+<text x="230" y="120" font-size="15" fill="#577173">质押公告、定期报告</text>
+<text x="500" y="120" font-size="15" fill="#1c3133">平仓线、补充质押能力、占用说明</text>
+<text x="30" y="166" font-size="15" fill="#1c3133">关联交易占比</text>
+<text x="230" y="166" font-size="15" fill="#577173">关联方及交易附注</text>
+<text x="500" y="166" font-size="15" fill="#1c3133">定价依据、回避表决、同业对比</text>
+<text x="30" y="212" font-size="15" fill="#1c3133">独立董事履职</text>
+<text x="230" y="212" font-size="15" fill="#577173">董事会决议与异议记录</text>
+<text x="500" y="212" font-size="15" fill="#1c3133">异议意见、缺席情况、委员会构成</text>
+<text x="30" y="258" font-size="15" fill="#1c3133">内控审计意见</text>
+<text x="230" y="258" font-size="15" fill="#577173">内部控制审计报告</text>
+<text x="500" y="258" font-size="15" fill="#1c3133">缺陷具体内容与整改计划</text>
+<text x="30" y="304" font-size="15" fill="#1c3133">资金占用与担保</text>
+<text x="230" y="304" font-size="15" fill="#577173">重大事项公告</text>
+<text x="500" y="304" font-size="15" fill="#1c3133">其他应收款明细、专项说明</text>
+<line x1="30" y1="330" x2="810" y2="330" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="358" font-size="15" fill="#577173">五项都只提示“需要更多核查”，不构成结论；每项都需与多期趋势和同行对比后再判断。</text>
+<text x="30" y="386" font-size="15" fill="#577173">图中未给出任何比例阈值——具体警戒水平取决于行业、股权结构与市场环境，且会随规则变动。</text>
+</svg>
