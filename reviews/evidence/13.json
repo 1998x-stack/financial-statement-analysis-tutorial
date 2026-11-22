@@ -12,12 +12,12 @@
     },
     {
       "id": "fscore",
-      "claim": "综合评分工具需考虑样本、行业、指标定义和历史回测的外部有效性。",
-      "kind": "analytical_method",
-      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-reporting-quality",
-      "locator": "Financial Reporting Quality and financial analysis context",
+      "claim": "Piotroski（2000）原始F-Score研究将历史财务信号用于高账面市值比股票样本，结论应限定在其研究设计和历史样本背景。",
+      "kind": "research_basis",
+      "source_url": "https://www.ivey.uwo.ca/media/3775523/value_investing_the_use_of_historical_financial_statement_information.pdf",
+      "locator": "Journal of Accounting Research, Vol.38 Supplement (2000), pp.1–41; sample and research design",
       "status": "verified",
-      "notes": "不将F-Score描述为买卖建议或舞弊概率。"
+      "notes": "不将历史样本回报外推为当前市场或所有行业的保证。"
     },
     {
       "id": "example",
