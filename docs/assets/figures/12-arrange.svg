@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t12b d12b">
+<title id="t12b">五种抬高当期经营现金流的做法及其后续代价</title>
+<desc id="d12b">票据贴现、保理或资产证券化出表、关联方经营性往来、延长应付账期与分类位置迁移都能抬高当期经营活动现金流量净额，但分别带来未来回款减少、追索权风险、商业实质待核、供应链关系成本与口径可比性下降等后续代价。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="38" font-size="16" font-weight="700" fill="#1c3133">同一笔资金，换一个位置或时点，当期经营现金流就变了</text>
+<text x="30" y="76" font-size="15" font-weight="700" fill="#116d69">做法</text>
+<text x="330" y="76" font-size="15" font-weight="700" fill="#2f6d38">当期经营现金流</text>
+<text x="600" y="76" font-size="15" font-weight="700" fill="#b66a38">后续代价或风险</text>
+<line x1="30" y1="88" x2="810" y2="88" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="122" font-size="15" fill="#1c3133">票据贴现</text>
+<text x="330" y="122" font-size="15" fill="#2f6d38">↑ 现金提前到账</text>
+<text x="600" y="122" font-size="15" fill="#b66a38">↓ 未来无该笔回款，贴息增加</text>
+<text x="30" y="177" font-size="15" fill="#1c3133">保理／应收出表</text>
+<text x="330" y="177" font-size="15" fill="#2f6d38">↑ 应收变现金</text>
+<text x="600" y="177" font-size="15" fill="#b66a38">↓ 保留追索权则风险未转移</text>
+<text x="30" y="232" font-size="15" fill="#1c3133">关联方经营性往来</text>
+<text x="330" y="232" font-size="15" fill="#2f6d38">↑ 其他经营现金流入</text>
+<text x="600" y="232" font-size="15" fill="#b66a38">↓ 需核对明细与商业实质</text>
+<text x="30" y="287" font-size="15" fill="#1c3133">延长应付账期／反向保理</text>
+<text x="330" y="287" font-size="15" fill="#2f6d38">↑ 占用供应商资金</text>
+<text x="600" y="287" font-size="15" fill="#b66a38">↓ 供应商关系与断供风险</text>
+<text x="30" y="342" font-size="15" fill="#1c3133">经营活动支出改列投资</text>
+<text x="330" y="342" font-size="15" fill="#2f6d38">↑ 经营现金流被抬高</text>
+<text x="600" y="342" font-size="15" fill="#b66a38">↓ 历史口径不可比，需重述</text>
+<line x1="30" y1="362" x2="810" y2="362" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="386" font-size="15" fill="#577173">五行做法都不等同造假；要靠附注明细与历史口径比较，才能判断它属于正常融资还是被包装成经营回款。</text>
+</svg>
