@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t15b d15b">
+<title id="t15b">五项常被当作表外负债的安排的现行处理与需核对的披露</title>
+<desc id="d15b">租赁除短期与低价值资产外需确认使用权资产与租赁负债；明股实债需按回购与收益保障判断负债性质；对外担保与差额补足属于或有事项；应收保理取决于风险报酬是否转移；结构化主体按控制判断是否合并。每项都需核对相应披露。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">“表外”不是一个固定区域：先看现行规定，再看披露</text>
+<text x="30" y="72" font-size="15" font-weight="700" fill="#116d69">安排</text>
+<text x="220" y="72" font-size="15" font-weight="700" fill="#116d69">现行处理</text>
+<text x="560" y="72" font-size="15" font-weight="700" fill="#116d69">需核对的披露</text>
+<line x1="30" y1="84" x2="810" y2="84" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="118" font-size="15" fill="#1c3133">租赁（短期、低价值除外）</text>
+<text x="220" y="118" font-size="15" fill="#b66a38">已确认使用权资产与租赁负债</text>
+<text x="560" y="118" font-size="15" fill="#1c3133">到期结构、未折现现金流</text>
+<text x="30" y="166" font-size="15" fill="#1c3133">明股实债的少数股东投资</text>
+<text x="220" y="166" font-size="15" fill="#1c3133">按回购义务与收益保障判断</text>
+<text x="560" y="166" font-size="15" fill="#1c3133">回购条款、优先清算权</text>
+<text x="30" y="214" font-size="15" fill="#1c3133">对外担保、差额补足</text>
+<text x="220" y="214" font-size="15" fill="#1c3133">或有事项，视情况计提预计负债</text>
+<text x="560" y="214" font-size="15" fill="#1c3133">担保公告、被担保方偿付状况</text>
+<text x="30" y="262" font-size="15" fill="#1c3133">应收保理与供应链金融</text>
+<text x="220" y="262" font-size="15" fill="#1c3133">视风险与报酬是否转移</text>
+<text x="560" y="262" font-size="15" fill="#1c3133">应收款项融资、追索权条款</text>
+<text x="30" y="310" font-size="15" fill="#1c3133">结构化主体、资管计划</text>
+<text x="220" y="310" font-size="15" fill="#1c3133">按控制三要素判断是否合并</text>
+<text x="560" y="310" font-size="15" fill="#1c3133">合并范围判断与相关披露</text>
+<line x1="30" y1="336" x2="810" y2="336" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="364" font-size="15" fill="#577173">“经营租赁在表外”已随《企业会计准则第21号》（2018 修订）失效；仍可豁免的是短期与低价值资产租赁。</text>
+<text x="30" y="390" font-size="15" fill="#577173">表中处理与披露要求为概括，具体判断应以现行准则与公司公告原文为准。</text>
+</svg>

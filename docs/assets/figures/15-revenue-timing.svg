@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t15a d15a">
+<title id="t15a">提前确认收入只改变两期分布，不改变两期合计</title>
+<desc id="d15a">教学示意：正常确认时本期与下期收入均为四百；把下期的一百提前到本期后，本期变为五百、下期变为三百，两期合计仍为八百。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">只挪时点、不改总和（单位：万元，教学示意）</text>
+<line x1="60" y1="300" x2="700" y2="300" stroke="#577173" stroke-width="1.5"/>
+<rect x="110" y="140" width="90" height="160" rx="3" fill="#116d69"/>
+<text x="155" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#116d69">400</text>
+<text x="155" y="330" text-anchor="middle" font-size="15" fill="#1c3133">本期·正常</text>
+<rect x="230" y="100" width="90" height="200" rx="3" fill="#b66a38"/>
+<text x="275" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#b66a38">500</text>
+<text x="275" y="330" text-anchor="middle" font-size="15" fill="#1c3133">本期·提前确认</text>
+<rect x="480" y="140" width="90" height="160" rx="3" fill="#116d69"/>
+<text x="525" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#116d69">400</text>
+<text x="525" y="330" text-anchor="middle" font-size="15" fill="#1c3133">下期·正常</text>
+<rect x="600" y="180" width="90" height="120" rx="3" fill="#b66a38"/>
+<text x="645" y="170" text-anchor="middle" font-size="16" font-weight="700" fill="#b66a38">300</text>
+<text x="645" y="330" text-anchor="middle" font-size="15" fill="#1c3133">下期·提前确认</text>
+<path d="M 290 80 C 380 40, 460 40, 560 70" fill="none" stroke="#b66a38" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="420" y="66" text-anchor="middle" font-size="15" fill="#b66a38">100 万元收入从下期挪到本期</text>
+<text x="30" y="368" font-size="15" fill="#577173">两期合计：正常 800，提前确认仍为 800；本期利润变好，但下期将承压，且应收与存货会先上升。</text>
+<text x="30" y="392" font-size="15" fill="#577173">验证路径：期后销售退回、验收单据日期、应收账龄与回款速度；若下期退货增加且回款变慢，本图解释得到支持。</text>
+</svg>
