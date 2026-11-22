@@ -27,6 +27,22 @@ with sync_playwright() as p:
             if info["scroll"] > info["viewport"] + 2: fail.append(f"{width}: overflow {path.name}: {info}")
             if info["badImages"]: fail.append(f"{width}: missing images {path.name}: {info['badImages']}")
             if errors: fail.append(f"{width}: script errors {path.name}: {errors}")
+            defaults = {
+                "06.html": ("100", "50"),
+                "07.html": ("20%", "87.5%", "50%"),
+                "08.html": ("35%", "30%"),
+                "09.html": ("1.8 倍", "1 倍", "3 倍"),
+                "10.html": ("45", "60", "65")
+            }
+            if path.name in defaults:
+                result_node = page.locator("[data-result]").first
+                if not result_node.count():
+                    fail.append(f"{width}: missing workbench result {path.name}")
+                else:
+                    default_result = result_node.inner_text()
+                    for expected in defaults[path.name]:
+                        if expected not in default_result:
+                            fail.append(f"{width}: default calculation missing {expected} in {path.name}: {default_result}")
             if path.name == "index.html":
                 page.locator("#chapter-search").fill("现金流")
                 if page.locator(".chapter-card:not([hidden])").count() == 0:
