@@ -52,7 +52,7 @@ for path in pages:
     d = Document()
     d.feed(source)
     if d.title != 1: err(f"{path.name}: expected one title")
-    if d.h1 != 1 and (path.name == "index.html" and path.parent == DOCS or path.stem.isdigit() and int(path.stem) <= 5):
+    if d.h1 != 1 and (path.name == "index.html" and path.parent == DOCS or path.stem.isdigit() and int(path.stem) <= 10):
         err(f"{path}: expected one H1")
     if d.figures > d.captions: err(f"{path}: each figure needs caption")
     for link in d.links:
@@ -66,7 +66,7 @@ for path in pages:
             err(f"{path.relative_to(ROOT)}: broken anchor #{target.fragment}")
     for img in d.images:
         if not img.get("alt"): err(f"{path.relative_to(ROOT)}: image missing alt")
-    if path.stem.isdigit() and int(path.stem) <= 5:
+    if path.stem.isdigit() and int(path.stem) <= 10:
         if d.figures < 2: err(f"{path.name}: expected at least 2 teaching figures")
         if source.count("<section ") < 5: err(f"{path.name}: article too short or no semantic sections")
         if "教学虚构" not in source: err(f"{path.name}: missing fictional-data disclaimer")
