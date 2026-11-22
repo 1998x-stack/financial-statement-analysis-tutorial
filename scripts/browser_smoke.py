@@ -4,7 +4,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,11)]
+REVIEWED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18]
+paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in REVIEWED]
 OUT = ROOT / "reports" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
 fail = []
@@ -17,6 +18,11 @@ with sync_playwright() as p:
             errors = []
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.goto(path.as_uri(),wait_until="load")
+            # Force lazy figures to load so the image assertion checks availability, not timing.
+            page.evaluate("() => document.querySelectorAll('img[loading=lazy]').forEach(i => { i.loading = 'eager'; })")
+            page.evaluate("() => window.scrollTo(0, document.body.scrollHeight)")
+            page.wait_for_timeout(400)
+            page.evaluate("() => window.scrollTo(0, 0)")
             page.wait_for_timeout(120)
             page.screenshot(path=str(OUT / f"{width}-{path.stem}.png"), full_page=True)
             info = page.evaluate("""() => ({
@@ -32,7 +38,14 @@ with sync_playwright() as p:
                 "07.html": ("20%", "87.5%", "50%"),
                 "08.html": ("35%", "30%"),
                 "09.html": ("1.8 倍", "1 倍", "3 倍"),
-                "10.html": ("45", "60", "65")
+                "10.html": ("45", "60", "65"),
+                "11.html": ("合并口径营收增长 30%", "可比（有机）增长 5%", "可持续增长率 14%", "PEG 1.67"),
+                "12.html": ("经营现金流 560 万元", "净现比 0.56", "自由现金流 260 万元"),
+                "13.html": ("净利率 15%", "权益乘数 2 倍", "三因子连乘校验 15%"),
+                "14.html": ("参照组中位数 22", "均值 23", "按升序排名第 2"),
+                "15.html": ("收入增长 20%", "期末应收增长 80%", "收现比 0.88"),
+                "16.html": ("DSRI 1.25", "GMI 1.2", "SGI 2"),
+                "18.html": ("控股股东质押比例 80%", "关联方销售占营业收入 50%")
             }
             if path.name in defaults:
                 result_node = page.locator("[data-result]").first
@@ -67,4 +80,4 @@ with sync_playwright() as p:
 if fail:
     print("\n".join("FAIL: "+x for x in fail))
     raise SystemExit(1)
-print("OK: 11 pages × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
+print("OK: 17 chapter pages + index × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
