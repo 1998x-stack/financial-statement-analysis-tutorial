@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t16a d16a">
+<title id="t16a">五类财务红旗与同样能解释它们的正常情形</title>
+<desc id="d16a">应收增速快于收入增速可来自放宽信用政策、季节性或客户集中；存货上升可来自备货或产能爬坡；毛利率高于同业可来自产品结构或收入确认口径；经营现金流低于净利润可来自扩张期营运资本占用；频繁更正可来自科目重分类。每条都需回到附注与公告核对。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">左边值得调查，右边同样能解释它：两边都要查完才能下判断</text>
+<text x="30" y="70" font-size="15" font-weight="700" fill="#b66a38">红旗现象</text>
+<text x="400" y="70" font-size="15" font-weight="700" fill="#116d69">同样能解释它的正常情形</text>
+<rect x="30" y="82" width="300" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="46" y="110" font-size="15" fill="#1c3133">应收增速快于收入增速</text>
+<rect x="400" y="82" width="410" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="416" y="110" font-size="15" fill="#1c3133">放宽信用政策抢份额、季节性、客户集中</text>
+<rect x="30" y="138" width="300" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="46" y="166" font-size="15" fill="#1c3133">存货持续上升</text>
+<rect x="400" y="138" width="410" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="416" y="166" font-size="15" fill="#1c3133">为新品备货、产能爬坡、原材料涨价预期</text>
+<rect x="30" y="194" width="300" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="46" y="222" font-size="15" fill="#1c3133">毛利率显著高于同业</text>
+<rect x="400" y="194" width="410" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="416" y="222" font-size="15" fill="#1c3133">产品结构不同、总额法与净额法、成本归集口径</text>
+<rect x="30" y="250" width="300" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="46" y="278" font-size="15" fill="#1c3133">经营现金流低于净利润</text>
+<rect x="400" y="250" width="410" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="416" y="278" font-size="15" fill="#1c3133">扩张期营运资本占用、预付款增加</text>
+<rect x="30" y="306" width="300" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="46" y="334" font-size="15" fill="#1c3133">频繁更正与监管问询</text>
+<rect x="400" y="306" width="410" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="416" y="334" font-size="15" fill="#1c3133">科目重分类、合并范围调整、口径修复</text>
+<text x="30" y="380" font-size="15" fill="#577173">若右侧某一情形被公告或附注证伪，该行才升级为“待核实问题”；在此之前，它只是待排除项。</text>
+</svg>
