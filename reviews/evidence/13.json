@@ -1,0 +1,32 @@
+{
+  "chapter": "13",
+  "claims": [
+    {
+      "id": "dupont",
+      "claim": "杜邦分析可以分解ROE；五因素模型将税负、利息负担、经营利润率、资产周转和杠杆分开。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "CFA Institute 2026 Financial Analysis Techniques; learning outcomes on five-component DuPont",
+      "status": "verified",
+      "notes": "具体分子分母必须在模型中保持一致。"
+    },
+    {
+      "id": "fscore",
+      "claim": "综合评分工具需考虑样本、行业、指标定义和历史回测的外部有效性。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-reporting-quality",
+      "locator": "Financial Reporting Quality and financial analysis context",
+      "status": "verified",
+      "notes": "不将F-Score描述为买卖建议或舞弊概率。"
+    },
+    {
+      "id": "example",
+      "claim": "五因素案例90/300=30%，各因子乘积也为30%。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构数据",
+      "status": "illustrative",
+      "notes": "90/120×120/150×150/1000×1000/750×750/300=30%。"
+    }
+  ]
+}

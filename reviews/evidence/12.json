@@ -1,0 +1,41 @@
+{
+  "chapter": "12",
+  "claims": [
+    {
+      "id": "cas31",
+      "claim": "中国企业会计准则第31号要求现金流分别按经营、投资、筹资活动列报，经营活动采用直接法列示，并披露净利润调节至CFO的信息。",
+      "kind": "accounting_rule",
+      "source_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46250.htm",
+      "locator": "第4条、第8条、第16条",
+      "status": "verified",
+      "notes": "本章明确区别中国CAS31与IAS7。"
+    },
+    {
+      "id": "ias7",
+      "claim": "IAS 7允许经营现金流采用直接法或间接法，现金流分为经营、投资和筹资活动。",
+      "kind": "accounting_rule",
+      "source_url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/",
+      "locator": "IAS 7 overview and paragraphs 10–14",
+      "status": "verified",
+      "notes": "标准版本与报告期间应核对适用日期。"
+    },
+    {
+      "id": "fcf",
+      "claim": "CFO−CapEx是常见分析代理值，但不等同于FCFF、FCFE或可分配股利。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analyzing-statements-of-cash-flows-ii",
+      "locator": "CFA Institute 2026 Analyzing Statements of Cash Flows II",
+      "status": "verified",
+      "notes": "本章明确声明资本开支口径与利息分类差异。"
+    },
+    {
+      "id": "example",
+      "claim": "教学桥接示例计算CFO110、FCF40。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构数据：120+30+10−5−40−20+15=110；110−70=40",
+      "status": "illustrative",
+      "notes": "不是上市公司披露数据。"
+    }
+  ]
+}

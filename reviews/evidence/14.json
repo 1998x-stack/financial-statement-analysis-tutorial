@@ -1,0 +1,32 @@
+{
+  "chapter": "14",
+  "claims": [
+    {
+      "id": "comparison",
+      "claim": "财务分析需要明确比较基准，横向与纵向比较、共同基数和多类比率应结合使用。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "CFA Institute 2026 Financial Analysis Techniques",
+      "status": "verified",
+      "notes": "同行样本是分析者构造，非官方统一行业标准。"
+    },
+    {
+      "id": "industry",
+      "claim": "不同行业需要关注不同财务比率和行业特化指标。",
+      "kind": "analytical_method",
+      "source_url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques",
+      "locator": "Financial Analysis Techniques: industry-specific ratios",
+      "status": "verified",
+      "notes": "文章中的行业指标仅作示例，需核对具体监管与行业定义。"
+    },
+    {
+      "id": "example",
+      "claim": "四家同行ROE8%、15%、18%、35%的均值为19%、中位数为16.5%。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构样本",
+      "status": "illustrative",
+      "notes": "目标公司12%不构成经营质量或投资价值结论。"
+    }
+  ]
+}
