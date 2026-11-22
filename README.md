@@ -1,67 +1,81 @@
-# 📊 财报实战分析 · 从入门到精通
+# 财务报表分析 · 从数字到商业事实
 
-> 📘 28章 实战体系
+[课程首页（GitHub Pages）](https://1998x-stack.github.io/financial-statement-analysis-tutorial/) · [立即开始 01](https://1998x-stack.github.io/financial-statement-analysis-tutorial/chapters/01.html) · [设计规范](AGENTS.md)
 
-一套完整的 **财报实战分析 · 从入门到精通** 全中文实战课程体系，共 **28 章**。本课程以 HTML 可视化的形式呈现，从基础原理到工程实践循序渐进，适合系统性学习与复习。
+28 篇中文财务报表分析教程：从 **资产负债表、利润表、现金流量表、所有者权益变动表及附注** 出发，进一步学习经营质量、风险识别和估值。每章尽可能独立成篇，有图解、可复算教学案例、异常情景与官方来源。
 
-## 🚀 快速开始
+> **版本提示（2026-11）**：首批 01–05 已按图解式长文重写；06–28 从原仓库迁移，正在逐章复核。财政部财会〔2026〕11 号新列报准则与 IFRS 18 均自 2027 年开始适用（适用范围与提前采用规则请查看原文），不要把新版利润表列报误用于未经调整的旧数据。
 
-无需安装任何依赖，直接用浏览器打开 `index.html` 即可在线阅读全部章节：
+## 本轮改造
+- 重新组织为 `docs/` 页面源、统一的 `assets/` 和独立 SVG。
+- 首页采用静态章节目录 + 渐进增强搜索，可直接打开 HTML。
+- 每篇新文章沿“问题→概念→全局/局部 SVG→计算→风险→练习→官方来源”叙事。
+- 旧 `01.html`…`28.html` 地址保留自动跳转，以降低外链迁移破坏。
+- GitHub Actions：静态质量检查 + Chromium 多视口检查 + Docs 部署。
 
-```bash
-open index.html   # macOS
-# 或在浏览器中直接打开 index.html
-```
+## 课程结构
 
-## 📖 章节目录
+| 模块 | 章节 | 学习目标 |
+|---|---|---|
+| 一 · 理解报表 | 01–05 | 三表关系、资产结构、利润形成、现金桥接和附注 |
+| 二 · 经营质量 | 06–14 | 盈余管理、盈利、偿债、周转、成长与杜邦分析 |
+| 三 · 风险估值 | 15–22 | 财务粉饰、审计、案例、估值和并购 |
+| 四 · 分析工程 | 23–28 | Excel、Python、BI、AI 和综合模型 |
 
-| # | 章节 | 核心主题 |
-|---|------|----------|
-| 01 | 财报分析概述 | 三张表关系、分析五步法、A股披露规则、常见误区 |
-| 02 | 资产负债表精读 | 资产端拆解、负债端逻辑、所有者权益、受限资金陷阱 |
-| 03 | 利润表精读 | 利润层次结构、收入水分识别、非经常性损益、扣非净利润 |
-| 04 | 现金流量表精读 | 三大现金流板块、自由现金流计算、现金流组合诊断、康美药业案例 |
-| 05 | 读懂报表附注 | 关键会计政策、关联交易审计、或有事项、对外担保 |
-| 06 | 会计政策与盈余管理 | 盈余管理手段、洗大澡操作、折旧年限变更、识别方法 |
-| 07 | 财报分析基本框架 | 哈佛分析框架、CFA六步法、分析Checklist、框架实战验证 |
-| 08 | 盈利能力分析 | 毛利率分析、净利率分析、ROE与ROA、费用率趋势 |
-| 09 | 偿债能力分析 | 短期偿债指标、长期偿债指标、利息保障倍数、隐性债务识别 |
-| 10 | 营运能力分析 | 存货周转率、应收账款周转率、现金转换周期、行业周转天数 |
-| 11 | 成长能力分析 | 营收增长率、利润增长率、可持续增长率、PEG比率 |
-| 12 | 现金流质量分析 | 净现比分析、收现比分析、FCF质量、现金流造假识别 |
-| 13 | 杜邦分析与综合评分 | 传统杜邦分析、改进杜邦分析、沃尔评分法、Piotroski F-Score |
-| 14 | 同业比较与行业分析 | 可比公司选择、行业均值对标、行业生命周期、波特五力 |
-| 15 | 财务粉饰手法全解 | 虚增收入手法、隐藏费用花招、资产端水分、表外负债 |
-| 16 | 财务造假红旗信号 | 财务红旗信号、Beneish M-Score、非财务红旗、康得新/獐子岛案例 |
-| 17 | A股经典暴雷案例 | 康美药业300亿造假、康得新现金蒸发、獐子岛扇贝跑了、瑞幸咖啡做空 |
-| 18 | 审计意见与公司治理 | 五种审计意见、关键审计事项、公司治理信号、审计师变更 |
-| 19 | 绝对估值法 | DCF模型详解、WACC计算、终值估算陷阱、敏感性分析 |
-| 20 | 相对估值法 | PE市盈率、PB市净率、PS与EV/EBITDA、分位数分析 |
-| 21 | 行业特化分析 | 银行股分析、科技股分析、制造业分析、消费股分析 |
-| 22 | 并购与商誉分析 | 商誉的形成、减值触发信号、对赌协议风险、分拆上市 |
-| 23 | Excel财报分析实战 | Power Query数据清洗、横向/纵向分析、比率自动计算、财务图表制作 |
-| 24 | Python财报分析入门 | akshare/tushare、pandas分析、比率可视化、自动化脚本 |
-| 25 | BI工具与可视化看板 | Power BI看板、DAX公式、财务驾驶舱、实时监控预警 |
-| 26 | AI驱动的财报分析 | LLM辅助分析、NLP读年报、AI异常检测、AI幻觉陷阱 |
-| 27 | 量化财务模型构建 | Piotroski F-Score、Beneish M-Score、Altman Z-Score、多因子打分卡 |
-| 28 | 综合实战项目 | 行业背景分析、三张表深度解析、排雷检查、估值与投资决策 |
+完整标题和主题见 [docs/courses.json](docs/courses.json)。
 
-## 📂 项目结构
+## 仓库结构
 
 ```text
-financial-statement-analysis-tutorial/
-├── index.html      # 课程主入口（在线阅读全部章节）
-├── 01.html ~ 28.html   # 各章节正文
-├── courses.json    # 课程元数据（标题/章节/主题）
-└── theme.css       # 统一主题样式
+.
+├── docs/
+│   ├── index.html                 # GitHub Pages 首页
+│   ├── courses.json
+│   ├── chapters/
+│   │   ├── 01.html .. 05.html    # 首批独立重写文章
+│   │   ├── 06.html .. 28.html    # 迁移兼容，待进一步深审
+│   │   ├── theme.css             # 旧文章样式兼容
+│   │   └── index.html            # 返回课程首页
+│   └── assets/
+│       ├── css/site.css
+│       ├── js/site.js
+│       └── figures/*.svg
+├── scripts/
+│   ├── site_check.py
+│   └── browser_smoke.py
+├── .github/workflows/
+│   ├── quality.yml
+│   └── pages.yml
+├── AGENTS.md
+└── index.html, 01.html..28.html  # 旧地址兼容跳转
 ```
 
-## ✨ 课程特色
+## 本地预览
 
-- **全中文实战体系**：面向中文读者，由浅入深，覆盖原理与工程实践
-- **28 章完整内容**：系统化章节编排，形成完整知识闭环
-- **可视化呈现**：HTML 图文并茂，适合快速浏览与重点回顾
-- **即开即用**：无需构建、无需服务器，纯静态页面随开随看
+无需编译，在仓库目录执行：
 
----
-*本课程由 `financial-statement-analysis-tutorial/` 项目维护。*
+```bash
+python -m http.server 8000
+# 打开 http://localhost:8000/docs/
+```
+
+质量检查：
+
+```bash
+python scripts/site_check.py
+python -m pip install playwright
+python -m playwright install chromium
+python scripts/browser_smoke.py
+```
+
+## 部署说明
+
+工作流 [pages.yml](.github/workflows/pages.yml) 在 `main` 更新后打包 `docs/` 部署 GitHub Pages。首次使用可能需在 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**；若仓库此前已配置为 `main/docs` 分支发布，也可以使用现有配置，但不要同时把两种发布方式混用。部署状态以 Actions 与实际 URL 检查为准。
+
+## 依据与边界
+- [财政部：2026 修订企业会计准则第30号](https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm)
+- [中国证监会：上市公司信息披露管理办法](https://www.csrc.gov.cn/c106256/c1653948/content.shtml)
+- [SEC：Beginners’ Guide to Financial Statements](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements)
+- [IFRS Foundation：IFRS 18](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/)
+
+**所有未明确标注实际上市公司/报告期的数据均为教学虚构，不构成证券投资建议。**
