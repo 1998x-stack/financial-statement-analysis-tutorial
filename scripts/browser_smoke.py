@@ -18,7 +18,7 @@ with sync_playwright() as p:
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.goto(path.as_uri(),wait_until="load")
             page.wait_for_timeout(120)
-            await page.evaluate("""async () => {
+            page.evaluate("""async () => {
                 const images = [...document.images];
                 images.forEach(img => { img.loading = "eager"; });
                 await Promise.all(images.map(img => img.decode().catch(() => null)));
