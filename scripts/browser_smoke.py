@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Chromium smoke test: 1440/390/360, interaction, rendered images, errors."""
+"""Chromium smoke test: 1440/768/390/360, interaction, rendered images, errors."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,6)]\nOUT = ROOT / "reports" / "qa"\nOUT.mkdir(parents=True, exist_ok=True)
+paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,6)]
+OUT = ROOT / "reports" / "qa"
+OUT.mkdir(parents=True, exist_ok=True)
 fail = []
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
@@ -15,7 +17,8 @@ with sync_playwright() as p:
             errors = []
             page.on("pageerror", lambda e: errors.append(str(e)))
             page.goto(path.as_uri(),wait_until="load")
-            page.wait_for_timeout(120)\n            page.screenshot(path=str(OUT / f"{width}-{path.stem}.png"), full_page=True)
+            page.wait_for_timeout(120)
+            page.screenshot(path=str(OUT / f"{width}-{path.stem}.png"), full_page=True)
             info = page.evaluate("""() => ({
                 scroll:document.documentElement.scrollWidth,
                 viewport:innerWidth,
