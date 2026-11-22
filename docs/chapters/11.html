@@ -1,202 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第11章 成长能力分析</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="营收增长 30% 里有多少来自并购？用有机增长、扣非利润与可持续增长率判断增长是否可持续，以及增长是否已经反映在价格里。">
+<title>成长能力：有机增长与可持续增长率 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html" class="active">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-
-        <p>大家好，我是你们的讲师。前面三章咱们分别看了盈利能力、偿债能力和营运能力——这些都是"静态"的分析。但投资投的是<strong>未来</strong>——一家公司过去再优秀，如果失去了成长性，它的价值就会大打折扣。反过来，一家当前不怎么赚钱但成长性极佳的公司，反而可能创造惊人的回报。</p>
-
-        <p>但成长也是一把双刃剑。A股市场上，投资者对"高增长"有极强的偏好，给高增长公司的估值往往远超合理水平。而一些公司也深谙此道——他们会想尽办法在报表上"制造"增长，哪怕这种增长是不可持续的、甚至是虚假的。</p>
-
-        <p>这一章，咱们来系统学习怎么分析成长能力——分辨<strong>真实的增长</strong>和<strong>堆砌的增长</strong>，以及增长是否与估值匹配。</p>
-
-        <h2>营收增长率——有机增长还是并购增长？</h2>
-
-        <p><strong>营收增长率 = (本期营收 - 上期营收) / 上期营收 × 100%</strong>，这是最基础的成长指标。但这里有一个关键问题：营收增长是"长出来的"还是"买出来的"？</p>
-
-        <p><strong>有机增长</strong>是指公司通过自身经营实现的增长——比如市场份额扩大、产品提价、新产品推出。这种增长是可持续的，反映了公司真正的竞争力。</p>
-
-        <p><strong>并购增长</strong>是指公司通过收购其他公司来实现的营收合并增长。这种增长不一定反映公司核心竞争力的提升——收购来的业务能不能整合好、会不会产生商誉减值，都是很大的未知数。</p>
-
-        <p>如何区分？看两个地方：一是年报中的"同一控制下企业合并"和"非同一控制下企业合并"相关数据，看营收增长中有多少来自并购；二是看"商誉"科目的变化——如果商誉大幅增加，说明公司在大量进行并购。</p>
-
-        <div class="highlight">
-            <strong>实战技巧：</strong>计算"剔除并购后的有机增长率"：有机增长率 = (本期内生营收 - 上期营收) / 上期营收。如果一家公司报告的营收增长率为30%，但其中25%来自并购标的的并表，那么它的有机增长率只有5%。这个"5%"才是真实竞争力的体现。
-        </div>
-
-        <p>另外还要关注<strong>量的增长 vs 价的增长</strong>。如果营收增长主要靠涨价，它是有天花板的；如果靠销量增长（市场份额扩大），持续性更强。年报中的"量价分析"可以帮你判断。</p>
-
-        <h2>利润增长率——质量比速度更重要</h2>
-
-        <p><strong>净利润增长率 = (本期净利润 - 上期净利润) / 上期净利润 × 100%</strong>，这是投资者最关注的指标。但利润增长率是最容易被操纵的——通过会计政策变更、资产减值转回、非经常性损益等手段，公司可以让净利润增长率"看起来很好"。</p>
-
-        <p>分析利润增长率时，一定要把利润拆解开：</p>
-
-        <ul>
-            <li><strong>扣非净利润增长率</strong>：剔除"非经常性损益"后的净利润增长率，这是核心盈利能力的真实体现。</li>
-            <li><strong>营业利润增长率</strong>：利润表上的"营业利润"增长率，剔除了营业外收支的影响。</li>
-            <li><strong>EBIT增长率</strong>：息税前利润的增长率，剔除了资本结构和税率的影响，更适合做横向比较。</li>
-        </ul>
-
-        <p>一个值得关注的现象：<strong>利润增长率持续高于营收增长率</strong>。这种情况通常意味着利润率在提升，这本身是好事。但如果利润增长率的优势不是来自毛利率提升或费用率下降，而是来自"会计手段"（比如折旧年限延长、坏账计提比例降低、研发费用资本化），那就需要高度警惕了。</p>
-
-        <div class="warning">
-            <strong>警戒信号：</strong>当一家公司的扣非净利润增长率连续3年低于报表净利润增长率时，说明它在持续依赖非经常性损益"美化"利润。这种公司长期来看几乎一定会出现问题。
-        </div>
-
-        <h2>可持续增长率（SGR）——不要超出自身能力地增长</h2>
-
-        <p><strong>可持续增长率（Sustainable Growth Rate, SGR）</strong>是一个非常重要但经常被投资者忽略的指标。它回答了这样一个问题：在不改变资本结构、不发行新股的前提下，公司仅靠留存收益能支撑多高的增长率？</p>
-
-        <p><strong>SGR = ROE × (1 - 分红率)</strong></p>
-
-        <p>更精确的公式：<strong>SGR = (净利润 / 净资产) × (留存收益 / 净利润) = 留存收益 / 净资产</strong></p>
-
-        <pre><code>可持续增长率计算示例：
-
-某公司2023年数据：
-净利润 = 10亿
-净资产 = 50亿
-ROE = 10 / 50 = 20%
-分红 = 3亿（分红率30%）
-留存收益 = 10 - 3 = 7亿
-
-SGR = ROE × (1 - 分红率) = 20% × 70% = 14%
-——或者——
-SGR = 留存收益 / 期初净资产 = 7 / 50 = 14%
-
-结论：在不改变资本结构的前提下，
-该公司最多能以14%的速度增长。
-
-如果公司实际增长率超过14%：
-→ 要么资产负债率会上升（多借钱）
-→ 要么需要增发新股（稀释股东权益）
-→ 要么增长速度不可持续（必然回调）</code></pre>
-
-        <p>SGR是判断增长"真实性"和"可持续性"的有力工具。如果一家公司的实际增长率长期显著高于SGR，说明它的增长是靠提高杠杆来实现的——这是不可持续的。一旦信贷环境收紧，这种高增长就会戛然而止。</p>
-
-        <h2>增长的估值匹配——PEG比率</h2>
-
-        <p>高增长不等于好投资。如果一家公司的估值已经充分反映了它的增长预期，那么即使它真的实现了高增长，投资者也可能赚不到钱。这个问题的核心是：<strong>增长是否已经体现在价格中？</strong></p>
-
-        <p><strong>PEG = 市盈率（PE） / 盈利增长率（g）</strong>，PEG比率解决了"PE单独看没有高低基准"的问题。一般来说：</p>
-
-        <ul>
-            <li>PEG &lt; 1：可能被低估（增长高于估值反映的预期）</li>
-            <li>PEG = 1：合理估值（增长正好匹配估值）</li>
-            <li>PEG &gt; 1：可能被高估（增长不足以支撑当前估值）</li>
-        </ul>
-
-        <p>但PEG也有局限性：它假设增长率可以持续，而实际上高增长很难长期维持。一家公司当年的增长率是100%，但大概率第二年会大幅回落。所以我一般用<strong>3-5年的平均预期增长率</strong>来计算PEG，而不是用单一年份的数据。</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>增长特征</th>
-                    <th>好信号</th>
-                    <th>警示信号</th>
-                    <th>危险信号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>营收增长</td>
-                    <td>有机增长为主，量价齐升</td>
-                    <td>增长主要靠并购</td>
-                    <td>营收增长但DSO大幅上升</td>
-                </tr>
-                <tr>
-                    <td>利润增长</td>
-                    <td>扣非净利润与净利润同步增长</td>
-                    <td>非经常性损益占比持续上升</td>
-                    <td>利润增长但经营性现金流负增长</td>
-                </tr>
-                <tr>
-                    <td>SGR匹配度</td>
-                    <td>实际增长率 ≈ SGR</td>
-                    <td>实际增长率 > SGR 但杠杆率稳定</td>
-                    <td>实际增长率 > SGR 且杠杆率上升</td>
-                </tr>
-                <tr>
-                    <td>增长与估值</td>
-                    <td>PEG 0.5 - 1.0</td>
-                    <td>PEG 1.0 - 1.5</td>
-                    <td>PEG > 2.0 或增长率为负</td>
-                </tr>
-                <tr>
-                    <td>现金流匹配</td>
-                    <td>经营现金流增速 ≈ 利润增速</td>
-                    <td>经营现金流增速 < 利润增速</td>
-                    <td>经营现金流增速 < 利润增速的50%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="tip">
-            <strong>综合判断：</strong>我用"增长质量评分"系统——营收增速、利润增速、SGR匹配度、现金流匹配度和PEG各占20分，满分100分。低于60分的高增长公司，即使增长数字再好看，也要谨慎对待。因为低质量的增长比没有增长更危险——它往往以暴雷收场。
-        </div>
-
-        <h3>真实案例：并购堆出来的"增长"</h3>
-
-        <p>A股上市公司M公司是典型的"并购驱动增长"的故事。2015-2018年，M公司通过连续并购7家标的公司，营收从10亿增长到了60亿，年复合增长率高达56%。利润也从1亿增长到了6亿，看起来是一支标准的"成长股"，市场给出了50倍PE的估值。</p>
-
-        <p>但仔细一看问题就暴露了：M公司的有机增长率（剔除并购并表影响）不到8%——这意味着它的核心业务几乎没增长。商誉余额从0飙升到了35亿，相当于净资产的80%。并且被并购的7家公司中有4家的业绩承诺期刚结束，业绩立即"变脸"——第一年还能勉强完成承诺，第二年就大幅下滑。</p>
-
-        <p>2019年，M公司发布了商誉减值公告，一次性计提商誉减值18亿，全年巨亏12亿。股价从45元跌到了6元，市值蒸发了87%。那些买入"M公司增长故事"的投资者，实际买入的是一堆难以整合的收购标的和高悬的商誉巨雷。</p>
-
-        <div class="highlight">
-            <strong>核心教训：</strong>区分有机增长和并购增长是成长能力分析的第一课。一家公司如果靠并购堆起来的"增长"超过50%，而有机增长不到10%，那它本质上不是一个成长型公司，而是一个"收购整合型"公司。这两种模式的估值逻辑完全不同。
-        </div>
-
-        <p>好了，本章咱们系统学习了成长能力分析——营收增长的质量、利润增长的可持续性、SGR的计算和应用，以及增长与估值的匹配。下一章咱们进入分析方法中的最后一块拼图——<strong>现金流质量分析</strong>。你可能会奇怪：分析现金流在第4章已经讲过了，为什么还要专门再讲？因为现金流才是检验一切财务数据是否真实的"试金石"。下一章见！</p>
-
-        <div class="footer-nav">
-            <a href="10.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="12.html">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 11 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">增长从哪里来？</a>
+<a href="#decompose">把增长率拆开看</a>
+<a href="#quality">利润增长的质量</a>
+<a href="#sgr">可持续增长率与外部融资</a>
+<a href="#calculator">增长质量工作台</a>
+<a href="#valuation">增长与估值：PEG 的适用边界</a>
+<a href="#checklist">信号矩阵与自测</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 11 / 28</span>
+<h1>成长能力：有机增长与可持续增长率</h1>
+<p class="lead">营收增长 30% 听起来很好，但如果其中 25 个百分点来自并购并表、有机增长只有 5%，那就是两种完全不同的生意。本章教你把增长率拆开、复算，并判断它能撑多久。</p>
+<p class="meta">2026-11 更新 · 原理 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">增长从哪里来？</h2>
+<p>假设一家教学虚构公司 J 报告：本期营业收入 1,300 万元，上期 1,000 万元，同比增长 30%。只看这个数字，它像一家高速成长的公司。但附注说明：上一年度收购的一家子公司在本期首次全年并表，贡献收入 250 万元；剔除该并表因素后，原有业务的收入只从 1,000 万元变成 1,050 万元。</p>
+<p>于是同一份报表里存在两个都正确、但含义完全不同的增长率：<strong>合并口径增长率 30%</strong>（1,300 ÷ 1,000 − 1），以及<strong>可比口径（有机）增长率 5%</strong>（50 ÷ 1,000）。增长能力分析的第一步不是算增长率，而是先问清“这个增长由谁贡献”。</p>
+<figure>
+<img src="../assets/figures/11-growth-split.svg" alt="上期收入一千万元，加上并购并表二百五十万元与原业务增长五十万元，得到本期收入一千三百万元" width="840" height="400" loading="lazy">
+<figcaption>图 1：把 30% 的增长率拆成并表贡献与有机贡献。图中数字均为教学虚构；若公司在附注中披露的并表期间与图中橙色段不一致，该拆分即被证伪，需要重算。</figcaption>
+</figure>
+<p>并表本身不是问题：它是会计准则对企业合并的正常处理。但它带来三个必须单独检查的后果：收购对价形成的商誉、业绩承诺期内标的公司自身的盈利质量，以及合并期间的可比性——本期包含标的公司 12 个月，上期可能只包含 3 个月，跨期比较因此被口径放大或缩小。</p>
+<p>所以本章的分析顺序是：先还原可比口径，再判断增长的来源（量、价、并表、汇率），最后才讨论它能持续多久以及价格是否已经反映。</p>
+</section>
+<section id="decompose" aria-labelledby="decompose-title">
+<h2 id="decompose-title">把增长率拆开看</h2>
+<p>营业收入增长率的基础公式是：本期营业收入减上期营业收入，再除以上期营业收入。这个公式无法区分以下几种来源，而它们的含义完全不同：</p>
+<ol>
+<li><strong>销量增长</strong>：单位数增加。在单价和单位成本不变时，销售收入与毛利同向增长。</li>
+<li><strong>价格增长</strong>：提价或产品结构上移。它直接改善毛利率，但受客户议价与替代品约束，通常有天花板。</li>
+<li><strong>合并范围变化</strong>：新设、收购、处置子公司，或同一控制下企业合并的追溯处理。</li>
+<li><strong>汇率折算</strong>：境外经营的收入按不同期间汇率折算，即使本币收入不变，报表收入也会变。</li>
+<li><strong>总额法与净额法口径</strong>：同一笔贸易业务，公司作为主要责任人按总额确认，还是作为代理人按净额确认，收入规模差异巨大。</li>
+</ol>
+<p>把这几项逐一核实，才能判断“增长”是否来自公司自身的经营能力。核实的地方在附注，不在正文数字：合并范围变更说明、分部报告、主要产品的销量与单价、以及收入确认政策（总额法/净额法）。</p>
+<div class="compare">
+<div><h3>有机增长</h3><p>同一合并范围下，原有业务靠销量、单价或产品结构实现的增长。可直接与毛利率、单位成本、客户数量对比验证。它也可能因行业景气或一次性订单而偏高，不是永续增长的保证。</p></div>
+<div><h3>并购增长</h3><p>通过并表获得的收入。它同时带来商誉、可辨认无形资产和整合成本。需要单独检查：对价分配、业绩承诺条款、标的公司自身现金流，以及商誉减值测试所依据的假设。</p></div>
 </div>
+<div class="callout warning">
+<p><strong>口径陷阱：</strong>如果本期与上期的合并范围不同，“同比增长”已经不是可比口径的同比增长。把并表当期的非完整年度也直接年化，会把周期性或季节性误读成高成长。</p>
+</div>
+</section>
+<section id="quality" aria-labelledby="quality-title">
+<h2 id="quality-title">利润增长的质量</h2>
+<p>净利润增长率比营收增长率更容易被误解，因为它上面叠了好几层项目。先分清三个层级：<strong>归母净利润</strong>（属于母公司股东的份额）、<strong>扣除非经常性损益后的归母净利润</strong>（剔除了不可持续项目）、以及<strong>综合收益总额</strong>（包含不能重分类进损益的项目）。三个数字可以给出完全不同方向的“增长”。</p>
+<p>比较时建议固定比较的口径，并逐项核对：</p>
+<ul>
+<li><strong>营业利润增长率</strong>：反映经营活动本身的盈利能力变化。不能把“营业利润 = 毛利 − 四费”当成定义；中国利潦表中还有税金及附加、其他收益、信用减值损失、投资收益等项目。</li>
+<li><strong>扣非归母净利润增长率</strong>：政府补助、资产处置收益、公允价值变动等项目的金额与持续性需在附注中核对。</li>
+<li><strong>单位成本与费用率</strong>：毛利率提升与费用率下降都能抬升利润增速，需要判断是效率改善、规模效应，还是一次性降价采购或费用递延。</li>
+</ul>
+<p>若利润增速持续高于收入增速，最常见的三类解释是：产品结构与毛利改善（经营改善）、会计估计变更或减值转回（未来适用或当期确认）、以及非经常性损益（不可重复）。三者对应的可持续性不同，验证方法也不同：前者看单位毛利与同行业比，中者看变更披露与影响额，后者看扣非差额。</p>
+<p>最后一步是把利润与现金对齐。净利润与经营活动现金流量的差额，可能来自应收应付、存货等营运资本变动，也可能来自收入确认时点与真实回款周期的差异。利润增长而没有相应的现金回款，不是一个结论，而是一个需要跟进的调查线索。</p>
+<div class="callout">
+<p><strong>无绝对信号：</strong>扣非增速连续多年低于净利润增速，提示利润里非经常性项目占比在上升，值得逐一核对；它本身不构成造假证据。相反，一次性折旧摊销或诉讼支出也会压低扣非利润。先看项目名称和金额，再判断性质。</p>
+</div>
+</section>
+<section id="sgr" aria-labelledby="sgr-title">
+<h2 id="sgr-title">可持续增长率与外部融资</h2>
+<p>可持续增长率（Sustainable Growth Rate）回答一个具体问题：在不增发新股、不改变分红政策、不改变资本结构的前提下，仅靠内部留存收益，收入最多能长多快？</p>
+<div class="equation math-scroll" data-math-scroll tabindex="0" role="region" aria-label="可持续增长率公式">
+<div class="equation-label">可持续增长率（SGR）</div>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="可持续增长率等于净资产收益率乘以留存比例，即一减分红率，也等于留存收益除以期初所有者权益">
+<mrow>
+<mi>SGR</mi><mo>=</mo>
+<mfrac><mtext>留存收益</mtext><mtext>期初所有者权益</mtext></mfrac>
+<mo>=</mo>
+<mi>ROE</mi><mo>×</mo>
+<mrow><mo>(</mo><mn>1</mn><mo>−</mo><mtext>分红率</mtext><mo>)</mo></mrow>
+</mrow>
+</math>
+</div>
+<details class="exercise"><summary>为什么两个式子相等？</summary><p>把 ROE 写成“净利润 ÷ 期初所有者权益”，把留存收益写成“净利润 ×（1 − 分红率）”，两式相除即得。推导的前提是分子分母用同一期间、同一合并范围，并用期初权益而非期末权益，否则两个式子不再相等。</p></details>
+<figure>
+<img src="../assets/figures/11-sgr.svg" alt="可持续增长率百分之十四与实际收入增长率百分之二十的差距，需要外部融资或经营效率改善来填补" width="840" height="420" loading="lazy">
+<figcaption>图 2：教学虚构算例。实际增长 20% 与 SGR 14% 相差 6 个百分点。若周转率与权益乘数不变，该差额必须由外部资金或增发填补；若公司声称没有融资却实现了更高增长，就需要找到其他解释，否则这种增长无法自圆其说。</figcaption>
+</figure>
+<p>用一个可以手工复算的算例验证这个等式。数据为教学虚构，单位统一为亿元：</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>项目</th><th>数值</th><th>计算</th></tr></thead>
+<tbody>
+<tr><td>当期归母净利润</td><td>10</td><td>—</td></tr>
+<tr><td>期初所有者权益</td><td>50</td><td>—</td></tr>
+<tr><td>净资产收益率 ROE</td><td>20%</td><td>10 ÷ 50</td></tr>
+<tr><td>现金分红</td><td>3</td><td>分红率 3 ÷ 10 = 30%</td></tr>
+<tr><td>留存收益</td><td>7</td><td>10 − 3</td></tr>
+<tr><td>可持续增长率</td><td>14%</td><td>20% × (1 − 30%) = 7 ÷ 50</td></tr>
+</tbody>
+</table>
+</div>
+<p>若该公司实际收入增长 20%，高于 14% 的 SGR，差额只能从四类渠道来：<strong>提高权益乘数</strong>（多借债）、<strong>增发或配股</strong>（壮大权益基数）、<strong>提高资产周转率</strong>（同样资产做更多生意）、<strong>提高销售净利率</strong>（同样收入赚更多钱）。每一步都可回报表验证：前者看资产负债率和有息负债，中者看股本与资本公积变动，后两者看周转率与净利率的趋势。</p>
+<p>三个必须声明的限制：其一，SGR 是会计恒等式推出来的约束条件，不是未来增长的预测值；其二，ROE 或所有者权益为负时，比率失去经济含义，不得拿来比较；其三，用期初权益与平均权益得到的结果不同，必须在同一组对比中固定口径。</p>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">增长质量工作台</h2>
+<p>下面的数据为<strong>教学虚构</strong>，与上文算例是两组独立的输入。启用脚本后结果实时更新；未启用脚本时，可按本节公式手工复算：有机增长 =（本期收入 − 并表贡献 − 上期收入）÷ 上期收入，SGR =（净利润 ÷ 期初权益）×（1 − 分红 ÷ 净利润），PEG = 市盈率 ÷ 预期盈利增速（百分数）。</p>
+<div class="lab" data-calculator="growth">
+<h3>修改数据，即时复算</h3>
+<p>单位、币种与期间必须保持一致；预期增速是输入假设，不是公司事实。</p>
+<div class="lab-grid">
+<label>本期营业收入（万元）<input type="number" name="sales" value="1300" step="any" aria-label="本期营业收入（万元）"></label>
+<label>上期营业收入（万元）<input type="number" name="prevSales" value="1000" step="any" aria-label="上期营业收入（万元）"></label>
+<label>本期并表贡献（万元）<input type="number" name="acquired" value="250" step="any" aria-label="本期并表贡献（万元）"></label>
+<label>本期归母净利润（万元）<input type="number" name="profit" value="120" step="any" aria-label="本期归母净利润（万元）"></label>
+<label>上期归母净利润（万元）<input type="number" name="prevProfit" value="80" step="any" aria-label="上期归母净利润（万元）"></label>
+<label>本期扣非归母净利润（万元）<input type="number" name="profitAdj" value="90" step="any" aria-label="本期扣非归母净利润（万元）"></label>
+<label>期初所有者权益（万元）<input type="number" name="equity" value="600" step="any" aria-label="期初所有者权益（万元）"></label>
+<label>本期现金分红（万元）<input type="number" name="dividend" value="36" step="any" aria-label="本期现金分红（万元）"></label>
+<label>当前市盈率 PE（倍）<input type="number" name="pe" value="25" step="any" aria-label="当前市盈率（倍）"></label>
+<label>预期盈利增速 g（%）<input type="number" name="growthFwd" value="15" step="any" aria-label="预期盈利增速（百分数）"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+</section>
+<section id="valuation" aria-labelledby="valuation-title">
+<h2 id="valuation-title">增长与估值：PEG 的适用边界</h2>
+<p>高增长不等于好投资。如果价格已经包含了更高的增长预期，公司即使实现了高增长，投资者也未必获利。PEG 是衡量两者关系的常用工具：</p>
+<div class="equation" tabindex="0" role="group" aria-label="PEG 的分子与分母">
+<div class="equation-label">PEG = 市盈率（PE）÷ 预期盈利增速（g，以百分数代入）</div>
+<p>例：市盈率 25 倍、预期年增速 15%，则 PEG = 25 ÷ 15 ≈ 1.67。</p>
+</div>
+<p>分母用哪一种增长率，直接决定了结果：当年增速、过往 3 年复合增速、卖方一致预期，三者可以相差一倍以上。PEG 的常见经验区间（低于 1 视为偏低、高于 2 视为偏高）只是便于排序的惯例，不是会计准则或监管规定，也不能单独用来下结论。以下几种情形下 PEG 基本不适用：</p>
+<ul>
+<li><strong>分母为负或接近零</strong>：亏损公司或增速在 0 附近的公司，PEG 无经济含义。</li>
+<li><strong>增速来自低基数或一次性项目</strong>：去年减值、今年无减值，会造出很高的“增速”。</li>
+<li><strong>资本开支与杠杆差异大</strong>：同等增速下，重资产、高负债公司应得更低倍数。</li>
+<li><strong>分红政策不同</strong>：分红少的公司靠留存支撑同样增速，股东回报未必更好。</li>
+<li><strong>周期行业在盈利峰顶</strong>：峰顶利润作分母，PE 会显得很低，PEG 也会跟着失真。</li>
+</ul>
+<p>因此实用做法是：把 PEG 当作对增长率假设的<strong>敏感性检查</strong>，给出区间而非点值，并在页码上写明每个分子、分母的口径与期间。</p>
+<div class="callout">
+<p><strong>列报口径变化提示：</strong>财政部《企业会计准则第 30 号——财务报表列报》（财会〔2026〕11 号）按主体分三批执行：境内外两地上市及符合规定的境外上市主体为 <strong>2027-01-01</strong>，其他境内上市主体为 <strong>2029-01-01</strong>，非上市主体为 <strong>2030-01-01</strong>，均允许提前执行。它不意味着所有中国企业同时在 2027 年切换。境外 IFRS 18 也是 2027-01-01 起适用（允许提前应用），两套准则不得混用。</p>
+</div>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">信号矩阵与自测</h2>
+<p>下表把常见的“增长异常”写成四列：观察到的现象、可能的含义、同样能解释它的反例、以及用来区分两者的证据。任何单行都不足以得出结论。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>观察到的现象</th><th>可能的含义</th><th>反例或替代解释</th><th>需核对的证据</th></tr></thead>
+<tbody>
+<tr><td>合并口径增速远高于可比口径增速</td><td>增长主要由并表贡献</td><td>上期只并表部分月份，本期为完整年度</td><td>合并范围变更附注、并表起止日</td></tr>
+<tr><td>净利润增速持续高于收入增速</td><td>毛利或费用率改善、非经常性项目增加</td><td>上期低基数，或本期一次性降价采购</td><td>毛利率与费用率趋势、非经常性损益明细</td></tr>
+<tr><td>实际增速持续高于 SGR 而权益乘数上升</td><td>增长由负债支撑</td><td>周转率与净利率同时改善</td><td>有息负债增速、周转率、净利率</td></tr>
+<tr><td>增长伴随应收周转天数上升</td><td>确认的收入尚未形成回款</td><td>信用政策放宽换市场份额，或有季节性</td><td>应收账龄、信用政策变更、期后回款</td></tr>
+<tr><td>PEG 明显低于 1</td><td>增速未被价格充分反映</td><td>分子用了峰顶利润，或预期增速已被下调</td><td>盈利口径（归母/扣非）、预测来源与日期</td></tr>
+</tbody>
+</table>
+</div>
+<details class="exercise"><summary>自测一：一家公司营收增长 40%、有机增长 6%，是否就是“伪成长”？</summary><p>不能直接这么定。如果收购已披露、对价分配合理、标的公司业务与主业相关且持续贡献现金，它仍是一家在扩张的公司，只是成长模式是“收购整合型”而非“内生型”。需单独评估商誉、业绩承诺与整合能力，并用合适的估值口径。</p></details>
+<details class="exercise"><summary>自测二：实际增速低于 SGR，是否意味着公司安全？</summary><p>不意味着。低于 SGR 只说明没有突破内部融资约束，它可能同时意味着需求走弱、份额丢失或留存收益被低效资产占用。SGR 描述的是约束上限，不是质量评价。</p></details>
+<p><strong>结论：</strong>成长能力分析的可交付结果是三句话——增长来自哪里、能持续多久、价格已经反映了多少。三句都要能回报表找到对应数字。</p>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字、公司名称与算例均为<strong>教学虚构</strong>，用于演示公式与口径；不对应任何实际上市公司或报告期，也不构成投资建议。</p>
+<p>公式与判断框架属于作者讲解；有关合并范围、列报结构与披露时限的强制要求以下列官方文件为准。</p>
+<ol>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+<li><a href="https://app.mof.gov.cn/mofmobile2026/zcfb/202608/t20260805_3999529.htm" target="_blank" rel="noopener noreferrer">财政部 · 财会〔2026〕11号：新列报准则 2027/2029/2030 分批实施通知</a></li>
+<li><a href="https://kjs.mof.gov.cn/gongzuotongzhi/202512/t20251224_3980024.htm" target="_blank" rel="noopener noreferrer">财政部 · 2025年度年报工作通知（会计政策、估计、差错的区分）</a></li>
+<li><a href="https://www.csrc.gov.cn/c106256/c1653948/content.shtml" target="_blank" rel="noopener noreferrer">中国证监会 · 上市公司信息披露管理办法</a></li>
+<li><a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/" target="_blank" rel="noopener noreferrer">IFRS Foundation · IFRS 18 列报与披露（自 2027-01-01 起适用，允许提前应用）</a></li>
+</ol>
+</section>
+
+<nav class="article-nav" aria-label="相邻章节"><a href="10.html">← 上一章</a><a href="12.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 11</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t11a d11a">
+<title id="t11a">把 30% 的营收增长拆成并表贡献与有机贡献</title>
+<desc id="d11a">教学虚构算例：上期营业收入 1000 万元，加上收购子公司全年并表贡献 250 万元，再加上原有业务增长 50 万元，得到本期营业收入 1300 万元。合并口径同比增长 30%，剔除并表后的可比口径增长 5%。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<line x1="60" y1="320" x2="680" y2="320" stroke="#577173" stroke-width="1.5"/>
+<text x="60" y="344" font-size="15" fill="#577173">0</text>
+<text x="60" y="40" font-size="16" font-weight="700" fill="#1c3133">单位：万元（教学虚构）</text>
+<rect x="80" y="135.4" width="100" height="184.6" rx="3" fill="#116d69"/>
+<text x="130" y="125" text-anchor="middle" font-size="16" font-weight="700" fill="#116d69">1000</text>
+<text x="130" y="360" text-anchor="middle" font-size="15" fill="#1c3133">上期收入</text>
+<rect x="230" y="89.2" width="100" height="46.2" rx="3" fill="#b66a38"/>
+<text x="280" y="79" text-anchor="middle" font-size="16" font-weight="700" fill="#b66a38">+250</text>
+<text x="280" y="360" text-anchor="middle" font-size="15" fill="#1c3133">并购并表</text>
+<rect x="380" y="80" width="100" height="9.2" rx="2" fill="#3f8f4a"/>
+<text x="430" y="70" text-anchor="middle" font-size="16" font-weight="700" fill="#2f6d38">+50</text>
+<text x="430" y="360" text-anchor="middle" font-size="15" fill="#1c3133">原业务有机增长</text>
+<rect x="530" y="80" width="100" height="240" rx="3" fill="#116d69"/>
+<text x="580" y="70" text-anchor="middle" font-size="16" font-weight="700" fill="#116d69">1300</text>
+<text x="580" y="360" text-anchor="middle" font-size="15" fill="#1c3133">本期收入</text>
+<line x1="180" y1="135.4" x2="230" y2="135.4" stroke="#577173" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="330" y1="89.2" x2="380" y2="89.2" stroke="#577173" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="480" y1="80" x2="530" y2="80" stroke="#577173" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="660" y="236" width="14" height="14" fill="#116d69"/>
+<text x="682" y="249" font-size="15" fill="#1c3133">期末存量水平</text>
+<rect x="660" y="266" width="14" height="14" fill="#b66a38"/>
+<text x="682" y="279" font-size="15" fill="#1c3133">并表带来的增量</text>
+<rect x="660" y="296" width="14" height="14" fill="#3f8f4a"/>
+<text x="682" y="309" font-size="15" fill="#1c3133">原业务增量</text>
+<text x="60" y="386" font-size="16" font-weight="700" fill="#1c3133">合并口径增长 30%（300 ÷ 1000）；可比口径增长 5%（50 ÷ 1000）</text>
+</svg>

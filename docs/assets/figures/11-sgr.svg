@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" width="840" height="420" role="img" aria-labelledby="t11b d11b">
+<title id="t11b">可持续增长率与实际收入增长率的差额及其填补渠道</title>
+<desc id="d11b">教学虚构算例：净利润 10 亿元、期初所有者权益 50 亿元、现金分红 3 亿元时，净资产收益率 20%、分红率 30%、可持续增长率 14%。若实际收入增长 20%，超出的 6 个百分点只能来自提高权益乘数、增发股票、提高资产周转率或提高销售净利率。</desc>
+<rect x="0" y="0" width="840" height="420" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">同一家公司：内部留存能支撑多少增长（教学虚构）</text>
+<text x="180" y="130" text-anchor="end" font-size="16" fill="#1c3133">可持续增长率</text>
+<rect x="200" y="106" width="364" height="46" rx="3" fill="#116d69"/>
+<text x="216" y="135" font-size="16" font-weight="700" fill="#fffefa">14%</text>
+<text x="576" y="135" font-size="15" fill="#577173">留存收益 7 ÷ 期初权益 50</text>
+<text x="180" y="256" text-anchor="end" font-size="16" fill="#1c3133">实际收入增长</text>
+<rect x="200" y="232" width="364" height="46" rx="3" fill="#116d69"/>
+<rect x="564" y="232" width="156" height="46" rx="3" fill="#b66a38"/>
+<text x="216" y="261" font-size="16" font-weight="700" fill="#fffefa">20%</text>
+<line x1="564" y1="100" x2="564" y2="330" stroke="#b66a38" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="576" y="222" font-size="16" font-weight="700" fill="#b66a38">差额 6 个百分点</text>
+<text x="200" y="316" font-size="15" fill="#577173">0%</text>
+<text x="564" y="316" font-size="15" fill="#577173">14%</text>
+<text x="720" y="316" text-anchor="end" font-size="15" fill="#577173">20%</text>
+<text x="30" y="360" font-size="16" font-weight="700" fill="#1c3133">差额只能来自四处，且都能回报表核对：</text>
+<text x="30" y="386" font-size="15" fill="#1c3133">① 提高权益乘数（多借债）　② 增发或配股　③ 提高资产周转率　④ 提高销售净利率</text>
+<text x="30" y="408" font-size="15" fill="#577173">若公司声称既未融资也未提高杠杆，却在多年里持续超出 14%，则需重核口径与假设。</text>
+</svg>
