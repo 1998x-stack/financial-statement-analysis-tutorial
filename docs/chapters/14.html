@@ -1,235 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第14章 同业比较与行业分析</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="毛利率 20% 在零售业算优秀、在软件业算不及格。先选对可比公司，再用中位数与分位数对标，并区分会计政策差异与真实经营差异。">
+<title>同业比较与行业分析 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html" class="active">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-
-        <p>大家好，我是你们的讲师。到目前为止，咱们已经学了一套非常完整的财务分析方法——从五张能力分析（盈利能力、偿债能力、营运能力、成长能力、现金流质量）到综合评分（杜邦分析、沃尔评分法、F-Score）。但所有这些方法都还有一个关键的缺失：<strong>我们孤立地分析了一家公司，却没有把它放在行业背景中去看</strong>。</p>
-
-        <p>打个比方：你体检发现血压130/90，医生说"偏高"。但如果你是举重运动员，这个数值完全正常。同样，一家公司毛利率20%，是好是坏？如果不看行业，你根本没法判断——在零售业这算优秀，在软件行业这算不及格。</p>
-
-        <p>这一章，咱们来学习怎么看公司放在行业背景下分析——<strong>同业比较</strong>和<strong>行业分析</strong>。这也是咱们第二部分的收官之章。</p>
-
-        <h2>如何选择可比公司</h2>
-
-        <p>同业比较的第一步，也是最关键的一步：<strong>找对比较对象</strong>。找错了参照系，整个分析就失去了意义。</p>
-
-        <p>选择可比公司要遵循以下原则：</p>
-
-        <ul>
-            <li><strong>行业分类相同</strong>：先从证监会行业分类或申万行业分类中锁定同一二级行业。但要注意——行业分类有时会过时，一家做"智能穿戴"的公司可能被分在"电子设备"类，但它的商业模式更像消费品牌公司。</li>
-            <li><strong>商业模式相似</strong>：同一行业中还要区分不同的商业模式。比如同样是汽车公司，特斯拉和上汽集团的商业模式完全不同——一个是直销模式，一个是经销商模式；一个是纯电动车，一个是油车为主。直接比较它们的财务比率会得出误导性结论。</li>
-            <li><strong>规模相近</strong>：大公司和中小公司的财务特征差异很大。百亿营收的公司和十亿营收的公司，在费用率、周转率等方面可能有系统性差异。</li>
-            <li><strong>发展阶段相似</strong>：成长期公司和成熟期公司的盈利能力和现金流特征完全不同。处在不同生命周期的公司不应直接比较。</li>
-        </ul>
-
-        <div class="tip">
-            <strong>实战建议：</strong>选3-5家可比公司组成"对标组"。太少了没有统计意义，太多了分析不过来。我一般选行业龙头1-2家（看上限在哪里）加上2-3家体量相近的公司（看自己的位置在哪里）。这样既有"仰望"也有"平视"。
-        </div>
-
-        <h2>行业均值对标方法</h2>
-
-        <p>选定可比公司后，怎么对标？有三种常见方法：</p>
-
-        <p><strong>方法一：中位数对标法</strong></p>
-        <p>取可比公司各指标的中位数作为行业基准。为什么用中位数而不是平均数？因为平均值容易受极端值影响（比如行业中有一家毛利率特别高的公司，会把平均值拉高）。中位数更稳健，更能反映行业的"典型水平"。</p>
-
-        <p><strong>方法二：四分位法</strong></p>
-        <p>把所有可比公司的指标从小到大排序，找出25分位、50分位（中位数）、75分位三个关键节点。然后看目标公司落在哪个区间——</p>
-        <ul>
-            <li>高于75分位：行业领先</li>
-            <li>在50-75分位之间：行业中等偏上</li>
-            <li>在25-50分位之间：行业中等偏下</li>
-            <li>低于25分位：行业落后</li>
-        </ul>
-
-        <p><strong>方法三：综合打分法</strong></p>
-        <p>把上一章学的沃尔评分法用在同业比较上——对每家可比公司打分，然后排名。这比单一指标的比较更全面，但工作量也更大。</p>
-
-        <h2>行业生命周期分析</h2>
-
-        <p>行业的生命周期阶段决定了财务特征的<strong>"底色"</strong>。同一行业的公司在同一生命周期阶段，财务规律是相似的。</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>生命周期</th>
-                    <th>典型营收增速</th>
-                    <th>盈利能力特征</th>
-                    <th>现金流特征</th>
-                    <th>资本需求</th>
-                    <th>代表行业</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>导入期</td>
-                    <td>高增长（> 50%）</td>
-                    <td>亏损或微利</td>
-                    <td>经营现金流为负</td>
-                    <td>极高（研发+市场投入）</td>
-                    <td>早期AI大模型</td>
-                </tr>
-                <tr>
-                    <td>成长期</td>
-                    <td>快速增长（20%-50%）</td>
-                    <td>利润率快速提升</td>
-                    <td>经营现金流开始转正</td>
-                    <td>高（产能扩张）</td>
-                    <td>新能源车2020-2023</td>
-                </tr>
-                <tr>
-                    <td>成熟期</td>
-                    <td>稳定增长（5%-15%）</td>
-                    <td>利润率稳定在高位</td>
-                    <td>经营现金流充沛</td>
-                    <td>中等（维护性支出）</td>
-                    <td>白酒行业</td>
-                </tr>
-                <tr>
-                    <td>衰退期</td>
-                    <td>负增长或零增长</td>
-                    <td>利润率下降</td>
-                    <td>经营现金流萎缩</td>
-                    <td>低</td>
-                    <td>传统纸媒</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>理解了行业生命周期，你就不会犯"把成长期公司和成熟期公司直接比较"的错误。成长期公司可能营收增速很快但利润是负的，成熟期公司可能增速不高但现金流极其充沛——两者的投资逻辑完全不同。</p>
-
-        <div class="highlight">
-            <strong>核心逻辑：</strong>比较的前提是<strong>"同频"</strong>。同一行业、同一生命周期阶段、同类型商业模式的公司才能做有意义的比较。跨阶段的比较需要先做"基准调整"——比如成长期公司的合理利润率应低于成熟期公司，不能因为其利润率低就判定它"劣质"。
-        </div>
-
-        <h2>波特五力与财务特征</h2>
-
-        <p>行业分析的经典框架——<strong>波特五力模型（Porter's Five Forces）</strong>——和财务分析可以完美结合。行业结构决定了竞争格局，竞争格局又决定了行业的平均财务特征。</p>
-
-        <ul>
-            <li><strong>供应商议价能力</strong>（强 → 行业毛利率低）：如果上游供应商集中度高，行业公司的采购成本就会偏高，毛利率被压缩。典型例子：芯片被少数巨头垄断，下游电子设备制造商毛利率普遍较低。</li>
-            <li><strong>买方议价能力</strong>（强 → 行业利润低、应收账款高）：如果下游客户集中度高（比如为大客户代工），公司不仅利润被压缩，还要承受较长的账期。典型例子：苹果产业链公司，DSO普遍较长。</li>
-            <li><strong>新进入者威胁</strong>（高 → 行业利润率会向均值回归）：如果行业壁垒低，新的竞争者会不断涌入，高利润率难以维持。典型例子：共享充电宝行业，进入壁垒低，利润率被竞争迅速拉低。</li>
-            <li><strong>替代品威胁</strong>（高 → 行业成长性受限）：如果有替代品能实现相同功能，行业的长期成长性就会受到压制。典型例子：传统燃油车被新能源车替代。</li>
-            <li><strong>现有企业竞争强度</strong>（高 → 行业ROE低、费用率高）：如果行业内竞争激烈，打价格战、烧钱抢市场，整个行业的ROE水平都会偏低。典型例子：外卖行业早期烧钱大战。</li>
-        </ul>
-
-        <pre><code>同业比较量化分析框架：
-
-步骤一：选定比较对象（3-5家公司）
-步骤二：确定比较指标框架
-┌──────────────────────────────────────────────┐
-│ 维度          指标                权重       │
-│ ──────────────────────────────────────────── │
-│ 盈利能力     毛利率、净利率、ROE   25%       │
-│ 偿债能力     资产负债率、流动比率   20%       │
-│ 营运能力     存货周转天数、DSO     20%       │
-│ 成长能力     营收增长率、利润增速   20%       │
-│ 现金流质量   净现比、FCF/净利润     15%       │
-└──────────────────────────────────────────────┘
-
-步骤三：数据标准化（将每家公司的指标转化为标准分）
-  标准分 = (公司值 - 行业均值) / 行业标准差
-
-步骤四：计算综合得分
-  综合得分 = Σ(指标标准分 × 权重)
-
-步骤五：可视化输出（雷达图）
-         ┌──── 毛利率 ────┐
-        /         ╲         \          ── 本公司
-   DSO ┤           ROE       ├── 流动性  ── 行业均值
-        \         ╱         /
-         └──── ROA ────────┘
-
-步骤六：投资结论
-  ├─ 综合得分 > 1：明显优于同业（优势股）
-  ├─ 0 < 得分 < 1：略优于同业
-  ├─ -1 < 得分 < 0：略差于同业
-  └─ 得分 < -1：明显差于同业（警惕）</code></pre>
-
-        <h3>真实案例："完美的数据"往往不真实</h3>
-
-        <p>2019年，A股的一家医药流通公司N公司引起了市场广泛关注。N公司各项财务指标都极为优秀——毛利率11%（行业平均9%）、净利率3.5%（行业平均1.5%）、ROE 18%（行业平均10%）、营收增速30%（行业平均12%）——每一项指标都显著优于行业均值。市场把它称为"医药流通行业的颠覆者"，机构投资者蜂拥买入，估值一度达到40倍PE。</p>
-
-        <p>但一个冷静的分析者应该会问一个问题：<strong>在壁垒不高的医药流通行业，为什么N公司能做得比所有竞争对手都好那么多？</strong>医药流通行业是一个低毛利、高周转的同质化行业，龙头公司的竞争优势主要体现在规模和运营效率上。在这样一个行业里，一家公司几乎在所有指标上大幅超越行业均值，本身就很不寻常。</p>
-
-        <p>事实是：N公司在虚增收入。它通过伪造客户、虚构交易、利用关联方资金循环等手段，将真实的营收和利润"放大"了数倍。审计师发现了一些异常——回款路径异常、客户地址重复、仓库库存不符——但为时已晚。2020年，N公司自曝财务造假，虚增收入超过百亿，股价从30元跌至1元以下，被强制退市。</p>
-
-        <div class="warning">
-            <strong>重要教训：</strong>在同业比较中，如果一家公司在几乎所有指标上都显著优于行业平均水平，不要急于兴奋——首先应该怀疑。正如华尔街的一句老话："如果一件事好得不像真的，那它很可能就不是真的。"在同质化行业中，一家公司能做到每一项指标都优于行业均值10%以上，就需要极度警惕财务造假的可能性。
-        </div>
-
-        <h2>第二部分总结：从零散数据到系统判断</h2>
-
-        <p>好了，咱们第二部分的八章内容到这里就全部结束了。来回顾一下这部分的完整逻辑链：</p>
-
-        <ol>
-            <li><strong>第7章</strong>：搭建了财务分析的五步框架</li>
-            <li><strong>第8章</strong>：盈利能力分析——公司能不能赚钱</li>
-            <li><strong>第9章</strong>：偿债能力分析——公司会不会破产</li>
-            <li><strong>第10章</strong>：营运能力分析——公司运转效率高不高</li>
-            <li><strong>第11章</strong>：成长能力分析——公司有没有未来</li>
-            <li><strong>第12章</strong>：现金流质量分析——财务数据是否真实</li>
-            <li><strong>第13章</strong>：杜邦分析与综合评分——多维度指标的系统整合</li>
-            <li><strong>第14章</strong>：同业比较与行业分析——把公司放在行业背景中审视</li>
-        </ol>
-
-        <p>这八章形成了一个完整的分析闭环：从<strong>单维度指标拆解</strong>到<strong>多维度综合评分</strong>，再到<strong>行业背景下的横向比较</strong>。完成了这个闭环，你已经有能力对一家上市公司做一次比较全面的财务体检了。</p>
-
-        <div class="highlight">
-            <strong>第二部分的核心原则：</strong>没有完美的公司，也没有完美的财务指标。分析的真谛不是找到一个"所有指标都完美"的公司（这种公司要么不存在，要么是造假），而是理解一家公司的优势和风险在哪，判断它是否在你的风险承受范围内。
-        </div>
-
-        <p>从下一章开始，咱们进入第三部分——<strong>风险识别</strong>。如果说第二部分是教你怎么"发现好公司"，那第三部分就是教你怎么"躲开坏公司"。在A股市场，躲开一个"雷"比找到一家好公司更重要——因为一个暴雷足以让你的全部收益归零。咱们从第15章<strong>财务粉饰手法全解</strong>开始，带你看穿上市公司最常见的"做账手段"。下一章见！</p>
-
-        <div class="footer-nav">
-            <a href="13.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="15.html">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 14 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">同一个毛利率，不同的行业</a>
+<a href="#peers">选对可比公司</a>
+<a href="#benchmark">中位数与分位数对标</a>
+<a href="#lifecycle">行业生命周期与财务底色</a>
+<a href="#fiveforces">五力到财务变量</a>
+<a href="#calculator">同业对标工作台</a>
+<a href="#checklist">边界与自测</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 14 / 28</span>
+<h1>同业比较与行业分析</h1>
+<p class="lead">比率本身没有好坏，只有在同一组可比公司里才有位置。本章先解决“和谁比”，再解决“怎么比”，最后说明为什么口径差异会让同业比较得出错误结论。</p>
+<p class="meta">2026-11 更新 · 原理 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">同一个毛利率，不同的行业</h2>
+<p>假设有一家公司毛利率 20%。不看行业，这个数字无法评价。下表是<strong>教学示意</strong>的行业中位数（不是任何统计数据库的真实值，仅用于演示“位置”的含义）：</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>行业（教学示意）</th><th>毛利率中位数（示意）</th><th>该 20% 公司的位置</th><th>下一步应检查什么</th></tr></thead>
+<tbody>
+<tr><td>软件与服务</td><td>70%</td><td>明显偏低</td><td>是否存在大量外包成本、低毛利集成业务占比高</td></tr>
+<tr><td>品牌消费品</td><td>45%</td><td>偏低</td><td>品牌溢价能力、渠道结构与促销政策</td></tr>
+<tr><td>连锁零售</td><td>22%</td><td>接近中位数</td><td>库存周转与门店坪效，而非毛利水平</td></tr>
+<tr><td>大宗贸易</td><td>3%</td><td>明显偏高</td><td>收入确认是总额法还是净额法，是否混合了其他业务</td></tr>
+</tbody>
+</table>
 </div>
+<p>同一个 20% 在一行里是缺点、在另一行里是亮点。这说明比率的“好”与“坏”是相对的：先确定参照组，再讨论水平。参照组选错了，后面的标准化、排名、综合得分全部失去意义。</p>
+</section>
+<section id="peers" aria-labelledby="peers-title">
+<h2 id="peers-title">选对可比公司</h2>
+<p>同业比较的第一道工作不是算比率，而是确认参照组能不能比。四道筛选条件缺一不可：</p>
+<figure>
+<img src="../assets/figures/14-peer-set.svg" alt="选择可比公司的四道筛选：行业分类相同、商业模式相似、规模相近、发展阶段相似，四道都通过后才能纳入对标组" width="840" height="380" loading="lazy">
+<figcaption>图 1：四道筛选同时成立才可入组。任一道不通过时，应单独列出“不可比的原因”并改用分部数据或其他参照，而不是照旧把数字放在同一张表里。</figcaption>
+</figure>
+<ul>
+<li><strong>行业分类相同：</strong>证监会行业分类、申万行业分类都是第三方编制约定，不是会计准则，且更新往往滞后于业务变化。多元化集团应按分部或业务单元分别比较。</li>
+<li><strong>商业模式相似：</strong>直销与经销、自营与加盟、总额法与净额法，都会让收入、毛利、周转率的量级完全不同。</li>
+<li><strong>规模相近：</strong>规模差异会系统性影响费用率、采购议价与融资成本。</li>
+<li><strong>发展阶段相似：</strong>导入期、成长期、成熟期、衰退期的财务特征不同，直接比较会把阶段差异误认为能力差异。</li>
+</ul>
+<p>实务上常见做法是选 3–5 家：1–2 家行业领先者用来看上限，2–3 家体量相近者用来定位。样本过小时，中位数与均值都不稳定，此时应在报告中写明“样本量少，仅作参考”。</p>
+</section>
+<section id="benchmark" aria-labelledby="benchmark-title">
+<h2 id="benchmark-title">中位数与分位数对标</h2>
+<p>确定参照组后，第二步是选基准值。三种常用做法：</p>
+<ol>
+<li><strong>中位数：</strong>受极端值影响小于算术平均数，适合样本小、含异常公司的情形；但样本小于 5 家时它只反映中间两家之间的位置，稳定性有限。</li>
+<li><strong>分位数：</strong>把参照组按指标排序，取 25%、50%、75% 分位点，把目标公司定位在四个区间之一。它不把差异压缩成一个总分，保留的信息更多。</li>
+<li><strong>标准化打分：</strong>把每个指标换成标准分后再加权求和，便于得到排名，但它对样本分布与权重选择都敏感。</li>
+</ol>
+<div class="equation math-scroll" data-math-scroll tabindex="0" role="region" aria-label="标准分的定义式">
+<div class="equation-label">标准分（z 分数）</div>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="标准分等于公司指标值减去参照组均值，再除以参照组标准差">
+<mrow>
+<mi>z</mi><mo>=</mo>
+<mfrac><mrow><msub><mi>x</mi><mtext>公司</mtext></msub><mo>−</mo><mover><mi>x</mi><mo>‾</mo></mover></mrow><mi>s</mi></mfrac>
+</mrow>
+</math>
+</div>
+<p>这个公式有三个前设：样本量足够大、分布近似对称、且各指标方向已统一（比率越高越好还是越低越好）。小样本下标准差本身不稳定，极端值会把 z 分数拉得很远，因此用 5 家公司算出的“排名第一”不应被当作统计结论。</p>
+<div class="callout warning">
+<p><strong>方向不统一是最常见的错误：</strong>资产负债率、存货周转天数、三项费用率都是“越低越好”，毛利率、ROE、CFO/净利润通常“越高越好”，利息保障倍数则要看行业。不先统一方向就直接加权求和，会把指标相互抵消。</p>
+</div>
+</section>
+<section id="lifecycle" aria-labelledby="lifecycle-title">
+<h2 id="lifecycle-title">行业生命周期与财务底色</h2>
+<p>行业所处阶段会系统性地影响财务特征。下表是<strong>经验概括</strong>，不是准则规定，也不意味着同行业内所有公司都处在同一阶段：</p>
+<figure>
+<img src="../assets/figures/14-lifecycle.svg" alt="行业从导入、成长、成熟到衰退四个阶段，收入、利润、经营现金流与资本需求呈现不同组合" width="840" height="400" loading="lazy">
+<figcaption>图 2：四个阶段的典型组合。阶段判断错位会导致比较错误：把导入期公司的负经营现金流当作经营失败，或把成熟期公司的低增速当作失去竞争力。图下注明各阶段应换用的指标。</figcaption>
+</figure>
+<div class="table-wrap">
+<table>
+<thead><tr><th>阶段</th><th>常见组合</th><th>不应单看什么</th><th>更适合看的指标</th></tr></thead>
+<tbody>
+<tr><td>导入期</td><td>收入基数小且增速高，利润为负或微利，经营现金流多为负</td><td>净利润与当期现金流符号</td><td>单位经济性、客户获取成本、现金存在时长</td></tr>
+<tr><td>成长期</td><td>收入快速增长，毛利率改善，营运资本占用上升</td><td>自由现金流是否为负</td><td>应收与存货增速是否快于收入、单位毛利</td></tr>
+<tr><td>成熟期</td><td>增速平稳，利润与经营现金流稳定，资本开支以维持为主</td><td>收入增速的高低</td><td>自由现金流、分红与回购、存量客户留存</td></tr>
+<tr><td>衰退期</td><td>收入下滑，毛利受压，现金回收成为主要任务</td><td>历史利润的惯性</td><td>应收回收、资产处置、债务到期结构</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="fiveforces" aria-labelledby="fiveforces-title">
+<h2 id="fiveforces-title">五力到财务变量</h2>
+<p>波特五力模型是行业结构分析框架，不是监管强制步骤；它的用途在于把“行业结构”翻译成可以去报表核对的具体变量：</p>
+<ul>
+<li><strong>供应商议价能力：</strong>向“毛利率与预付账款增速”传导。供应商集中度高时，毛利受压，预付款与备货可能上升。</li>
+<li><strong>买方议价能力：</strong>向“应收周转天数与合同资产”传导。客户集中、账期较长时，DSO 上升。</li>
+<li><strong>新进入者威胁：</strong>向“销售费用率与毛利率回归”传导。壁垒低时，高毛利会吸引投入，费用率上升。</li>
+<li><strong>替代品威胁：</strong>向“长期收入增速与研发投入”传导，短期报表上往往先体现在订单与新签订单结构上。</li>
+<li><strong>现有竞争强度：</strong>向“ROE 与销售费用率”传导。价格战期间，行业整体回报下降。</li>
+</ul>
+<p>这五条都是<strong>倾向性预测</strong>而非决定性结论：同一结构下，拥有品牌、专利或网络效应的公司可以把压力转嫁给上下游，也可能因结构优势而长期维持高毛利。因此正确用法是先写下一个“若结构成立，应在报表里看到什么”，再去核对数字；如果数字相反，就先检查框架是否用错了。</p>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">同业对标工作台</h2>
+<p>把任意一个比率（毛利率、ROE、DSO 等）代入同一组可比公司，看看目标公司的位置。默认值为<strong>教学示意</strong>数据，可手工复算：排序后 18、20、22、25、30，中位数为 22，均值为 23。本工作台只做位置描述，不假定指标方向。</p>
+<div class="lab" data-calculator="peer">
+<h3>修改数据，即时复算</h3>
+<p>务必保证所有数值为同一指标、同一期间、同一口径；不一致的口径不能放在同一组里。</p>
+<div class="lab-grid">
+<label>本公司指标值<input type="number" name="subject" value="20" step="any" aria-label="本公司指标值"></label>
+<label>同业 A 指标值<input type="number" name="peer1" value="22" step="any" aria-label="同业 A 指标值"></label>
+<label>同业 B 指标值<input type="number" name="peer2" value="25" step="any" aria-label="同业 B 指标值"></label>
+<label>同业 C 指标值<input type="number" name="peer3" value="18" step="any" aria-label="同业 C 指标值"></label>
+<label>同业 D 指标值<input type="number" name="peer4" value="30" step="any" aria-label="同业 D 指标值"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">边界与自测</h2>
+<p>同业比较最容易出错的地方是“把位置当成结论”。如果一家公司在多项指标上明显优于参照组，它需要的不是兴奋而是<strong>换一个解释</strong>：先把口径差异、结构差异、分类差异逐项排除，再看是否还有剩余。下表把常见现象写成四列：</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>观察到的现象</th><th>可能的含义</th><th>反例或替代解释</th><th>需核对的证据</th></tr></thead>
+<tbody>
+<tr><td>多项指标同时优于参照组</td><td>竞争地位或运营效率确实更好</td><td>口径不同：总额法与净额法、分部划分、汇率折算</td><td>收入确认政策、分部报告、合并范围变更</td></tr>
+<tr><td>毛利率远高于同业</td><td>品牌、专利或结构优势</td><td>成本归集差异，或二者业务组合不同</td><td>成本构成、产品结构、单位售价</td></tr>
+<tr><td>应收周转天数明显优于同业</td><td>结算模式以现款为主</td><td>应收已出表、保理或票据背书；也可能是季节性</td><td>应收款项融资、附注明细、季度趋势</td></tr>
+<tr><td>增速远高于行业</td><td>份额提升或新品带动</td><td>上期低基数、并购并表、口径变更</td><td>合并范围变更、可比口径披露</td></tr>
+</tbody>
+</table>
+</div>
+<details class="exercise"><summary>自测一：同业比较中指标全面领先，能否直接认定为财务造假？</summary><p>不能。领先可能来自真实竞争优势、也可能来自口径差异；只有通过查账类证据（资金流水、客户核实、盘点）才能认定问题。分析者的产出是“列出一张需要与公司确认的差异清单”，而不是定罪。</p></details>
+<details class="exercise"><summary>自测二：行业分类与公司实际业务不符时怎么办？</summary><p>不要因为分类存在就硬用。可以改用分部数据、按业务单元自建参照组，并在报告中写明分类来源与局限。</p></details>
+<p><strong>结论：</strong>同业比较的结果应该是一句话加一张表：“这家公司在哪些维度上位于参照组的什么位置，以及哪些位置差异是因为口径而不是能力”。</p>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有行业中位数、公司描述与对标数据均为<strong>教学示意</strong>，不是任何统计数据库或指数公司的真实取值，不对应任何实际上市公司，不构成投资建议。</p>
+<p>行业分类指引由监管部门、交易所与指数公司分别编制，适用版本与更新时点需以编制方最新文件为准；本页提到的分类仅用于说明“参照组需要先确定”，不声称某一版本。生命周期的财务特征与五力传导均为经验概括，属于作者讲解，不是准则或监管规定。</p>
+<ol>
+<li><a href="https://www.csrc.gov.cn/c106256/c1653948/content.shtml" target="_blank" rel="noopener noreferrer">中国证监会 · 上市公司信息披露管理办法（行业与经营情况披露的基本要求）</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+<li><a href="https://app.mof.gov.cn/mofmobile2026/zcfb/202608/t20260805_3999529.htm" target="_blank" rel="noopener noreferrer">财政部 · 财会〔2026〕11号：新列报准则 2027/2029/2030 分批实施通知</a></li>
+<li><a href="https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements" target="_blank" rel="noopener noreferrer">SEC · Beginners' Guide to Financial Statements</a></li>
+</ol>
+</section>
+
+<nav class="article-nav" aria-label="相邻章节"><a href="13.html">← 上一章</a><a href="15.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 14</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>

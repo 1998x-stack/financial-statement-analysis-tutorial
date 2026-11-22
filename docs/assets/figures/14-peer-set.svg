@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 380" width="840" height="380" role="img" aria-labelledby="t14a d14a">
+<title id="t14a">选择可比公司的四道筛选条件</title>
+<desc id="d14a">四道筛选同时成立才可纳入对标组：行业分类相同、商业模式相似、规模相近、发展阶段相似。任一道不通过时不应直接比较，而应改用分部数据或另建参照组。</desc>
+<rect x="0" y="0" width="840" height="380" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">四道筛选同时通过，才能放进同一张对照表</text>
+<circle cx="46" cy="98" r="14" fill="#116d69"/>
+<text x="46" y="103" text-anchor="middle" font-size="14" fill="#fffefa">1</text>
+<rect x="70" y="76" width="560" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="86" y="104" font-size="15" fill="#1c3133">行业分类相同：以分类编制方的最新文件为准，注意分类更新滞后于业务变化</text>
+<circle cx="46" cy="154" r="14" fill="#116d69"/>
+<text x="46" y="159" text-anchor="middle" font-size="14" fill="#fffefa">2</text>
+<rect x="70" y="132" width="560" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="86" y="160" font-size="15" fill="#1c3133">商业模式相似：直销／经销、自营／加盟、总额法／净额法会改变比率量级</text>
+<circle cx="46" cy="210" r="14" fill="#116d69"/>
+<text x="46" y="215" text-anchor="middle" font-size="14" fill="#fffefa">3</text>
+<rect x="70" y="188" width="560" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="86" y="216" font-size="15" fill="#1c3133">规模相近：收入与资产量级影响费用率、采购议价与融资成本</text>
+<circle cx="46" cy="266" r="14" fill="#116d69"/>
+<text x="46" y="271" text-anchor="middle" font-size="14" fill="#fffefa">4</text>
+<rect x="70" y="244" width="560" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="86" y="272" font-size="15" fill="#1c3133">发展阶段相似：导入、成长、成熟、衰退的财务特征不能直接混比</text>
+<rect x="70" y="312" width="560" height="46" rx="4" fill="#116d69"/>
+<text x="86" y="341" font-size="15" fill="#fffefa" font-weight="700">四道均通过 → 纳入对标组（常见 3–5 家）</text>
+<text x="650" y="150" font-size="15" fill="#b66a38">任一道不通过：</text>
+<text x="650" y="176" font-size="15" fill="#b66a38">不要直接比较，</text>
+<text x="650" y="202" font-size="15" fill="#b66a38">改用分部数据或</text>
+<text x="650" y="228" font-size="15" fill="#b66a38">另建参照组，并</text>
+<text x="650" y="254" font-size="15" fill="#b66a38">写明不可比的原因。</text>
+</svg>
