@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Chromium smoke test: 1440/768/390/360, interaction, rendered images, errors."""
+"""Chromium smoke test: 1440/768/390/360, 10 chapter interactions, rendered images, errors."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,6)]
+paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,11)]
 OUT = ROOT / "reports" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
 fail = []
@@ -51,4 +51,4 @@ with sync_playwright() as p:
 if fail:
     print("\n".join("FAIL: "+x for x in fail))
     raise SystemExit(1)
-print("OK: 6 pages × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
+print("OK: 11 pages × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")

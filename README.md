@@ -79,3 +79,12 @@ python scripts/browser_smoke.py
 - [IFRS Foundation：IFRS 18](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/)
 
 **所有未明确标注实际上市公司/报告期的数据均为教学虚构，不构成证券投资建议。**
+
+## 第二轮：06–10 深度分析（2026-11-22）
+- 06 [会计政策与估计](docs/chapters/06.html) · 会计政策/估计/差错分类、折旧敏感性与预期信用损失
+- 07 [财报分析框架](docs/chapters/07.html) · Palepu–Healy 四视角、CFA 六阶段及现金兑现反证
+- 08 [盈利能力](docs/chapters/08.html) · 毛利、净利、ROA、ROE 及正确的杜邦分解
+- 09 [偿债能力](docs/chapters/09.html) · 短期流动性、受限资金、偿债到期日、租赁负债
+- 10 [营运能力](docs/chapters/10.html) · DSO/DIO/DPO 与 CCC 天数、成本口径
+
+10 张新的无外链 SVG、5 组交互数据实验，来源集中在财政部/CFA Institute/SEC/Palepu 教材。2027/2029/2030 的列报准则执行分层提示已同步回修至01–05、README和AGENTS。完整核查记录见 [第二批审校记录](reviews/2026-11-22-foundations-06-10.md)。
