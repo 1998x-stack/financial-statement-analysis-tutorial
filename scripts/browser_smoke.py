@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chromium smoke test: 1440/768/390/360, 15 chapter interactions, rendered images, errors."""
+"""Chromium smoke test: 1440/768/390/360, 15 chapter pages, 10 calculator defaults, rendered images, errors."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
