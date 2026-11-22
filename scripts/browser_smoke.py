@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Chromium smoke test: 1440/768/390/360, 10 chapter interactions, rendered images, errors."""
+"""Chromium smoke test: 1440/768/390/360, 15 chapter interactions, rendered images, errors."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,11)]
+paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in range(1,16)]
 OUT = ROOT / "reports" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
 fail = []
@@ -32,7 +32,12 @@ with sync_playwright() as p:
                 "07.html": ("20%", "87.5%", "50%"),
                 "08.html": ("35%", "30%"),
                 "09.html": ("1.8 倍", "1 倍", "3 倍"),
-                "10.html": ("45", "60", "65")
+                "10.html": ("45", "60", "65"),
+                "11.html": ("30%", "10%", "16.28%"),
+                "12.html": ("110", "40", "91.67%"),
+                "13.html": ("75%", "80%", "30%"),
+                "14.html": ("16.5", "19", "25%"),
+                "15.html": ("50", "45%", "-20%")
             }
             if path.name in defaults:
                 result_node = page.locator("[data-result]").first
@@ -67,4 +72,4 @@ with sync_playwright() as p:
 if fail:
     print("\n".join("FAIL: "+x for x in fail))
     raise SystemExit(1)
-print("OK: 11 pages × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
+print("OK: 16 pages × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
