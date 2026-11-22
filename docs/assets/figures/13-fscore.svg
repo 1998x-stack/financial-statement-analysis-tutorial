@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-labelledby="t13b d13b">
+<title id="t13b">Piotroski F-Score 九项检查的三组分布</title>
+<desc id="d13b">第一组盈利类四项：资产回报率为正、经营现金流为正、资产回报率同比上升、经营现金流大于净利润，共四分。第二组杠杆与流动性三项：长期负债率下降、流动比率上升、当年未增发普通股，共三分。第三组运营效率两项：毛利率上升、总资产周转率上升，共两分。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#fffefa"/>
+<text x="30" y="44" font-size="16" font-weight="700" fill="#1c3133">九道是／否题分为三组，答“是”得 1 分，满分 9 分</text>
+<rect x="30" y="66" width="150" height="44" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="105" y="94" text-anchor="middle" font-size="15" fill="#116d69">盈利</text>
+<text x="780" y="94" text-anchor="end" font-size="15" fill="#116d69">4 分</text>
+<text x="200" y="94" font-size="15" fill="#1c3133">ROA 为正 · 经营现金流为正 · ROA 同比上升 · 经营现金流 &gt; 净利润</text>
+<rect x="30" y="136" width="150" height="44" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="105" y="164" text-anchor="middle" font-size="15" fill="#b66a38">杠杆与流动性</text>
+<text x="780" y="164" text-anchor="end" font-size="15" fill="#b66a38">3 分</text>
+<text x="200" y="164" font-size="15" fill="#1c3133">长期负债率下降 · 流动比率上升 · 当年未增发普通股</text>
+<rect x="30" y="206" width="150" height="44" rx="4" fill="#f1eef9" stroke="#6657a0"/>
+<text x="105" y="234" text-anchor="middle" font-size="15" fill="#6657a0">运营效率</text>
+<text x="780" y="234" text-anchor="end" font-size="15" fill="#6657a0">2 分</text>
+<text x="200" y="234" font-size="15" fill="#1c3133">毛利率上升 · 总资产周转率上升</text>
+<line x1="30" y1="274" x2="810" y2="274" stroke="#d9e1db" stroke-width="1.5"/>
+<text x="30" y="302" font-size="15" fill="#577173">三组的分数不同，说明该框架更看重盈利质量与杠杆变化，而不是平均对待每一项。</text>
+<text x="30" y="330" font-size="15" fill="#577173">同比方向的比较要求两期口径可比；发生并购、重组或会计政策变更时应先调整为可比口径再判断。</text>
+<text x="30" y="358" font-size="15" fill="#577173">银行、保险、券商等金融企业的资本结构与营运资本含义不同，直接套用该九项会得到无意义分数。</text>
+<text x="30" y="386" font-size="15" fill="#577173">得分只说明“与历史样本中哪一类更接近”，不包含估值、治理与行业景气，因此不是交易信号。</text>
+</svg>

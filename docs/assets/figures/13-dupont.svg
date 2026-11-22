@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" width="840" height="420" role="img" aria-labelledby="t13a d13a">
+<title id="t13a">三家教学示意公司通过不同因子组合得到相同的净资产收益率</title>
+<desc id="d13a">甲公司净利率百分之十五、资产周转率零点五次、权益乘数二倍；乙公司净利率百分之三、资产周转率二点五次、权益乘数二倍；丙公司净利率百分之五、资产周转率零点五次、权益乘数六倍。三组因子连乘均等于百分之十五。</desc>
+<rect x="0" y="0" width="840" height="420" fill="#fffefa"/>
+<text x="30" y="40" font-size="16" font-weight="700" fill="#1c3133">同一个 15% 的 ROE，三条完全不同的路径（教学示意）</text>
+<g font-size="15">
+<rect x="30" y="56" width="240" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="150" y="84" text-anchor="middle" fill="#116d69">甲公司　净利率 15%</text>
+<text x="150" y="126" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="30" y="136" width="240" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="150" y="164" text-anchor="middle" fill="#116d69">资产周转率 0.5 次</text>
+<text x="150" y="206" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="30" y="216" width="240" height="46" rx="4" fill="#e8f3ef" stroke="#116d69"/>
+<text x="150" y="244" text-anchor="middle" fill="#116d69">权益乘数 2.0 倍</text>
+<text x="150" y="286" text-anchor="middle" fill="#577173" font-size="16">＝</text>
+<rect x="30" y="296" width="240" height="48" rx="4" fill="#116d69"/>
+<text x="150" y="326" text-anchor="middle" fill="#fffefa" font-weight="700">ROE 15%（高利润型）</text>
+<rect x="300" y="56" width="240" height="46" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="420" y="84" text-anchor="middle" fill="#b66a38">乙公司　净利率 3%</text>
+<text x="420" y="126" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="300" y="136" width="240" height="46" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="420" y="164" text-anchor="middle" fill="#b66a38">资产周转率 2.5 次</text>
+<text x="420" y="206" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="300" y="216" width="240" height="46" rx="4" fill="#f9eee5" stroke="#b66a38"/>
+<text x="420" y="244" text-anchor="middle" fill="#b66a38">权益乘数 2.0 倍</text>
+<text x="420" y="286" text-anchor="middle" fill="#577173" font-size="16">＝</text>
+<rect x="300" y="296" width="240" height="48" rx="4" fill="#b66a38"/>
+<text x="420" y="326" text-anchor="middle" fill="#fffefa" font-weight="700">ROE 15%（高周转型）</text>
+<rect x="570" y="56" width="240" height="46" rx="4" fill="#f1eef9" stroke="#6657a0"/>
+<text x="690" y="84" text-anchor="middle" fill="#6657a0">丙公司　净利率 5%</text>
+<text x="690" y="126" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="570" y="136" width="240" height="46" rx="4" fill="#f1eef9" stroke="#6657a0"/>
+<text x="690" y="164" text-anchor="middle" fill="#6657a0">资产周转率 0.5 次</text>
+<text x="690" y="206" text-anchor="middle" fill="#577173" font-size="16">×</text>
+<rect x="570" y="216" width="240" height="46" rx="4" fill="#f1eef9" stroke="#6657a0"/>
+<text x="690" y="244" text-anchor="middle" fill="#6657a0">权益乘数 6.0 倍</text>
+<text x="690" y="286" text-anchor="middle" fill="#577173" font-size="16">＝</text>
+<rect x="570" y="296" width="240" height="48" rx="4" fill="#6657a0"/>
+<text x="690" y="326" text-anchor="middle" fill="#fffefa" font-weight="700">ROE 15%（高杠杆型）</text>
+</g>
+<text x="30" y="380" font-size="15" fill="#577173">三列所用分子分母均为同一期间、同一合并范围的教学示意数字；改变任一因子的口径定义都会破坏可比性。</text>
+<text x="30" y="404" font-size="15" fill="#577173">丙公司权益乘数 6 倍对应的资产负债率约 83%，利息与再融资风险显著高于甲、乙两家。</text>
+</svg>
