@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" role="img" aria-labelledby="t19s d19s">
+<title id="t19s">DCF 敏感性矩阵：折现率与永续增长各取三档时企业价值与终值占比</title>
+<desc id="d19s">矩阵行为折现率 9%、10%、11%，列为永续增长 2%、3%、4%。每个单元格上方是企业价值（亿元），下方是终值现值占企业价值的比例。价值区间为 14.5 至 24.7 亿元，终值占比区间为 68% 至 80%。</desc>
+<rect x="0" y="0" width="840" height="340" fill="#f8f7f2"/>
+<text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">敏感性矩阵：每个格子里，终值占了大头</text>
+<text x="40" y="62" font-size="13" fill="#555">FCF₀ = 1.0 亿元 · 前 5 年增长 8%（教学示意）。上行＝企业价值（亿元），下行＝终值现值占比</text>
+<g font-size="14" fill="#333" text-anchor="middle">
+<text x="300" y="96">g = 2%</text><text x="460" y="96">g = 3%</text><text x="620" y="96">g = 4%</text>
+</g>
+<g font-size="14" fill="#333" text-anchor="end">
+<text x="190" y="150">WACC 9%</text><text x="190" y="212">WACC 10%</text><text x="190" y="274">WACC 11%</text>
+</g>
+<g text-anchor="middle">
+<g font-size="20" font-weight="700" fill="#1f2937">
+<text x="300" y="146">18.8</text><text x="460" y="146">21.3</text><text x="620" y="146">24.7</text>
+<text x="300" y="208">16.4</text><text x="460" y="208">18.2</text><text x="620" y="208">20.5</text>
+<text x="300" y="270">14.5</text><text x="460" y="270">15.8</text><text x="620" y="270">17.6</text>
+</g>
+<g font-size="13" fill="#b83232">
+<text x="300" y="166">终值 74%</text><text x="460" y="166">终值 77%</text><text x="620" y="166">终值 80%</text>
+<text x="300" y="228">终值 71%</text><text x="460" y="228">终值 74%</text><text x="620" y="228">终值 77%</text>
+<text x="300" y="290">终值 68%</text><text x="460" y="290">终值 71%</text><text x="620" y="290">终值 74%</text>
+</g>
+</g>
+<g stroke="#c9c6bd" stroke-width="1" fill="none">
+<rect x="210" y="110" width="480" height="186"/>
+<line x1="210" y1="172" x2="690" y2="172"/><line x1="210" y1="234" x2="690" y2="234"/>
+<line x1="370" y1="110" x2="370" y2="296"/><line x1="530" y1="110" x2="530" y2="296"/>
+</g>
+<text x="40" y="326" font-size="12" fill="#555">图注：终值占比在全部九种组合中都超过三分之二，说明 DCF 的结果主要由“预测期之后”的假设决定，而非逐年现金流；这也是它不可能给出精确值的原因。</text>
+</svg>
