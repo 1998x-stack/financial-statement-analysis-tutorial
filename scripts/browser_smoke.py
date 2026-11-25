@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Chromium smoke test: 1440/768/390/360, 10 chapter interactions, rendered images, errors."""
+"""Chromium smoke test: 1440/768/390/360, 25 chapter pages, rendered images, errors."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 REVIEWED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18,
-            19, 20, 21, 22, 24, 26, 28]
+            19, 20, 21, 22, 24, 26, 27, 28]
 paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in REVIEWED]
 OUT = ROOT / "reports" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -53,6 +53,7 @@ with sync_playwright() as p:
                 "22.html": ("商誉/归母净资产 60%", "商誉/总资产 25%"),
                 "24.html": ("少数股东损益 1.5", "占归母净利润 17.65%"),
                 "26.html": ("相对差异 6.78%"),
+                "27.html": ("F-Score 7 / 9", "未满足：F6、F7"),
                 "28.html": ("净现比 1.2", "自由现金流 8")
             }
             if path.name in defaults:
@@ -74,8 +75,11 @@ with sync_playwright() as p:
                 else:
                     result = d.locator("[data-result]")
                     before = result.inner_text()
-                    first = d.locator("input[type=number]").first
-                    first.fill(str(float(first.input_value()) + 10))
+                    number = d.locator("input[type=number]").first
+                    if number.count():
+                        number.fill(str(float(number.input_value()) + 10))
+                    else:
+                        d.locator("input[type=checkbox]").first.click()
                     if result.inner_text() == before: fail.append(f"{width}: calculator unchanged {path.name}")
                 exp = page.locator("details.exercise")
                 if not exp.count(): fail.append(f"{width}: no self-check {path.name}")
@@ -88,4 +92,4 @@ with sync_playwright() as p:
 if fail:
     print("\n".join("FAIL: "+x for x in fail))
     raise SystemExit(1)
-print("OK: 17 chapter pages + index × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
+print("OK: 25 chapter pages + index × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
