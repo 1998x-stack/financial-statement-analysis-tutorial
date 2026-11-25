@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 220" role="img" aria-labelledby="t22f d22f">
+<title id="t22f">收购对价拆分为可辨认净资产公允价值和商誉</title>
+<desc id="d22f">教学示意。收购对价 30 亿元由两部分组成：15 亿元为被收购方可辨认净资产公允价值，另外 15 亿元为商誉，即对价超出可辨认净资产公允价值的部分。</desc>
+<rect x="0" y="0" width="840" height="220" fill="#f8f7f2"/>
+<text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">商誉 = 收购对价 − 可辨认净资产公允价值</text>
+<text x="40" y="60" font-size="12.5" fill="#9e493b">教学示意：以下为假设数值，不对应任何真实交易</text>
+<rect x="80" y="90" width="330" height="60" fill="#cfe3f6" stroke="#2b6cb0"/>
+<text x="245" y="118" font-size="13.5" fill="#1c3133" text-anchor="middle">可辨认净资产公允价值</text>
+<text x="245" y="138" font-size="13.5" fill="#1c3133" text-anchor="middle">15 亿元</text>
+<rect x="410" y="90" width="330" height="60" fill="#f9eee5" stroke="#b66a38"/>
+<text x="575" y="118" font-size="13.5" fill="#1c3133" text-anchor="middle">商誉（溢价部分）</text>
+<text x="575" y="138" font-size="13.5" fill="#1c3133" text-anchor="middle">15 亿元</text>
+<line x1="80" y1="170" x2="740" y2="170" stroke="#333" stroke-width="1.4"/>
+<line x1="80" y1="164" x2="80" y2="176" stroke="#333"/>
+<line x1="740" y1="164" x2="740" y2="176" stroke="#333"/>
+<text x="410" y="192" font-size="13" fill="#333" text-anchor="middle">收购对价合计 30 亿元</text>
+<text x="40" y="212" font-size="12" fill="#555">图注：商誉本身不是可单独变现的资产，它代表收购方对被收购方“超额盈利能力”的预期；预期落空时，这部分账面价值就要通过减值下调。</text>
+</svg>

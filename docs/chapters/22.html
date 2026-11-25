@@ -1,329 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第22章 并购与商誉分析</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="商誉是对价超出被收购方可辨认净资产公允价值的溢价部分。它不摊销、每年至少做一次减值测试、减值不可转回。本页讲清商誉的形成、减值触发信号、对赌协议风险与分拆上市的价值判断。">
+<title>并购与商誉：溢价如何变成减值 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html" class="active">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <p>大家好，我是你们的讲师。今天咱们聊一个A股"暴雷"的重灾区——<strong>并购与商誉</strong>。</p>
-
-        <p>先给大家看一组触目惊心的数据：2018年A股年报季，超过<strong>800家</strong>上市公司计提了商誉减值，总金额超过<strong>1600亿元</strong>。那一年的1月底，大量公司密集发布"业绩预告修正公告"——从盈利变成巨亏，原因几乎全都是：商誉减值。这就是A股历史上著名的"商誉暴雷季"。</p>
-
-        <p>为什么会这样？因为在2014-2016年的并购大潮中，大量上市公司高溢价收购资产，积累了巨额的商誉。到了2018年，经济下行叠加监管要求"业绩承诺到期后必须做减值测试"，这些商誉就像多米诺骨牌一样集体坍塌了。</p>
-
-        <p>并购本身不是坏事——合理的并购可以产生协同效应。但当并购变成"市值管理工具"、"利益输送渠道"、"业绩粉饰手段"时，商誉就成了悬在投资者头顶的一把剑。今天咱们就把并购和商誉的来龙去脉彻底讲清楚。</p>
-
-        <h2>商誉的形成</h2>
-
-        <p>商誉（Goodwill）是怎么来的？公式很简单：<strong>商誉 = 收购价格 - 可辨认净资产的公允价值</strong>。</p>
-
-        <p>假设A公司收购B公司，B公司账面净资产10亿，评估后公允价值15亿。A公司花了30亿来收购——那么多出来的15亿（30亿-15亿）就是商誉。这15亿代表什么？代表A公司愿意为B公司的"超额盈利能力"——品牌、客户关系、技术、团队等——支付溢价。</p>
-
-        <p>商誉的会计处理不复杂：</p>
-        <ul>
-            <li>收购完成后，商誉作为一项<strong>非流动资产</strong>列示在资产负债表上</li>
-            <li>商誉<strong>不需要摊销</strong>（这是2019年会计准则变更后的规定——之前是摊销，现在只做减值测试）</li>
-            <li>每年<strong>至少一次</strong>进行减值测试——如果资产组的可收回金额低于账面价值，差额部分计提商誉减值</li>
-            <li>商誉减值<strong>不可转回</strong>——一旦减了就不能再"加回来"</li>
-        </ul>
-
-        <div class="highlight">
-            <strong>关键认知：</strong>商誉不是"资产"，它是"溢价"。一家公司的商誉余额很高，说明它过去花了很多"冤枉钱"（或者收购了极好的资产）。商誉减值是"会计上的损失"，不是"现金流的损失"——但减值会导致净利润暴跌、净资产缩水，从而引发股价大跌。从这个意义上说，商誉减值是把"过去的支付"通过"会计调整"的方式暴露出来。
-        </div>
-
-        <h2>商誉减值的触发信号</h2>
-
-        <p>商誉什么时候要减值？理论上，当被收购公司的业绩不及预期时。但实践中，很多公司会尽量"推迟"减值——因为一旦减值，利润表就不好看了。</p>
-
-        <p>商誉减值的关键触发信号：</p>
-        <ul>
-            <li><strong>业绩承诺不达标</strong>——很多并购都伴随着3-5年的业绩对赌协议。如果被收购方连续两年没有完成业绩承诺，这就是最直接的减值信号。</li>
-            <li><strong>行业下行</strong>——如果被收购公司所处的行业进入了下行周期（比如政策变化、需求萎缩），即使目前业绩还"撑得住"，未来也极大概率要减值。</li>
-            <li><strong>市值长期低于净资产</strong>——如果上市公司的总市值跌破净资产，这就是一个非常强烈的信号：资本市场的判断是，你账上的资产（包括商誉）被高估了。这种时候，不做减值是"掩耳盗铃"。</li>
-            <li><strong>管理层大比例更换</strong>——收购时承诺留任的核心团队离职了，意味着商誉对应的"人才溢价"已经消失了。</li>
-        </ul>
-
-        <p>咱们把A股商誉占净资产比例最高的几个行业列出来看看：</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>行业</th>
-                    <th>商誉/净资产中位数</th>
-                    <th>商誉减值高风险年份</th>
-                    <th>暴雷典型案例</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>传媒（影视、游戏）</td>
-                    <td>35%-50%</td>
-                    <td>2018-2020</td>
-                    <td>天神娱乐、华谊兄弟</td>
-                </tr>
-                <tr>
-                    <td>计算机/IT服务</td>
-                    <td>25%-40%</td>
-                    <td>2019-2021</td>
-                    <td>东方通、万达信息</td>
-                </tr>
-                <tr>
-                    <td>医药生物</td>
-                    <td>20%-35%</td>
-                    <td>2020-2022</td>
-                    <td>人福医药、莎普爱思</td>
-                </tr>
-                <tr>
-                    <td>机械设备</td>
-                    <td>15%-25%</td>
-                    <td>2019-2023</td>
-                    <td>大洋电机、智慧松德</td>
-                </tr>
-                <tr>
-                    <td>电子/半导体</td>
-                    <td>10%-20%</td>
-                    <td>2022-2024</td>
-                    <td>欧菲光、合力泰</td>
-                </tr>
-                <tr>
-                    <td>化工/材料</td>
-                    <td>5%-15%</td>
-                    <td>2019-2023</td>
-                    <td>金发科技、中化国际</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="warning">
-            <strong>风险警戒线：</strong>如果一家公司的商誉占净资产比例超过30%，它就是一个潜在的"暴雷股"。超过50%，风险极高。如果超过100%——建议直接远离。记住：商誉一旦减值，"净资产"会同步减少，这意味着即使经营层面不出问题，仅会计处理就能让股价腰斩。
-        </div>
-
-        <h2>对赌协议的风险</h2>
-
-        <p>A股并购中几乎标配"对赌协议"（业绩补偿承诺）。被收购方承诺未来3-5年净利润达到多少，如果达不到，用股份或现金补偿。看起来这保护了上市公司股东的利益，但实践中呢？</p>
-
-        <p><strong>对赌期内"压哨达标"：</strong>对赌期最后一年，业绩"刚好"达到承诺线的案例比比皆是。怎么做到的？最常用的手段是"寅吃卯粮"——提前确认收入、推迟费用、压缩必要的研发和营销投入。这样在对赌期内的业绩"达标"了，但对赌期一结束，企业就"断崖式"下滑。</p>
-
-        <p><strong>对赌期后业绩断崖：</strong>这是A股并购最经典的"套路"——对赌期内业绩完美达标，对赌期结束第一年就变脸。为什么？因为对赌期内，原股东有动力"做"出好业绩（哪怕牺牲公司长期利益），对赌期结束后，这种动力就消失了。</p>
-
-        <p>你怎么识别这种风险？关注三个信号：</p>
-        <ul>
-            <li>对赌期最后一年，被收购公司的利润率异常高（明显高于同行业）</li>
-            <li>对赌期内应收账款增速远高于收入增速（说明"提前确认收入"）</li>
-            <li>对赌期结束后，核心管理层大量离职</li>
-        </ul>
-
-        <h3>踩坑故事——莎普爱思的"对赌魔术"</h3>
-
-        <p>2015年，眼科用药企业<strong>莎普爱思</strong>——没错，就是那个因为"白内障滴眼液"广告被全国关注的莎普爱思——进行了一笔重要的收购。它收购了强身药业100%股权，交易价格约3.46亿元，形成了超过<strong>2.5亿元</strong>的商誉。</p>
-
-        <p>收购附带了对赌协议：强身药业承诺2015-2017年分别实现净利润不低于1000万、3000万、5000万。要判断这笔收购值不值，咱们来看看强身药业的业绩对赌完成情况：</p>
-        <ul>
-            <li>2015年：实际净利润——精确地完成了承诺的1000万</li>
-            <li>2016年：实际净利润3000万——恰好达标</li>
-            <li>2017年：实际净利润约4692万元——完成率93.84%，<strong>未完成</strong></li>
-        </ul>
-
-        <p>看到了吗？对赌期前两年，完成率"精确地"达到了100%。这如果不是精心操作的结果，也太巧合了。对赌期内强身药业虽然基本完成了业绩承诺，但为了实现这些数字，消耗了大量的企业经营资源。</p>
-
-        <p>对赌期结束后——灾难开始了。2018年，强身药业的净利润骤降至约<strong>1053万元</strong>，较2017年的4692万元下降了约<strong>78%</strong>。莎普爱思也因此计提了超过<strong>5000万元</strong>的商誉减值。2019年继续恶化，商誉减值继续。到2020年，莎普爱思面临ST危机，股价从30多元跌到不足5元。</p>
-
-        <div class="warning">
-            <strong>教训：</strong>"压哨达标"是财务分析中极其重要的信号——如果一家被收购公司在承诺期内每次都"刚好"完成业绩承诺，这不是好兆头。它说明业绩是被"管理"出来的，而不是靠真实经营产生的。对赌期最后一年的完成率如果刚好在100%左右（不管是101%还是98%），都应该引起高度警觉。你需要问：为什么不能多一点？是不是已经没有余力了？
-        </div>
-
-        <h2>分拆上市与价值释放</h2>
-
-        <p>和并购相反的方向——<strong>分拆上市</strong>（Spin-off）。当一家集团公司的某个子公司或者业务板块发展成熟后，将其单独分拆出来上市。这不属于"并购"的范畴，但它是"并购"的反向操作，同样深刻影响着公司的价值判断。</p>
-
-        <p><strong>分拆的动机通常有三类：</strong></p>
-        <ul>
-            <li><strong>价值重估</strong>——子公司在集团内部可能被"低估"了。分拆后单独上市，市场可能给它更高的估值倍数。例如某集团母公司PE=15倍，但它的金融科技子公司如果单独上市可能值PE=40倍——分拆能释放这部分价值。</li>
-            <li><strong>聚焦主业</strong>——集团业务太杂，市场看不懂。分拆后每个业务板块更清晰，投资者的关注度更高。</li>
-            <li><strong>融资需求</strong>——子公司单独上市可以独立融资，不需要和集团母公司争夺有限的资金资源。</li>
-        </ul>
-
-        <p>对于投资者来说，分拆上市提供了潜在的"套利机会"：母公司持股比例不变，但在分拆后母公司的股东会额外获得子公司的股份——相当于"免费获得了一份新资产"。但也要注意：分拆上市也可能被用作"割韭菜"的工具——母公司把高估值的资产分拆出去，留下低质量的资产在老公司。</p>
-
-        <p>下面咱们来构建一个商誉减值风险的评分模型。它能帮你系统化地评估一家公司的商誉风险：</p>
-
-        <pre><code># 商誉减值风险评分模型（Python伪代码）
-
-class GoodwillRiskScorer:
-    """
-    商誉减值风险评分模型
-    评分范围：0-100分，分数越高风险越大
-    """
-
-    def __init__(self, company_name, financial_data):
-        self.name = company_name
-        self.data = financial_data
-        self.score = 0
-        self.signals = []
-
-    def evaluate_goodwill_ratio(self):
-        """评估商誉占比风险（满分25分）"""
-        ratio = self.data["goodwill"] / self.data["equity"]
-        if ratio > 1.0:
-            self.score += 25
-            self.signals.append("⚠️ 商誉超过净资产（100%+），极度危险")
-        elif ratio > 0.5:
-            self.score += 20
-            self.signals.append("⚠️ 商誉占净资产超50%，高度风险")
-        elif ratio > 0.3:
-            self.score += 12
-            self.signals.append("⚡ 商誉占净资产超30%，需要关注")
-        elif ratio > 0.15:
-            self.score += 5
-            self.signals.append("📌 商誉占净资产15%-30%，建议持续跟踪")
-        else:
-            self.signals.append("✅ 商誉占比较低")
-        return ratio
-
-    def evaluate_earnings_trend(self):
-        """评估被收购标的业绩趋势（满分20分）"""
-        if self.data["post_mandate_earnings_drop"] > 0.5:
-            self.score += 20
-            self.signals.append("⚠️ 对赌期后净利润下降超50%，减值风险极高")
-        elif self.data["post_mandate_earnings_drop"] > 0.2:
-            self.score += 10
-            self.signals.append("⚡ 对赌期后净利润下降20%-50%，存在减值可能")
-        elif self.data["earnings_accuracy"] > 0.95:
-            self.score += 8
-            self.signals.append("⚡ 对赌期业绩完成率过高(>95%)，警惕业绩管理")
-        else:
-            self.signals.append("✅ 业绩趋势正常")
-
-    def evaluate_industry_risk(self):
-        """评估所处行业风险（满分15分）"""
-        high_risk_industries = ["传媒", "计算机", "医药", "机械"]
-        mid_risk_industries = ["电子", "化工", "食品"]
-        if self.data["industry"] in high_risk_industries:
-            self.score += 15
-            self.signals.append("⚠️ 处于商誉减值高风险行业")
-        elif self.data["industry"] in mid_risk_industries:
-            self.score += 8
-            self.signals.append("⚡ 处于商誉减值中等风险行业")
-
-    def evaluate_management_signals(self):
-        """评估管理层信号（满分20分）"""
-        signals_found = 0
-        if self.data["core_team_departed"]:
-            signals_found += 10
-            self.signals.append("⚠️ 被收购方核心团队已离职")
-        if self.data["market_cap_below_equity"]:
-            signals_found += 10
-            self.signals.append("⚠️ 市值低于净资产，市场不认可账面价值")
-        self.score += signals_found
-
-    def evaluate_cash_flow_alignment(self):
-        """评估现金流匹配度（满分20分）"""
-        if self.data["fcf_to_net_income"] < 0.5:
-            self.score += 15
-            self.signals.append("⚠️ 自由现金流远低于净利润，利润质量存疑")
-        ratio = self.data["goodwill"] / self.data["total_assets"]
-        if ratio > 0.2:
-            self.score += 5
-            self.signals.append("⚡ 商誉占总资产超20%")
-        return ratio
-
-    def calculate_total_score(self):
-        self.evaluate_goodwill_ratio()
-        self.evaluate_earnings_trend()
-        self.evaluate_industry_risk()
-        self.evaluate_management_signals()
-        self.evaluate_cash_flow_alignment()
-
-        # 评分解释
-        if self.score >= 70:
-            verdict = "🔴 极高风险，强烈建议回避"
-        elif self.score >= 45:
-            verdict = "🟡 中高风险，密切监控，建议减仓"
-        elif self.score >= 25:
-            verdict = "🟢 中等风险，持续关注，保持谨慎"
-        else:
-            verdict = "✅ 低风险，商誉状况健康"
-
-        return {
-            "company": self.name,
-            "total_score": self.score,
-            "verdict": verdict,
-            "signals": self.signals
-        }
-
-# 使用示例：
-company_data = {
-    "goodwill": 30_0000_0000,  # 30亿商誉
-    "equity": 50_0000_0000,    # 50亿净资产
-    "total_assets": 120_0000_0000,
-    "industry": "传媒",
-    "post_mandate_earnings_drop": 0.6,  # 对赌期后利润降60%
-    "earnings_accuracy": 0.98,           # 完成率98%
-    "core_team_departed": True,
-    "market_cap_below_equity": False,
-    "fcf_to_net_income": 0.3
-}
-
-scorer = GoodwillRiskScorer("某传媒公司", company_data)
-result = scorer.calculate_total_score()
-print(f"公司：{result['company']}")
-print(f"风险评分：{result['total_score']}/100")
-print(f"判定：{result['verdict']}")
-print("\n风险信号清单：")
-for s in result["signals"]:
-    print(f"  {s}")</code></pre>
-
-        <p>好了，本章咱们深入学习了并购与商誉分析的完整知识体系——从商誉的形成、减值的触发信号，到对赌协议的风险、分拆上市的价值重估。商誉是A股最大的"隐藏地雷"之一，学会了分析商誉风险，你就给自己装了一个"避雷针"。</p>
-
-        <p>到这里，咱们课程的<strong>第四部分"进阶分析与估值"</strong>就结束了。这一部分咱们走得很远——从绝对估值法和相对估值法（第19-20章），到行业特化分析（第21章），再到并购与商誉分析（第22章）。这些内容把三张报表的数据分析上升到了"价值判断"的层面。你学会了如何回答那个最核心的问题："这家公司到底值多少钱？"</p>
-
-        <p>从下一章开始，咱们进入<strong>第五部分"实战工具与编程"</strong>——Excel财报分析实战、Python财报分析入门、BI工具与可视化看板。前面学的所有分析框架，将会被落实到真正的工具中。咱们下篇见！</p>
-
-        <div class="footer-nav">
-            <a href="21.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="23.html">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 22 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">商誉从哪来</a>
+<a href="#formation">商誉的确认与后续计量</a>
+<a href="#impairment">减值测试与触发信号</a>
+<a href="#earnout">对赌协议的风险</a>
+<a href="#spinout">分拆上市与价值判断</a>
+<a href="#calculator">商誉占比工作台</a>
+<a href="#checklist">核查清单与自测</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 22 / 28</span>
+<h1>并购与商誉：溢价如何变成减值</h1>
+<p class="lead">商誉是收购对价里“超出可辨认净资产公允价值”的那部分。它不摊销、每年至少做一次减值测试、减值不可转回——这三条决定了它会静默很久，然后在某一年一次性压低利润与净资产。</p>
+<p class="meta">2026-11 更新 · 原理 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">商誉从哪来</h2>
+<p>企业合并中，收购方支付的对价往往高于被收购方可辨认净资产的公允价值。差额就是<strong>商誉</strong>：它代表收购方预期被收购方未来能带来超出其可辨认净资产的回报——品牌、客户关系、技术、团队等。</p>
+<figure>
+<img src="../assets/figures/22-goodwill-formation.svg" alt="教学示意堆叠图：收购对价 30 亿元拆分为可辨认净资产公允价值 15 亿元与商誉 15 亿元" width="840" height="220" loading="lazy">
+<figcaption>图 1：商誉是对价里多付的那部分。它是账面资产，但不能单独变现；一旦预期落空，就要通过减值下调。图为教学示意。</figcaption>
+</figure>
+<p>为什么商誉值得单列一节？因为它改变了报表的时间结构：收购当期利润不动，商誉静静趴在资产负债表上；一旦减值，又几乎全部落在某一年。对分析者来说，它是一笔“延后确认的预期”。</p>
+</section>
+<section id="formation" aria-labelledby="formation-title">
+<h2 id="formation-title">商誉的确认与后续计量</h2>
+<div class="equation math-scroll" data-math-scroll tabindex="0" role="region" aria-label="商誉的计量公式">
+<div class="equation-label">非同一控制下企业合并形成的商誉</div>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="商誉等于合并成本减去被购买方可辨认净资产公允价值份额；若为负数，则形成负商誉，计入当期损益">
+<mrow>
+<mi>商誉</mi><mo>=</mo><mtext>合并成本</mtext><mo>−</mo><mtext>可辨认净资产公允价值份额</mtext>
+</mrow>
+</math>
 </div>
+<p>几个容易混的细节：</p>
+<ul>
+<li><strong>同一控制下的企业合并</strong>按权益结合法处理，通常<strong>不产生商誉</strong>，对价与账面净资产份额的差额调资本公积（或留存收益），因此想找“并购溢价”不能只看商誉是否出现。</li>
+<li>差额为负时形成<strong>负商誉</strong>，经复核后计入当期损益，而不是挂在资产方。</li>
+<li>商誉<strong>不摊销</strong>，但每年至少进行一次减值测试；这与国际准则的处理一致。</li>
+<li>商誉<strong>不能单独产生现金流</strong>，减值测试时须并入相关的资产组或资产组组合。</li>
+<li>减值一旦计提<strong>不可转回</strong>，且不得通过后续处置反向确认增值。</li>
+</ul>
+<p>需要强调：具体确认与计量规则以《企业会计准则第20号——企业合并》《企业会计准则第8号——资产减值》为准，本页只做概括，不代替准则原文。</p>
+</section>
+<section id="impairment" aria-labelledby="impairment-title">
+<h2 id="impairment-title">减值测试与触发信号</h2>
+<p>减值测试的逻辑是：比较资产组（含商誉）的<strong>可收回金额</strong>与<strong>账面价值</strong>，前者低于后者时计提减值。可收回金额取“公允价值减处置费用”与“预计未来现金流量现值”两者中的较高者——后者正是第 19 章 DCF 思想在减值测试中的应用，同样依赖假设。</p>
+<figure>
+<img src="../assets/figures/22-impairment-triggers.svg" alt="四类触发信号：业绩承诺不达标、行业下行、市值长期低于净资产、核心团队离职；指向减值测试，可能计提商誉减值，使净利润与净资产同时下降" width="840" height="360" loading="lazy">
+<figcaption>图 2：触发信号只是“需要重新测试”的理由，不等于一定会减值；测试结果取决于可收回金额的估计，而估计本身带有判断空间。</figcaption>
+</figure>
+<p>四种常见的触发线索：</p>
+<ul>
+<li><strong>业绩承诺不达标：</strong>连续未达标是最直接的信号，但也要看未达标的原因与后续补偿安排。</li>
+<li><strong>行业进入下行：</strong>即使当期业绩尚可，行业需求或政策转向也会降低未来现金流预期。</li>
+<li><strong>市值长期低于净资产：</strong>提示市场对账面资产（含商誉）的估值打了折扣，但两者口径不同，不能机械等同。</li>
+<li><strong>核心团队离职：</strong>对被收购方而言，人才本身就是溢价的一部分。</li>
+</ul>
+<p>从行业分布看，传媒、计算机、医药、制造等并购活跃、商誉占比高的领域历史减值较为集中；但这只是经验观察，不能用行业的“普遍风险”代替对具体公司资产组的核对。</p>
+</section>
+<section id="earnout" aria-labelledby="earnout-title">
+<h2 id="earnout-title">对赌协议的风险</h2>
+<p>并购中常见的业绩补偿安排，要求被收购方在未来若干年实现约定的净利润，未达则用股份或现金补偿。它看起来保护收购方，但会让被收购方在承诺期内有强烈的动机“做出”达标数字。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>年度</th><th>承诺净利润（万元）</th><th>实际净利润（万元）</th><th>完成率</th></tr></thead>
+<tbody>
+<tr><td>第 1 年</td><td>1,000</td><td>1,005</td><td>100.5%</td></tr>
+<tr><td>第 2 年</td><td>3,000</td><td>3,012</td><td>100.4%</td></tr>
+<tr><td>第 3 年</td><td>5,000</td><td>4,690</td><td>93.8%</td></tr>
+</tbody>
+</table>
+</div>
+<p>上表为<strong>教学示意</strong>。值得警惕的不是“是否恰好达标”，而是“达标是怎么来的”：</p>
+<ul>
+<li><strong>提前确认收入：</strong>应收增速远高于收入增速，或期末大额销售集中出现。</li>
+<li><strong>推迟费用：</strong>研发投入、广告营销、维修与人员费用被压缩，代价在承诺期后集中体现。</li>
+<li><strong>承诺期后断崖：</strong>承诺期最后一年利润率显著高于同业水平，随后大幅回落。</li>
+<li><strong>管理层变动：</strong>承诺期满后核心团队离职，接手的经营压力先于减值信号出现。</li>
+</ul>
+<p>因此分析对赌不能只看“完成率”，而要看完成的质量：现金流量是否跟得上、应收与存货是否异常、承诺期后的第一年发生了什么。</p>
+</section>
+<section id="spinout" aria-labelledby="spinout-title">
+<h2 id="spinout-title">分拆上市与价值判断</h2>
+<p>与并购相反，分拆上市（Spin-off）把子公司或业务板块单独推向市场。常见动机有三类：</p>
+<ul>
+<li><strong>价值重估：</strong>集团整体估值可能低于各板块估值之和（即所谓“集团折扣”），分拆后市场可能给子公司更高的倍数。</li>
+<li><strong>聚焦主业：</strong>业务过于分散时市场难以定价，分拆使各板块边界更清晰。</li>
+<li><strong>融资需求：</strong>子公司可独立融资，不必与母公司争夺资金。</li>
+</ul>
+<p>有两个需要分清的点：一是会计上，母公司丧失控制权时需按公允价值重新计量剩余股权，可能确认一次性损益，这会直接扭曲当期利润，需与经常性经营利润分开看；二是权益上，母公司股东并非“免费获得新资产”——分拆通常按持股比例分配或认购，且新股发行会稀释持股。</p>
+<div class="callout warning">
+<p><strong>动机不能只看利好：</strong>分拆既可能是释放价值，也可能是把高估值资产拆出融资、把低质量资产留在母公司。判断时要看分拆后母子公司的业务、关联交易、同业竞争安排以及配套融资条款。</p>
+</div>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">商誉占比工作台</h2>
+<p>默认演示（商誉 30 亿元、归母净资产 50 亿元、总资产 120 亿元）可手工复算：商誉/净资产 = 60%，商誉/总资产 = 25%。两个分母含义不同，不能混用。</p>
+<div class="lab" data-calculator="goodwill">
+<h3>修改数据，即时复算</h3>
+<p>三个金额需同一时点、同一合并口径；如需与同业比较，需先确认对方是否含少数股东权益。</p>
+<div class="lab-grid">
+<label>商誉余额<input type="number" name="goodwill" value="30" step="any" aria-label="商誉余额"></label>
+<label>归属于母公司净资产<input type="number" name="equity" value="50" step="any" aria-label="归属于母公司净资产"></label>
+<label>总资产<input type="number" name="assets" value="120" step="any" aria-label="总资产"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+<p>比例高低本身不是结论。“商誉超过净资产多少就危险”之类的固定阈值都是经验判断，不是准则或监管标准；实务上应把它与资产组业绩、承诺完成质量、现金流一起看。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">核查清单与自测</h2>
+<div class="step-list">
+<div class="step"><b>1</b><p>区分合并类型：非同一控制可能产生商誉，同一控制通常不产生。</p></div>
+<div class="step"><b>2</b><p>核对商誉所属资产组、初始确认依据与每期减值测试披露。</p></div>
+<div class="step"><b>3</b><p>把商誉占净资产与占总资产分别看清，并改成同比与同业口径。</p></div>
+<div class="step"><b>4</b><p>对赌项目：看完成质量（现金流、应收与存货），而不只看完成率。</p></div>
+<div class="step"><b>5</b><p>分拆与一次性损益：与经常性经营利润分开看，留意稀释与关联交易。</p></div>
+</div>
+<details class="exercise"><summary>自测一：商誉减值当年净利润大跌，是否说明公司经营恶化？</summary><p>不一定。减值是非现金的会计调整，可能对应很久以前的收购溢价；需分开看经营利润与减值，并看被收购资产组当下的实际业绩与现金流。</p></details>
+<details class="exercise"><summary>自测二：分拆上市后母公司股东是否“白得了”一份新资产？</summary><p>不能这么说。分拆通常按持股比例分配或认购，新股发行也可能稀释；价值变化取决于分拆后两家公司各自的业务、估值与融资安排。</p></details>
+<p><strong>结论：</strong>商誉分析的关键是把“收购时的预期”与“现在的现实”分开：看资产组是否还在赚预期的钱、减值测试用了什么假设、承诺期内外的业绩为什么变了。</p>
+</section>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字与图例均为<strong>教学示意</strong>，不指向任何真实公司或真实交易，也不构成投资建议。</p>
+<p>商誉的确认与计量以《企业会计准则第20号——企业合并》为准，减值以《企业会计准则第8号——资产减值》为准，合并与合并报表相关安排以《企业会计准则第33号》为准；分拆相关会计与披露以现行准则及监管规定为准。具体条文以财政部发布的最新版本为准。</p>
+<ol>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+<li><a href="https://www.csrc.gov.cn/c106256/c1653948/content.shtml" target="_blank" rel="noopener noreferrer">中国证监会 · 上市公司信息披露管理办法（重大资产重组与业绩承诺披露）</a></li>
+<li><a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/" target="_blank" rel="noopener noreferrer">IFRS 基金会 · IFRS 18 财务报表列报（与商誉列报相关的列报框架）</a></li>
+</ol>
+</section>
+<nav class="article-nav" aria-label="相邻章节"><a href="21.html">← 上一章</a><a href="23.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 22</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>
