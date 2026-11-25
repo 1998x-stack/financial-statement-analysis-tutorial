@@ -22,7 +22,8 @@ multiple:v=>{if(!(v.price>0))return '股价须大于 0。';const pe=v.eps>0?div(
 aicheck:v=>{if(v.source===0)return '原文数值为 0，差异率不适用，请改用绝对差异核对。';const d=div(v.ai,v.source)-1;return '绝对差异 ' + f(v.ai-v.source) + '；相对差异 ' + pct(d) + '（以年报原文为基准）。' + (Math.abs(d)<=0.01?'差异在 1% 内，仍需确认口径一致。':'差异超过 1%，应视为未核对：先核对单位、期间与合并范围，再确认是否为 AI 编造。');},
 fscore:v=>{let s=0,miss=[];for(let i=1;i<=9;i++){if(v['f'+i])s++;else miss.push('F'+i);}return 'F-Score ' + s + ' / 9' + (miss.length?'；未满足：'+miss.join('、'):'；九项均满足') + '。分数用于排序与定优先级，不是买卖信号。';},
 bankbuffer:v=>{if(!(v.loans>0)||!(v.rwa>0))return '检查输入：贷款总额与风险加权资产须大于 0。';const nplr=v.npl/v.loans,cover=v.npl>0?v.provision/v.npl:NaN,cet1r=v.cet1/v.rwa;let t='不良贷款率 ' + pct(nplr) + '；拨备覆盖率 ' + (Number.isFinite(cover)?pct(cover):'不良为零，覆盖率不适用') + '；核心一级资本充足率 ' + pct(cet1r) + '。';if(Number.isFinite(cover)&&cover<1.5)t+='拨备覆盖率低于 150%，低于常见监管下限量级，应以现行监管规定为准。';return t+'需与前几期、同业及关注类贷款一起看，单期数值不足以判断资产质量。';},
-goodwill:v=>{if(!(v.equity>0)||!(v.assets>0))return '检查输入：净资产与总资产须大于 0。';const r1=v.goodwill/v.equity,r2=v.goodwill/v.assets;return '商誉/归母净资产 ' + pct(r1) + '；商誉/总资产 ' + pct(r2) + '。比例高低不是结论，需结合资产组业绩、承诺完成质量与减值测试披露一起看。';}
+goodwill:v=>{if(!(v.equity>0)||!(v.assets>0))return '检查输入：净资产与总资产须大于 0。';const r1=v.goodwill/v.equity,r2=v.goodwill/v.assets;return '商誉/归母净资产 ' + pct(r1) + '；商誉/总资产 ' + pct(r2) + '。比例高低不是结论，需结合资产组业绩、承诺完成质量与减值测试披露一起看。';},
+cashflowq:v=>{const fcf=v.cfo-v.capex,nr=v.net!==0?v.cfo/v.net:NaN;return '净现比 ' + (Number.isFinite(nr)?f(nr):'净利润为 0，不适用') + '；自由现金流 ' + f(fcf) + '；FCF/营收 ' + (v.revenue>0?pct(fcf/v.revenue):'营收需大于 0') + '；经营现金流/总资产 ' + (v.assets>0?pct(v.cfo/v.assets):'总资产需大于 0') + '。净现比偏低可能来自结算周期，需回到第 12 章桥接核对。';}
 };
 document.querySelectorAll('[data-calculator]').forEach(box=>{
  const kind=box.getAttribute('data-calculator');if(!choices[kind])return;

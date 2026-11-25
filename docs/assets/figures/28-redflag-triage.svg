@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 320" role="img" aria-labelledby="t28r d28r">
+<title id="t28r">红旗信号只用于定优先级，不直接给出买卖结论</title>
+<desc id="d28r">左侧列出五个示例红旗信号，中间是“需要更多证据”，右侧是回到附注与公告的人工判断。图中强调红旗是线索而非结论，数量多少不能直接换算成买入或卖出。</desc>
+<rect x="0" y="0" width="840" height="320" fill="#f8f7f2"/>
+<text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">红旗是线索，不是判决</text>
+<g font-size="12.5">
+<rect x="30" y="66" width="250" height="180" rx="8" fill="#f9eee5" stroke="#b66a38"/>
+<text x="50" y="92" font-size="13.5" font-weight="700" fill="#b66a38">示例线索</text>
+<text x="50" y="118" fill="#395253">应收增速持续快于营收</text>
+<text x="50" y="140" fill="#395253">存贷双高（高现金与高有息债）</text>
+<text x="50" y="162" fill="#395253">商誉占净资产比例偏高</text>
+<text x="50" y="184" fill="#395253">利息费用不大而现金收益极少</text>
+<text x="50" y="206" fill="#395253">实控人质押比例高</text>
+<text x="50" y="232" fill="#577173" font-size="11.5">（阈值均为经验判断，非监管标准）</text>
+<rect x="315" y="66" width="200" height="180" rx="8" fill="#eef2ed" stroke="#577173"/>
+<text x="415" y="92" font-size="13.5" font-weight="700" fill="#577173" text-anchor="middle">需要更多证据</text>
+<text x="415" y="122" fill="#395253" text-anchor="middle">回到报表与附注</text>
+<text x="415" y="146" fill="#395253" text-anchor="middle">核对合并范围与口径</text>
+<text x="415" y="170" fill="#395253" text-anchor="middle">看多期趋势而非单期</text>
+<text x="415" y="194" fill="#395253" text-anchor="middle">与同业对照</text>
+<text x="415" y="222" fill="#577173" text-anchor="middle">排除业务模式等原因</text>
+<rect x="550" y="66" width="260" height="180" rx="8" fill="#f1eef9" stroke="#6657a0"/>
+<text x="680" y="92" font-size="13.5" font-weight="700" fill="#6657a0" text-anchor="middle">人工判断</text>
+<text x="680" y="122" fill="#395253" text-anchor="middle">结合行业、准则与公告</text>
+<text x="680" y="146" fill="#395253" text-anchor="middle">得出“需要警惕”或“可解释”</text>
+<text x="680" y="170" fill="#395253" text-anchor="middle">红旗多≠造假，红旗少≠安全</text>
+<text x="680" y="198" fill="#395253" text-anchor="middle">造假认定需监管或司法程序</text>
+</g>
+<g stroke="#577173" stroke-width="1.6" marker-end="url(#a28r)">
+<line x1="280" y1="156" x2="313" y2="156"/><line x1="515" y1="156" x2="548" y2="156"/>
+</g>
+<defs><marker id="a28r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#577173"/></marker></defs>
+<rect x="30" y="262" width="780" height="44" rx="8" fill="#eef2ed" stroke="#577173"/>
+<text x="50" y="290" font-size="12.5" fill="#1c3133">不要用“红旗数量”直接换算成买入/卖出：数量只是排序工具，最终结论要写清依据、可证伪条件与风险承受度。</text>
+</svg>

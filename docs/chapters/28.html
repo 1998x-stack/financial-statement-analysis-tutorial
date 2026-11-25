@@ -1,374 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第28章 综合实战项目</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="把 28 章串成一个端到端项目：从行业背景、三张表检查、四维比率与同业对比，到排雷检查与估值交叉验证。目标不是给出一句买卖结论，而是产出一份能把每个判断指回报表、附注与公告的证据链。">
+<title>综合实战项目：把 28 章走成一份报告 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html" class="active">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <p>大家好，我是你们的讲师。欢迎来到最后一章！经过前面27章的学习，你已经掌握了从三张表基础解读、核心比率分析、排雷技巧、估值方法到AI和量化模型的全套技能。现在，是时候把这一切串起来了。</p>
-
-        <p>这一章咱们将完成一个<strong>完整的端到端分析项目</strong>。咱们以一家真实的A股上市公司——假设是"美的集团"（000333）——为例，带你走一遍从数据获取到出具完整分析报告的全过程。你不需要去找美的的年报——本章的目的是给你一个<strong>可以复用的分析框架</strong>，你学会了这个框架之后，可以套用到任何一家上市公司身上。准备好了吗？咱们开始！</p>
-
-        <h2>项目目标</h2>
-
-        <p>本次实战项目的核心目标是：</p>
-        <ul>
-            <li><strong>标的：</strong>选择一家A股上市公司（建议选择业务模式简单、你对其产品有认知的公司——如美的、格力、茅台、伊利）</li>
-            <li><strong>目标：</strong>出具一份完整的投资分析报告，回答"这家公司值不值得买/持有/卖出"</li>
-            <li><strong>时间范围：</strong>至少覆盖最近3-5年的年报数据</li>
-            <li><strong>输出：</strong>一份结构化的分析报告（可以写在Excel里、Word里，或者直接用本章提供的框架整理）</li>
-        </ul>
-
-        <p>分析报告包含以下5个步骤：</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>步骤</th>
-                    <th>分析维度</th>
-                    <th>核心工作内容</th>
-                    <th>对应课程章节</th>
-                    <th>预计耗时</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>第一步</td>
-                    <td>行业与公司背景</td>
-                    <td>行业定位、竞争格局、商业模式、护城河分析</td>
-                    <td>第14章、第21章</td>
-                    <td>1-2小时</td>
-                </tr>
-                <tr>
-                    <td>第二步</td>
-                    <td>三张表深度解析</td>
-                    <td>资产质量、利润质量、现金流质量逐一检查</td>
-                    <td>第2-5章、第12章</td>
-                    <td>2-3小时</td>
-                </tr>
-                <tr>
-                    <td>第三步</td>
-                    <td>核心比率与同业对比</td>
-                    <td>四维比率计算（盈利/偿债/营运/成长）、趋势分析和同业雷达图</td>
-                    <td>第8-11章、第13章</td>
-                    <td>2-3小时</td>
-                </tr>
-                <tr>
-                    <td>第四步</td>
-                    <td>排雷检查</td>
-                    <td>M-Score计算、红旗信号清单、关联交易、商誉风险、审计意见</td>
-                    <td>第15-18章、第27章</td>
-                    <td>1-2小时</td>
-                </tr>
-                <tr>
-                    <td>第五步</td>
-                    <td>估值与投资决策</td>
-                    <td>DCF估值+相对估值交叉验证、安全边际计算、最终投资建议</td>
-                    <td>第19-20章</td>
-                    <td>2-3小时</td>
-                </tr>
-                <tr>
-                    <td colspan="4"><strong>合计</strong></td>
-                    <td><strong>8-13小时</strong></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="tip">
-            <strong>首次实践建议：</strong>第一次做完整分析时，不用追求完美。我的建议是：第一步到第二步花一天，休息一下，第二天做第三步到第五步。每个步骤做完后，给自己打一个"初步结论"，即使感觉不太确定也没关系——先写下来。等到所有步骤做完后，回头看看你的初步结论哪些被后续步骤推翻了——这个过程本身就是最好的学习。
-        </div>
-
-        <h2>第一步：行业与公司背景分析</h2>
-
-        <p>不先理解行业，只看数字就是盲人摸象。行业背景分析的目的是回答三个问题：<strong>公司所处的行业是好行业吗？公司在行业里是什么位置？公司的护城河是什么？</strong></p>
-
-        <h3>行业分析框架</h3>
-        <ul>
-            <li><strong>行业生命周期：</strong>成长初期？高速成长期？成熟期？衰退期？不同生命周期的分析侧重点不同——成长期关注营收增速和市占率，成熟期关注利润率和现金流，衰退期关注资产变现能力和偿债风险。</li>
-            <li><strong>波特五力：</strong>供应商议价能力、买家议价能力、新进入者威胁、替代品威胁、现有竞争者——五个维度逐一评估。</li>
-            <li><strong>政策环境：</strong>行业是否受政策扶持或限制（如房地产三道红线、教育双减、新能源补贴退坡等）。</li>
-        </ul>
-
-        <h3>公司分析框架</h3>
-        <ul>
-            <li><strong>业务模式：</strong>公司靠什么赚钱？（卖产品？卖服务？收授权费？）收入来源是否多元化？</li>
-            <li><strong>竞争优势（护城河）：</strong>品牌溢价？技术壁垒？规模效应？网络效应？转换成本？</li>
-            <li><strong>管理层评估：</strong>管理层的历史业绩、持股情况、是否有过度自信或利益输送的嫌疑。</li>
-        </ul>
-
-        <p>做完这一步，你应该能写出一段300-500字的行业定位陈述，以及公司核心竞争力的简洁判断。这一步也是后面所有分析的基础——如果行业背景搞错了，后面的比率分析和估值都会跑偏。</p>
-
-        <h2>第二步：三张表深度解析</h2>
-
-        <p>这一步要把三张表的重要科目逐一过一遍。咱们在第2-5章详细讲过每个科目怎么看，这里给出一个<strong>检查清单</strong>：</p>
-
-        <h3>资产负债表检查清单</h3>
-        <ul>
-            <li>总资产规模变化趋势——是否合理？有无异常暴涨（可能是并购或商誉增加）？</li>
-            <li>货币资金 vs 有息负债——账上很多现金但借了大量有息债务？资金被占用？</li>
-            <li>应收账款——增速是否快于营收增速？账龄结构有没有恶化？</li>
-            <li>存货——周转天数是否在增加？是否有跌价准备计提不足的情况？</li>
-            <li>商誉——占净资产的比重是多少？（超过30%需要高度警惕）</li>
-            <li>资产负债率——与行业平均水平对比，是否有快速上升趋势？</li>
-        </ul>
-
-        <h3>利润表检查清单</h3>
-        <ul>
-            <li>营收增长来源——量的增长还是价的增长？来自主营业务还是并表/并购？</li>
-            <li>毛利率——变化趋势是否稳定？原材料涨价有没有顺利传导？</li>
-            <li>期间费用率——销售费用、管理费用、研发费用各自的变化趋势。</li>
-            <li>非经常性损益——占净利润比重是否过大？（超过20%说明"含金量"不足）</li>
-            <li>扣非净利润——这个才是衡量主营业务的真实盈利能力。</li>
-        </ul>
-
-        <h3>现金流量表检查清单</h3>
-        <ul>
-            <li>经营活动现金流净额——是否持续为正？是否"匹配"净利润（净现比>0.7为及格，>1为优秀）？</li>
-            <li>自由现金流（经营CF - 资本支出）——是否持续为正？是否在增长？</li>
-            <li>筹资活动现金流——公司是在持续融资还是在持续还钱？大量融资可能意味着商业模式有缺陷。</li>
-        </ul>
-
-        <div class="highlight">
-            <strong>关键比率速查：</strong>做完三表检查后，计算这三个核心指标——①净现比（经营现金流/净利润）：反映利润含金量；②自由现金流利润率（FCF/营收）：反映真实赚钱能力；③资产现金回收率（经营现金流/总资产）：反映资产的现金产出效率。这三个指标能快速帮你判断一家公司的现金流健康状况。
-        </div>
-
-        <h2>第三步：核心比率计算与同业对比</h2>
-
-        <p>这一步咱们需要计算四大维度的核心比率，然后做两件事情：<strong>纵向趋势分析</strong>（公司自己和自己过去3-5年比）和<strong>横向同业对比</strong>（公司和行业头部公司比）。</p>
-
-        <p>建议用Excel或Python算出这些比率后，画一个<strong>四维雷达图</strong>——把公司在盈利能力、偿债能力、营运能力、成长能力四个维度的表现量化为百分制分数，在一张图上直观展示公司的综合实力。</p>
-
-        <pre><code>综合实战项目分析框架（伪代码/流程大纲）：
-
-# =====================================================
-# 综合实战项目 —— 端到端分析流程
-# =====================================================
-
-# --- 预处理：数据获取 ---
-def get_financial_data(ticker):
-    """从数据源获取指定股票的3-5年财务数据"""
-    # 可选数据源：Tushare、AkShare、Wind、巨潮资讯网
-    return balance_sheet, income_statement, cash_flow
-
-
-# --- Step 1: 行业与公司背景 ---
-def industry_analysis(ticker):
-    return {
-        "sector": "家用电器",
-        "industry_lifecycle": "成熟期",
-        "competitive_position": "龙头企业（市占率排名前三）",
-        "moat": "规模效应+品牌+渠道网络",
-        "key_risk": "地产周期下行影响需求"
-    }
-
-
-# --- Step 2: 三张表深度解析 ---
-def deep_dive_financials(bs, is_, cf):
-    alerts = []
-    # 检查应收账款增速是否快于营收增速
-    if ar_growth > revenue_growth:
-        alerts.append("应收账款增速超过营收增速，可能存在信用政策放宽")
-    # 检查净现比是否低于0.7
-    if operating_cf / net_income < 0.7:
-        alerts.append("净现比低于0.7，利润含金量不足")
-    # 检查商誉占比是否超过30%
-    if goodwill / equity > 0.3:
-        alerts.append("商誉占比超过30%，存在商誉减值风险")
-    return {"alerts": alerts, "summary": "..."}
-
-
-# --- Step 3: 比率分析与同业对比 ---
-def ratio_analysis(bs, is_, cf):
-    ratios = {
-        "roe": net_income / equity,
-        "gross_margin": gross_profit / revenue,
-        "debt_ratio": total_liabilities / total_assets,
-        "current_ratio": current_assets / current_liabilities,
-        "inventory_turnover": COGS / avg_inventory,
-        "revenue_growth": (curr_revenue / prev_revenue) - 1
-    }
-    return ratios
-
-
-# --- Step 4: 排雷检查 ---
-def screen_check(bs, is_, cf, notes):
-    screens = {
-        "m_score": calculate_m_score(bs, is_),
-        "audit_opinion": "标准无保留意见",  # 从附注/审计报告获取
-        "related_party_transactions": "占比<5%",
-        "goodwill_risk": goodwill / equity if equity > 0 else 999,
-        "pledge_ratio": "大股东质押比例"
-    }
-    red_flags = sum(1 for v in screens.values() if is_risky(v))
-    return {"flags": red_flags, "screens": screens}
-
-
-# --- Step 5: 估值与投资决策 ---
-def valuation(ticker, bs, is_, cf):
-    dcf_value = dcf_valuation(free_cash_flow, wacc, growth_rate)
-    pe_value = trailing_pe * industry_median_pe_ratio
-    safety_margin = (dcf_value - current_price) / dcf_value
-    return {
-        "dcf_value": dcf_value,
-        "pe_value": pe_value,
-        "current_price": current_price,
-        "safety_margin": safety_margin,
-        "suggestion": "买入" if safety_margin > 0.2 else "持有/观察"
-    }
-
-
-# --- 主流程 ---
-def main(ticker):
-    print("===== 综合实战分析报告 =====")
-    bs, is_, cf = get_financial_data(ticker)
-
-    print("【第一步】行业与公司背景分析")
-    ind = industry_analysis(ticker)
-    print(f"行业: {ind['sector']}, 地位: {ind['competitive_position']}")
-
-    print("【第二步】三张表深度解析")
-    fin = deep_dive_financials(bs, is_, cf)
-    print(f"发现{len(fin['alerts'])}个风险提示")
-
-    print("【第三步】核心比率计算")
-    ratios = ratio_analysis(bs, is_, cf)
-    print(f"ROE: {ratios['roe']:.1%}, 毛利率: {ratios['gross_margin']:.1%}")
-
-    print("【第四步】排雷检查")
-    screen = screen_check(bs, is_, cf, None)
-    print(f"红旗信号数量: {screen['flags']}")
-
-    print("【第五步】估值与投资决策")
-    val = valuation(ticker, bs, is_, cf)
-    print(f"DCF估值: {val['dcf_value']:.2f}, 安全边际: {val['safety_margin']:.1%}")
-    print(f"建议: {val['suggestion']}")
-
-    return "分析完成"
-
-# 使用示例
-# main("000333")  # 美的集团</code></pre>
-
-        <h2>第四步：排雷检查</h2>
-
-        <p>这一步的目标是——<strong>排除致命风险</strong>。即使前面所有的比率都很好看，如果存在财务造假或者重大隐患，前面的分析就白做了。</p>
-
-        <p>咱们在第15-18章和第27章讲了很多排雷工具，这里把它们做成一个<strong>红旗信号清单</strong>，一共10项，每发现一项加1个红旗：</p>
-
-        <ol>
-            <li><strong>M-Score > -2.22</strong>（可能盈余管理）</li>
-            <li><strong>Z-Score < 1.81</strong>（高破产风险）</li>
-            <li><strong>净现比 < 0.5</strong>（利润严重"虚"）</li>
-            <li><strong>商誉/净资产 > 30%</strong>（商誉暴雷风险）</li>
-            <li><strong>应收账款增速连续2年 > 营收增速</strong>（做账嫌疑）</li>
-            <li><strong>非标准审计意见</strong>（保留意见/否定意见/无法表示意见）</li>
-            <li><strong>实控人高比例股权质押 > 50%</strong>（资金链风险）</li>
-            <li><strong>大额关联交易 > 营收的10%</strong>（利益输送风险）</li>
-            <li><strong>扣非净利润连续2年亏损</strong>（主业不赚钱）</li>
-            <li><strong>存贷双高</strong>（账上既有大量现金又有大量有息负债——康美药业式造假常见特征）</li>
-        </ol>
-
-        <p><strong>排雷结论：</strong>红旗0-1个——安全；红旗2-3个——需要重点关注对应风险点；红旗4个及以上——建议直接放弃，不参与。</p>
-
-        <div class="warning">
-            <strong>真实案例启发：</strong>康美药业在暴雷前，所有10项红旗信号几乎全部亮起。但市场上99%的投资者都没有做系统化的排雷检查——大家只看营收（连续多年增长）、利润（连续多年增长）、市值（十大流通股里有基金），就把几百亿资金扔进去了。如果你在投资任何一家公司之前，花2小时做一遍这10项检查，你至少能避开90%的"地雷股"。
-        </div>
-
-        <h2>第五步：估值与投资决策</h2>
-
-        <p>最后一步，把前面的分析转化成<strong>具体的投资决策</strong>。</p>
-
-        <h3>估值交叉验证</h3>
-        <p>咱们用三种方法进行交叉验证——不要只用一种估值方法：</p>
-        <ul>
-            <li><strong>DCF（自由现金流折现）：</strong>假设未来5年增长率和永续增长率，计算公司的"内在价值"。要点：DCF对输入参数非常敏感——增长率的小幅变化就会导致估值结果大幅波动。建议做<strong>敏感性分析</strong>：画一个增长率和折现率变化的估值矩阵。</li>
-            <li><strong>相对估值（PE/PB/PS）：</strong>将公司当前的估值倍数与历史分位数、行业均值做对比。如果当前PE处于历史最低20%分位，且低于行业均值——说明可能被低估。</li>
-            <li><strong>股息率/股东回报：</strong>持续分红且股息率高于国债收益率，说明公司对股东有实际回报。</li>
-        </ul>
-
-        <h3>投资决策框架</h3>
-        <p>综合所有分析，给出一个明确的结论，而不是模棱两可的"谨慎看好"：</p>
-        <ul>
-            <li><strong>买入/增持：</strong>安全边际 > 20%，且所有排雷检查通过，且行业基本面趋势向好。</li>
-            <li><strong>持有/观察：</strong>安全边际在0-20%之间，或排雷检查发现轻微隐患（红旗1-2个）。</li>
-            <li><strong>减持/回避：</strong>安全边际为负，或排雷检查发现重大隐患（红旗3个以上）。</li>
-        </ul>
-
-        <div class="tip">
-            <strong>一个诚实的建议：</strong>即使是专业的基金经理，其分析结论的正确率也就在55-65%之间。所以比"正确"更重要的是"风控"——每次投资之前都要问自己：<strong>如果我的分析完全错了，我会亏多少钱？我能不能承受这个损失？</strong>如果你不能承受最坏情况，那么不管分析结论多么看好，都要调整仓位。
-        </div>
-
-        <h2>课程总结与下一步建议</h2>
-
-        <p>至此，咱们28章的旅程已经走到终点。让我带你回顾一下整个课程的结构：</p>
-
-        <ul>
-            <li><strong>第一部分（第1-6章）</strong>——基础入门。你学会了三张表和附注怎么看，知道了会计政策可以怎么调节利润。这是地基。</li>
-            <li><strong>第二部分（第7-14章）</strong>——分析方法。你掌握了盈利能力、偿债能力、营运能力、成长能力四大维度的完整分析框架，学会了杜邦分析和同业比较。这是主体结构。</li>
-            <li><strong>第三部分（第15-18章）</strong>——风险识别。你了解了各种财务粉饰手法、红旗信号、真假案例、审计与公司治理。这是安全护栏。</li>
-            <li><strong>第四部分（第19-22章）</strong>——估值实战。你学会了绝对估值和相对估值两种方法，以及行业特化分析和并购商誉专题。这是价值标尺。</li>
-            <li><strong>第五部分（第23-25章）</strong>——工具赋能。你掌握了Excel模板、Python脚本、BI可视化看板三种工具。这是效率加速器。</li>
-            <li><strong>第六部分（第26-28章）</strong>——进阶实战。你了解了AI如何辅助分析、量化模型的构建方法，以及刚才完成的综合实战项目。这是毕业设计。</li>
-        </ul>
-
-        <p>28章走下来，你已经不是当初那个只会看一个净利润数字的投资者了——你学会了用三张表的逻辑去透视一家公司的真实面貌，用比率分析去量化企业的经营质量，用排雷工具去识别潜在的风险，用估值方法去判断价格的合理性。</p>
-
-        <div class="highlight">
-            <strong>学习的终点是实践的开始：</strong>读万卷书不如行万里路。你现在掌握的知识已经足够开始独立分析任何一家上市公司了。我的建议是：从本周开始，每周分析一家公司。前几家可能很慢，可能需要6-8小时才能完成一份完整分析。但到第10家的时候，你就能在2-3小时内完成全部流程。到第50家的时候——你已经比大多数"财经大V"更专业了。
-        </div>
-
-        <p>最后，分享一句我一直很喜欢的投资格言：</p>
-
-        <p><strong>"市场短期是投票机，长期是称重器。"——本杰明·格雷厄姆</strong></p>
-
-        <p>财报分析的本质，就是去学会怎么给一家公司"称重"。你可能偶尔会因为市场的情绪波动而怀疑自己，但只要你的分析框架是扎实的、你的数据是准确的、你的逻辑是清楚的，长期来看，市场一定会给出公正的答案。</p>
-
-        <p>感谢你这28章的陪伴。希望这门课不仅给了你分析财报的工具，更给了你在资本市场中独立思考的勇气。咱们江湖再见！</p>
-
-        <div class="footer-nav">
-            <a href="27.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="javascript:void(0)">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 28 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">项目目标与交付物</a>
+<a href="#step1">第一步：行业与公司背景</a>
+<a href="#step2">第二步：三张表检查清单</a>
+<a href="#step3">第三步：比率与同业对比</a>
+<a href="#step4">第四步：排雷检查</a>
+<a href="#step5">第五步：估值与决策</a>
+<a href="#calculator">现金流质量速查工作台</a>
+<a href="#checklist">自测与下一步</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 28 / 28</span>
+<h1>综合实战项目：把 28 章走成一份报告</h1>
+<p class="lead">这一个项目把前面 27 章的方法串成一条线：先理解行业与公司，再逐表检查，再做比率与同业对比，然后排雷，最后估值。它的交付物是一份能把每个判断指回证据的报告，而不是一句“买/卖”。</p>
+<p class="meta">2026-11 更新 · 流程 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">项目目标与交付物</h2>
+<p>本项目分析一家<strong>教学虚构</strong>的上市公司（不指向任何真实企业与真实财务数据）。你可以把同样框架套用到任何一家真实公司上，但要自己从年报与公告取证。</p>
+<figure>
+<img src="../assets/figures/28-workflow.svg" alt="五步流程：行业与公司背景、三张表深度解析、核心比率与同业对比、排雷检查、估值与投资决策，并标注各步对应的章节" width="840" height="300" loading="lazy">
+<figcaption>图 1：项目的五个步骤与对应章节。每步的产出是可核对的中间结论，最后才汇总成报告。</figcaption>
+</figure>
+<p>交付物建议包含四件东西：</p>
+<ul>
+<li><strong>事实层：</strong>封面基本盘——报告期、合并口径、单位与币种、数据来源与取数日期。</li>
+<li><strong>分析层：</strong>行业定位、三表检查、四维比率与同业对比，每个结论后面带数据出处。</li>
+<li><strong>风险层：</strong>红旗与异常清单，每项写明具体事项、可能解释与下一步要看的披露。</li>
+<li><strong>估值层：</strong>至少两种方法的交叉验证与敏感性区间，写明安全边际与关键假设。</li>
+</ul>
+<p>时间上不必一次做完：定性部分（第一、二步）先出初稿，比率与估值（第三、五步）再迭代，排雷（第四步）随时可以插入。</p>
+</section>
+<section id="step1" aria-labelledby="step1-title">
+<h2 id="step1-title">第一步：行业与公司背景</h2>
+<p>不先理解行业，比率就只是数字。这一步回答三个问题：行业本身是好生意吗？公司在行业里处于什么位置？它的优势能不能持续？</p>
+<ul>
+<li><strong>行业生命周期：</strong>成长期看收入增速与市占率，成熟期看毛利率与现金流，衰退期看资产变现与偿债。不同阶段要用不同指标，不能混用。</li>
+<li><strong>竞争格局：</strong>可用波特五力（供应商、客户、新进入者、替代品、现有竞争者）逐一梳理，但五力是分析工具，不是强制步骤。</li>
+<li><strong>政策环境：</strong>行业是否受扶持或限制（如房地产、教育、新能源等），影响的是需求与合规成本，需引用当期规定而非旧闻。</li>
+<li><strong>公司层面：</strong>靠什么赚钱（卖产品/服务/授权）、竞争优势来源（品牌、技术、规模、网络、转换成本）、管理层历史行为与持股。</li>
+</ul>
+<p>产出建议控制在 300–500 字，并写一句<strong>可证伪的判断</strong>，例如“若未来两年毛利率连续下滑且市占率下降，则该优势假设被推翻”。有了这句话，后面的数据才有检验对象。</p>
+</section>
+<section id="step2" aria-labelledby="step2-title">
+<h2 id="step2-title">第二步：三张表检查清单</h2>
+<h3>资产负债表</h3>
+<ul>
+<li>总资产变化：增长来自经营、并购还是商誉，需分开看。</li>
+<li>货币资金与有息负债：高现金与高有息债同时出现时，需问为什么不用现金还债（可能是受限、利率或蓄意安排）。</li>
+<li>应收账款：增速与账龄结构是否与收入匹配；坏账准备是否充分。</li>
+<li>存货：周转天数与跌价准备；是否存在“存货越存越值钱”。</li>
+<li>商誉：占净资产与总资产的比例，及对应资产组的业绩。</li>
+</ul>
+<h3>利润表</h3>
+<ul>
+<li>收入增长：来自销量、单价、并购还是并表，口径是否可比。</li>
+<li>毛利率：与同期、同业对比，并回到成本构成找原因。</li>
+<li>期间费用：销售、管理、研发费用率的变化趋势。</li>
+<li>非经常性损益与扣非净利润：区分一次性损益与主营盈利能力。</li>
+</ul>
+<h3>现金流量表</h3>
+<ul>
+<li>经营活动现金流：是否持续为正，与净利润的差距在哪里（详见第 12 章）。</li>
+<li>自由现金流（经营现金流 − 资本支出）：是行业常见的简化口径，是否持续为正。</li>
+<li>筹资活动现金流：公司在持续融资还是持续还钱，融资用途与成本是什么。</li>
+</ul>
+<div class="callout">
+<p><strong>提醒：</strong>“净现比高于 0.7 为及格”“非经常性损益超过 20% 就含金量不足”之类都是<strong>经验阈值，不是准则或监管标准</strong>。本页保留它们作为线索，但判断必须回到具体原因与多期趋势。</p>
 </div>
+</section>
+<section id="step3" aria-labelledby="step3-title">
+<h2 id="step3-title">第三步：比率与同业对比</h2>
+<p>把比率分成四个维度：盈利、偿债、营运、成长。每个比率都要先定口径（分子与分母、期间、合并范围、单位），否则横向比较没有意义。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>维度</th><th>代表指标</th><th>口径要点</th></tr></thead>
+<tbody>
+<tr><td>盈利能力</td><td>毛利率、净利率、ROA、ROE</td><td>ROE 用平均权益；负权益时比率失效</td></tr>
+<tr><td>偿债能力</td><td>流动比率、速动比率、利息保障倍数</td><td>分子需扣除受限资产与不能变现的项目</td></tr>
+<tr><td>营运能力</td><td>应收/存货/应付周转天数、现金转换周期</td><td>分子用同期间平均余额，分母口径要对应</td></tr>
+<tr><td>成长能力</td><td>营收与利润增速、扣非增速、可持续增长率</td><td>区分有机增长与并表贡献</td></tr>
+</tbody>
+</table>
+</div>
+<p>比较要同时做两件事：<strong>纵向</strong>（公司自己过去 3–5 年）与<strong>横向</strong>（同业对照）。做同业对比时，先把口径差异（含少数股东权益、租赁处理、合并范围）拉平，再比比值；否则是在比会计处理。</p>
+<p>雷达图可以把四个维度可视化，但不要把主观评分当成客观指标——分数只能用来排序与发现异常，与第 13 章的综合评分一样，需声明权重来源。</p>
+</section>
+<section id="step4" aria-labelledby="step4-title">
+<h2 id="step4-title">第四步：排雷检查</h2>
+<p>这一步的目标是把可疑点排成优先级，而不是给出一句“买/卖”。下面是一组常用线索（参考第 15–18、27 章）：</p>
+<ul>
+<li>M-Score 高于原论文阈值（提示盈余管理特征，不是定性认定）。</li>
+<li>Z-Score 低于阈值或连续多期下降（困境风险趋势）。</li>
+<li>净现比长期偏低（利润与现金长期背离）。</li>
+<li>商誉占净资产比例偏高，且对应资产组业绩下滑。</li>
+<li>应收增速持续快于营收增速，或账龄结构恶化。</li>
+<li>非标准审计意见，或审计师在年报披露前夕变更。</li>
+<li>实控人质押比例偏高，或存在资金占用、违规担保。</li>
+<li>关联交易占比高且定价特殊。</li>
+<li>扣除非经常性损益后连续亏损（主业不赚钱）。</li>
+<li>存贷双高（大额货币资金与大额有息负债并存）。</li>
+</ul>
+<figure>
+<img src="../assets/figures/28-redflag-triage.svg" alt="红旗线索经过“需要更多证据”到达“人工判断”，强调红旗数量不能直接换算成买入或卖出结论" width="840" height="320" loading="lazy">
+<figcaption>图 2：红旗只用于排序。同样的信号在一种业务模式下可以解释、在另一种模式下说不通；是否构成造假需监管或司法程序认定。</figcaption>
+</figure>
+<p>因此，不要用“红旗几个就安全/几个就放弃”的固定换算。正确做法是：每个红旗写清<strong>具体事项、可能解释、下一步要看的披露</strong>；解释不成立时才升级为风险。行业与业务模式会直接影响哪些信号有效，例如高杠杆经营、结算周期长的行业天然会拉低净现比。</p>
+</section>
+<section id="step5" aria-labelledby="step5-title">
+<h2 id="step5-title">第五步：估值与决策</h2>
+<p>用至少两种方法交叉验证，而不是只拿一个数字下结论：</p>
+<ul>
+<li><strong>绝对估值（DCF）：</strong>写清白自现金流口径、折现率与永续增长率，并给出敏感性区间（详见第 19 章）。DCF 的输出是区间，不是目标价。</li>
+<li><strong>相对估值（PE/PB/PS、EV/EBITDA）：</strong>与公司历史分位与同业对比，先确认口径可比（详见第 20 章）。</li>
+<li><strong>股东回报：</strong>分红是否持续、股息率与无风险利率的关系，以及分红背后的现金流是否可持续。</li>
+</ul>
+<p>把三者放在一起，看的不是“哪个数字最高”，而是它们是否指向同一个区间；若分歧很大，应回到假设，看是哪一条假设导致了分歧。</p>
+<div class="callout warning">
+<p><strong>关于“安全边际”：</strong>它等于你估算的价值与价格之间的折扣，而估算价值本身是区间。把“安全边际 > 20% 就买”当成机械规则是危险的；更重要的是写下“如果我的假设错了，会错在哪里、会亏多少”。</p>
+</div>
+<p>本页不提供任何买入/卖出评级或目标价。估值与仓位是个人风险偏好与资金约束的结果，请自行判断并对结果负责。</p>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">现金流质量速查工作台</h2>
+<p>默认演示（经营现金流 12、净利润 10、资本支出 4、营业收入 100、总资产 200，单位一致）可手工复算：净现比 = 1.20，自由现金流 = 8，FCF/营收 = 8%，经营现金流/总资产 = 6%。</p>
+<div class="lab" data-calculator="cashflowq">
+<h3>四个比率一次算清</h3>
+<p>五个金额需同一期间、同一口径与同一单位；自由现金流采用“经营现金流 − 资本支出”的简化定义。</p>
+<div class="lab-grid">
+<label>经营活动现金流净额<input type="number" name="cfo" value="12" step="any" aria-label="经营活动现金流净额"></label>
+<label>净利润<input type="number" name="net" value="10" step="any" aria-label="净利润"></label>
+<label>资本支出<input type="number" name="capex" value="4" step="any" aria-label="资本支出"></label>
+<label>营业收入<input type="number" name="revenue" value="100" step="any" aria-label="营业收入"></label>
+<label>总资产<input type="number" name="assets" value="200" step="any" aria-label="总资产"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+<p>这四个比率只是起点：净现比偏低可能来自行业结算周期、也可能是回款问题，需回到第 12 章的桥接与附注逐项核对，不要把它当成单一的健康评分。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">自测与下一步</h2>
+<div class="step-list">
+<div class="step"><b>1</b><p>报告开头先写清报告期、合并口径、单位与币种、数据来源与取数日期。</p></div>
+<div class="step"><b>2</b><p>每个结论后跟上数据出处（报表行次或附注编号）。</p></div>
+<div class="step"><b>3</b><p>写至少一条可证伪的判断，并说明它何时会被推翻。</p></div>
+<div class="step"><b>4</b><p>红旗只定优先级，逐条写“具体事项 / 可能解释 / 下一步看什么”。</p></div>
+<div class="step"><b>5</b><p>估值用两种以上方法交叉验证，并给出敏感性区间。</p></div>
+</div>
+<details class="exercise"><summary>自测一：五个比率都很漂亮，是否可以省掉排雷？</summary><p>不可以。比率好坏只看经营表现，而排雷关注的是“数字本身是否可信”。若存在收入提前确认、费用资本化或存贷双高等情况，好看的比率可能正是需要核实的地方。</p></details>
+<details class="exercise"><summary>自测二：做完五步后结论和最初直觉相反，该怎么办？</summary><p>这正是项目的价值。回头检查是哪一步的数据或假设推翻了直觉，并把这段推理写进报告——分析的目的不是确认已有看法，而是检验它。</p></details>
+<p><strong>下一步建议：</strong>用同一框架分析一家你熟悉的真实公司，先从小范围开始（如先做第二、三步），逐步补齐行业背景与估值；每份报告都写下数据来源与日期，方便日后回顾。</p>
+</section>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字与图例均为<strong>教学示意</strong>，不指向任何真实公司，也不构成投资建议。五项红旗阈值、评分权重与安全边际比例均为分析者采用的<strong>经验判断</strong>，不是会计准则或监管标准。</p>
+<p>具体指标的定义与列报以财政部《企业会计准则》（含现金流量表、财务报表列报等相关准则，以最新版本为准）为准；审计意见与关键审计事项以中国注册会计师审计准则为准；上市公司披露要求以证监会与交易所现行规定为准。</p>
+<ol>
+<li><a href="https://www.csrc.gov.cn/c106256/c1653948/content.shtml" target="_blank" rel="noopener noreferrer">中国证监会 · 上市公司信息披露管理办法</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+<li><a href="https://app.mof.gov.cn/mofmobile2026/zcfb/202608/t20260805_3999529.htm" target="_blank" rel="noopener noreferrer">财政部 · 财会〔2026〕11号：新列报准则 2027/2029/2030 分批实施通知</a></li>
+<li><a href="https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements" target="_blank" rel="noopener noreferrer">SEC · Beginners' Guide to Financial Statements</a></li>
+</ol>
+</section>
+<nav class="article-nav" aria-label="相邻章节"><a href="27.html">← 上一章</a><a href="../index.html">课程首页 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 28</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>
