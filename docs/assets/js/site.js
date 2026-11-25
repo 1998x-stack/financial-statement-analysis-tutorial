@@ -19,13 +19,15 @@ const choices={
  gov:v=>{if(!(v.holding>0)||!(v.revenue>0))return '检查输入：控股股东持股总数与同期营业收入须大于0。';return '控股股东质押比例 '+pct(div(v.pledged,v.holding))+'；关联方销售占营业收入 '+pct(div(v.relatedSales,v.revenue))+'。两项都需与公告原文、附注及多期趋势核对，单期高比例本身不构成违规结论。';},
 dcf:v=>{let y=Math.round(v.years),gh=v.growth/100,w0=v.wacc/100,g0=v.g/100;const calc=(w,g)=>{if(y<1||!(v.fcf0>0)||!(w>g))return NaN;let f=v.fcf0,pv=0;for(let t=1;t<=y;t++){f=v.fcf0*Math.pow(1+gh,t);pv+=f/Math.pow(1+w,t);}let tvp=f*(1+g)/Math.pow(1+w,y)/(w-g);return {v:pv+tvp,s:tvp/(pv+tvp)};};if(!(v.fcf0>0)||y<1)return '检查输入：FCF₀ 须大于 0，预测期年数至少为 1。';if(!(w0>g0))return '折现率必须大于永续增长率，否则永续终值没有意义。';const base=calc(w0,g0);const grid=[[w0-0.01,g0-0.01],[w0-0.01,g0+0.01],[w0+0.01,g0-0.01],[w0+0.01,g0+0.01]].map(c=>calc(c[0],c[1])).filter(r=>Number.isFinite(r.v));if(!Number.isFinite(base.v))return '当前参数下无法得到有效终值，请检查折现率与永续增长率。';const lo=Math.min(...grid.map(r=>r.v)),hi=Math.max(...grid.map(r=>r.v));return '企业价值 ' + f(base.v) + '；终值现值占比 ' + pct(base.s) + '；折现率与永续增长各上下移 1 个百分点的四种组合区间约 ' + f(lo) + ' ~ ' + f(hi) + '。结果依赖假设，应报告区间而非单点。';},
 multiple:v=>{if(!(v.price>0))return '股价须大于 0。';const pe=v.eps>0?div(v.price,v.eps):NaN,pb=v.bvps>0?div(v.price,v.bvps):NaN,ps=v.sps>0?div(v.price,v.sps):NaN,peg=(v.eps>0&&v.growth>0)?div(v.price/v.eps,v.growth):NaN;return 'PE ' + (Number.isFinite(pe)?f(pe):'利润非正，PE 无意义') + '；PB ' + (Number.isFinite(pb)?f(pb):'净资产非正') + '；PS ' + (Number.isFinite(ps)?f(ps):'收入非正') + '；PEG ' + (Number.isFinite(peg)?f(peg):'增速非正，不适用') + '。请先声明各分母的口径与时期，再判断可比性。';},
-aicheck:v=>{if(v.source===0)return '原文数值为 0，差异率不适用，请改用绝对差异核对。';const d=div(v.ai,v.source)-1;return '绝对差异 ' + f(v.ai-v.source) + '；相对差异 ' + pct(d) + '（以年报原文为基准）。' + (Math.abs(d)<=0.01?'差异在 1% 内，仍需确认口径一致。':'差异超过 1%，应视为未核对：先核对单位、期间与合并范围，再确认是否为 AI 编造。');}
+aicheck:v=>{if(v.source===0)return '原文数值为 0，差异率不适用，请改用绝对差异核对。';const d=div(v.ai,v.source)-1;return '绝对差异 ' + f(v.ai-v.source) + '；相对差异 ' + pct(d) + '（以年报原文为基准）。' + (Math.abs(d)<=0.01?'差异在 1% 内，仍需确认口径一致。':'差异超过 1%，应视为未核对：先核对单位、期间与合并范围，再确认是否为 AI 编造。');},
+fscore:v=>{let s=0,miss=[];for(let i=1;i<=9;i++){if(v['f'+i])s++;else miss.push('F'+i);}return 'F-Score ' + s + ' / 9' + (miss.length?'；未满足：'+miss.join('、'):'；九项均满足') + '。分数用于排序与定优先级，不是买卖信号。';}
 };
 document.querySelectorAll('[data-calculator]').forEach(box=>{
  const kind=box.getAttribute('data-calculator');if(!choices[kind])return;
- const controls=[...box.querySelectorAll('input[type=number]')],out=box.querySelector('[data-result]');if(!out)return;
- const update=()=>{if(controls.some(c=>c.value===''||!Number.isFinite(Number(c.value)))){out.textContent='请输入全部有效数值。';return;}
- const data=Object.fromEntries(controls.map(c=>[c.name,Number(c.value)]));out.textContent=choices[kind](data);};
- controls.forEach(c=>c.addEventListener('input',update));update();
+ const controls=[...box.querySelectorAll('input[type=number],input[type=checkbox]')],out=box.querySelector('[data-result]');if(!out)return;
+ const read=c=>c.type==='checkbox'?(c.checked?1:0):Number(c.value);
+ const update=()=>{if(controls.some(c=>c.type!=='checkbox'&&(c.value===''||!Number.isFinite(Number(c.value))))){out.textContent='请输入全部有效数值。';return;}
+ const data=Object.fromEntries(controls.map(c=>[c.name,read(c)]));out.textContent=choices[kind](data);};
+ controls.forEach(c=>c.addEventListener('input',update));controls.forEach(c=>c.addEventListener('change',update));update();
 });
 })();

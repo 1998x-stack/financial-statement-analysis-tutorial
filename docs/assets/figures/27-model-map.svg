@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" role="img" aria-labelledby="t27m d27m">
+<title id="t27m">三类量化财务模型的分工、输入与边界</title>
+<desc id="d27m">Piotroski F-Score 做基本面质量评分，输入 9 项盈利、杠杆与效率指标；Beneish M-Score 检测盈余管理特征，输入 8 个变量；Altman Z-Score 预测破产风险，输入 5 个比率。三者都不能单独作为交易信号。</desc>
+<rect x="0" y="0" width="840" height="400" fill="#f8f7f2"/>
+<text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">三个模型各管一段，不是一套交易系统</text>
+<g font-size="12.5">
+<rect x="30" y="60" width="246" height="260" rx="10" fill="#e8f3ef" stroke="#116d69"/>
+<text x="50" y="88" font-size="15.5" font-weight="700" fill="#116d69">F-Score</text>
+<text x="50" y="112" fill="#395253">用途：基本面质量评分</text>
+<text x="50" y="136" fill="#395253">输入：9 项指标</text>
+<text x="62" y="158" fill="#577173">盈利 4 项 · 杠杆与流动性 3 项</text>
+<text x="62" y="178" fill="#577173">运营效率 2 项</text>
+<text x="50" y="204" fill="#395253">输出：0–9 分，越高越好</text>
+<text x="50" y="236" fill="#9e493b" font-weight="700">边界</text>
+<text x="50" y="258" fill="#395253">某一条不满足不代表公司变坏</text>
+<text x="50" y="278" fill="#395253">F7（增发）在 A 股需结合用途</text>
+<text x="50" y="298" fill="#395253">只在同业/历史内比较才有意义</text>
+<rect x="297" y="60" width="246" height="260" rx="10" fill="#f9eee5" stroke="#b66a38"/>
+<text x="317" y="88" font-size="15.5" font-weight="700" fill="#b66a38">M-Score</text>
+<text x="317" y="112" fill="#395253">用途：盈余管理特征检测</text>
+<text x="317" y="136" fill="#395253">输入：8 个变量</text>
+<text x="329" y="158" fill="#577173">应收、毛利率、资产质量、增速</text>
+<text x="329" y="178" fill="#577173">折旧、费用率、应计、杠杆</text>
+<text x="317" y="204" fill="#395253">输出：分数，越低越“正常”</text>
+<text x="317" y="236" fill="#9e493b" font-weight="700">边界</text>
+<text x="317" y="258" fill="#395253">阈值 -2.22 是原论文标尺</text>
+<text x="317" y="278" fill="#395253">高分不等于定罪，需更长时间序列</text>
+<text x="317" y="298" fill="#395253">合规的会计变更也会抬高分数</text>
+<rect x="564" y="60" width="246" height="260" rx="10" fill="#f1eef9" stroke="#6657a0"/>
+<text x="584" y="88" font-size="15.5" font-weight="700" fill="#6657a0">Z-Score</text>
+<text x="584" y="112" fill="#395253">用途：破产风险预警</text>
+<text x="584" y="136" fill="#395253">输入：5 个比率</text>
+<text x="596" y="158" fill="#577173">营运资本、留存收益、EBIT</text>
+<text x="596" y="178" fill="#577173">市值/负债、营收/资产</text>
+<text x="584" y="204" fill="#395253">输出：分数，越低越危险</text>
+<text x="584" y="236" fill="#9e493b" font-weight="700">边界</text>
+<text x="584" y="258" fill="#395253">阈值依样本校准，跨行业有偏</text>
+<text x="584" y="278" fill="#395253">连续下降比单年低值更重要</text>
+<text x="584" y="298" fill="#395253">非制造业需用变体公式</text>
+</g>
+<rect x="30" y="336" width="780" height="48" rx="8" fill="#eef2ed" stroke="#577173"/>
+<text x="50" y="356" font-size="12.5" fill="#1c3133">三者都是“定优先级”的筛查工具：把可疑范围缩小，供人工尽调；不是买入/卖出信号，也不构成结论。</text>
+<text x="50" y="376" font-size="12" fill="#577173">阈值与变量定义均来自原论文，仅作概括，具体复现须回到原文并声明样本口径。</text>
+</svg>

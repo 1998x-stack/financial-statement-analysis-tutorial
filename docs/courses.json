@@ -292,12 +292,12 @@
     },
     {
       "num": "27",
-      "title": "量化财务模型构建",
+      "title": "量化财务模型：把评分当筛查，不当信号",
       "topics": [
-        "Piotroski F-Score",
-        "Beneish M-Score",
-        "Altman Z-Score",
-        "多因子打分卡"
+        "F-Score 九项",
+        "M-Score 八变量",
+        "Z-Score 与趋势",
+        "筛查而非交易信号"
       ],
       "file": "27.html"
     },

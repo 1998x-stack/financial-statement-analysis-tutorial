@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" role="img" aria-labelledby="t27z d27z">
+<title id="t27z">Z-Score 连续下降的趋势比单一低值更有预警意义</title>
+<desc id="d27z">教学示意图。某公司 Z 值从第一年的 3.4 连续下降到第五年的 1.3，依次穿过安全区、灰色区并进入危险区。图中 2.99 与 1.81 为原论文对制造业上市公司的阈值。</desc>
+<rect x="0" y="0" width="840" height="300" fill="#f8f7f2"/>
+<text x="40" y="36" font-size="18" font-weight="700" fill="#1a1a1a">看趋势：Z 值连续下滑，比单年低值更值得警惕</text>
+<text x="40" y="58" font-size="12.5" fill="#9e493b">教学示意：以下为假设数值，不对应任何真实公司</text>
+<rect x="80" y="60" width="680" height="48" fill="#e8f3ef"/>
+<rect x="80" y="108" width="680" height="56" fill="#f9eee5"/>
+<rect x="80" y="164" width="680" height="76" fill="#fbeee9"/>
+<line x1="80" y1="108" x2="760" y2="108" stroke="#577173" stroke-dasharray="5 4"/>
+<line x1="80" y1="164" x2="760" y2="164" stroke="#9e493b" stroke-dasharray="5 4"/>
+<text x="768" y="113" font-size="11.5" fill="#577173">Z=2.99</text>
+<text x="768" y="169" font-size="11.5" fill="#9e493b">Z=1.81</text>
+<text x="86" y="82" font-size="12" fill="#116d69">安全区</text>
+<text x="86" y="140" font-size="12" fill="#b66a38">灰色区</text>
+<text x="86" y="196" font-size="12" fill="#9e493b">危险区</text>
+<polyline points="80,88 240,107 400,140 560,162 720,188" fill="none" stroke="#1c3133" stroke-width="2.6"/>
+<g fill="#1c3133" font-size="11">
+<circle cx="80" cy="88" r="4"/><circle cx="240" cy="107" r="4"/><circle cx="400" cy="140" r="4"/><circle cx="560" cy="162" r="4"/><circle cx="720" cy="188" r="4"/>
+<text x="80" y="240" text-anchor="middle">第1年</text><text x="240" y="240" text-anchor="middle">第2年</text><text x="400" y="240" text-anchor="middle">第3年</text><text x="560" y="240" text-anchor="middle">第4年</text><text x="720" y="240" text-anchor="middle">第5年</text>
+</g>
+<text x="40" y="284" font-size="12" fill="#555">图注：若只看第 4 年，Z=1.85 刚跌入灰色区；但把五年连起来看，方向是持续恶化。阈值为原论文对制造业的口径，跨行业套用会有偏差。</text>
+</svg>
