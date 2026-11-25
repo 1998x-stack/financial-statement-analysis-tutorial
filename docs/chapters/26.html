@@ -1,329 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第26章 AI驱动的财报分析</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="AI 可以快速从年报中提取信息、识别叙事变化、圈定异常公司，但它会流畅地编造数字，也无法对结论负责。本页讲清 AI 在财报分析中的适用边界、验证回路与异常检测的正确用法。">
+<title>AI 驱动的财报分析：把生成变成可验证 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html" class="active">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <p>大家好，我是你们的讲师。2025年初，一篇名为《DeepSeek帮我分析了一份年报，我只花了30秒》的文章在投资圈疯传。文章里，一位私募研究员把自己原先需要花整整一个周末才能完成的年报初筛工作，交给大语言模型（LLM）去做——提取关键数据、梳理业务逻辑、对比历史趋势、甚至写出一份初步的分析意见。结果如何？不是取代了研究员，而是让这位研究员的效率提高了至少10倍。</p>
-
-        <p>这不是科幻片里的未来场景，这就是咱们正在经历的变革。2024-2026年，AI在财务分析领域的能力出现了质的飞跃。从DeepSeek到Kimi，从ChatGPT到国内的垂直金融AI产品，这些工具不再是"聊天玩具"，而是真正能辅助专业工作的生产力工具。但问题也随之而来：<strong>AI到底靠谱吗？它的结论可以信吗？怎样用AI才不会踩坑？</strong>本章咱们就把这些问题一个一个讲清楚。</p>
-
-        <h2>AI在财报分析中的应用全景</h2>
-
-        <p>目前AI在财报分析中的应用主要集中在三个方向：<strong>文本分析</strong>、<strong>异常检测</strong>、<strong>自动报告生成</strong>。咱们逐一来看。</p>
-
-        <h3>文本分析</h3>
-        <p>一份A股年报正文通常有150-250页，其中除了数字表格，大量篇幅是文字描述——"管理层讨论与分析"（MD&A）、"公司业务概要"、"风险提示"、"公司治理"等章节。传统分析方式下，分析师需要逐字阅读这些内容，提取关键信息，判断管理层的语气和态度。AI的自然语言处理能力可以瞬间完成这几项工作：<strong>关键信息提取</strong>——从几百页文本中自动摘出业务变化、战略调整、风险因素；<strong>情感分析</strong>——判断管理层对未来的乐观或悲观程度；<strong>叙事框架识别</strong>——公司是在老实陈述事实，还是在用华丽的辞藻包装问题。</p>
-
-        <h3>异常检测</h3>
-        <p>机器学习模型可以同时处理几十个财务指标，找出那些"不应该出现"的模式。比如一家公司的毛利率保持稳定、营收增长正常，但存货周转天数突然增加了两倍，同时应收账款账龄在变长——这些指标单个看可能都不构成警示，但组合在一起，AI模型会标记出"高度异常"的信号。这在传统分析中需要资深分析师花大量时间去比对，而AI可以在几秒钟内完成。</p>
-
-        <h3>自动报告生成</h3>
-        <p>基于分析结果，AI可以自动生成结构化的分析报告——包含关键财务指标摘要、趋势图表、风险提示、估值建议。这不是简单的模板填充，而是真正理解数据含义后的生成式输出。例如，输入一份年报PDF，AI输出一份"三表概览+比率计算+同业对比+投资建议"的完整投研备忘录。</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>应用方向</th>
-                    <th>核心能力</th>
-                    <th>传统方法耗时</th>
-                    <th>AI方法耗时</th>
-                    <th>成熟度</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>文本分析（MD&A/风险提示）</td>
-                    <td>关键信息提取、情感分析、叙事识别</td>
-                    <td>2-4小时</td>
-                    <td>30-60秒</td>
-                    <td>高</td>
-                </tr>
-                <tr>
-                    <td>异常检测</td>
-                    <td>多维指标联动分析、离群值识别</td>
-                    <td>1-2小时</td>
-                    <td>5-10秒</td>
-                    <td>中高</td>
-                </tr>
-                <tr>
-                    <td>自动报告生成</td>
-                    <td>结构化输出、趋势分析、估值摘要</td>
-                    <td>4-8小时</td>
-                    <td>2-5分钟</td>
-                    <td>中</td>
-                </tr>
-                <tr>
-                    <td>数据提取（从PDF到Excel）</td>
-                    <td>OCR、表格识别、结构化转换</td>
-                    <td>1-3小时</td>
-                    <td>10-30秒</td>
-                    <td>高</td>
-                </tr>
-                <tr>
-                    <td>同业对比分析</td>
-                    <td>多公司数据对齐、比率自动化计算</td>
-                    <td>3-6小时</td>
-                    <td>1-3分钟</td>
-                    <td>中高</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="tip">
-            <strong>重要认知：</strong>AI在财报分析中最擅长的是"信息提取和初筛"环节，把分析师从数据搬运的重复劳动中解放出来。但最终的分析判断、投资决策，仍然需要人的经验和判断力。AI是副驾驶（Co-pilot），不是自动驾驶。
-        </div>
-
-        <h2>LLM辅助分析逻辑梳理</h2>
-
-        <p>市面上的大语言模型各有千秋。截至2026年中，国内最主流的几款产品——DeepSeek、Kimi（月之暗面）、通义千问、智谱清言——都已经具备了相当强的长文本分析能力。同时，专业金融AI产品如九数云的"九思"等也开始在垂直领域发力。</p>
-
-        <p>但不管用哪款工具，核心问题是一样的：<strong>怎样提问才能得到靠谱的分析？</strong>咱们来看几个关键技巧。</p>
-
-        <h3>Prompt Engineering：向AI提问的黄金法则</h3>
-
-        <p>很多朋友用AI分析财报时，给一句"帮我分析一下这家公司好不好"就指望AI给出完美的投资建议——这不现实。好的Prompt需要做到以下几点：</p>
-
-        <ul>
-            <li><strong>明确角色和任务：</strong>告诉AI它应该扮演什么角色（资深财务分析师），要完成什么任务（分析某公司2024年年报中的盈利能力趋势）。</li>
-            <li><strong>提供具体框架：</strong>让AI按照你期望的框架输出，而不是自由发挥。比如"请按以下四个维度分析：①资产质量 ②利润质量 ③现金流质量 ④主要风险"。</li>
-            <li><strong>要求引用原始数据：</strong>要求AI的每个结论都必须引用年报中的具体数字和页码，这样你可以核查。这能大幅降低AI"胡说八道"的概率。</li>
-            <li><strong>分步提问：</strong>不要一次问太多。先让AI提取数据，再做比率计算，再做趋势分析，最后给出判断。分步比一步到位更可靠。</li>
-        </ul>
-
-        <pre><code>优质Prompt示例——用LLM分析MD&A文本：
-
-你是一位拥有15年经验的A股财务分析师。
-请分析我提供的[公司名称]2024年年报中"管理层讨论与分析"章节。
-
-请按以下框架输出：
-
-## 一、经营回顾（事实类）
-- 公司2024年主营业务的增长/下降情况（引用原文数据）
-- 公司提及的核心竞争力变化（逐条列出）
-- 新业务/新市场的拓展情况
-
-## 二、管理层语气分析（判断类）
-- 管理层对未来的语气：乐观/中性/悲观
-- 语气相比2023年年报的变化趋势
-- 是否有过度承诺或模糊表述（如"力争""有望"等模糊词频统计）
-
-## 三、风险提示分析（关键类）
-- 2024年年报中新增的风险因素
-- 之前年度的风险因素是否有变化说法
-- 管理层是否避重就轻（对重大风险轻描淡写）
-
-## 四、可疑信号（预警类）
-- 是否存在术语堆砌但信息量低的长段落（可能是"凑字数"）
-- 是否有"好消息单独列、坏消息合并说"的叙事策略
-- 对比财务数据，文字描述和数字是否存在矛盾
-
-请在每个结论后标注所依据的原文段落编号。</code></pre>
-
-        <h3>各模型特点对比</h3>
-
-        <p>到2026年，主流AI工具在财报分析场景下各有特色。下表基于实际使用体验整理，供大家参考：</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>工具</th>
-                    <th>厂商</th>
-                    <th>上下文长度</th>
-                    <th>PDF支持</th>
-                    <th>金融领域表现</th>
-                    <th>免费/付费</th>
-                    <th>推荐场景</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>DeepSeek</td>
-                    <td>深度求索</td>
-                    <td>100万tokens</td>
-                    <td>优秀（表格识别强）</td>
-                    <td>★★★★★</td>
-                    <td>免费</td>
-                    <td>年报全文分析、深度推理</td>
-                </tr>
-                <tr>
-                    <td>Kimi</td>
-                    <td>月之暗面</td>
-                    <td>20万tokens</td>
-                    <td>优秀</td>
-                    <td>★★★★☆</td>
-                    <td>免费</td>
-                    <td>长文档快速阅读、摘要</td>
-                </tr>
-                <tr>
-                    <td>九思</td>
-                    <td>九数云</td>
-                    <td>专业版不限</td>
-                    <td>原生支持</td>
-                    <td>★★★★★</td>
-                    <td>付费（企业版）</td>
-                    <td>专业财报分析、数据可视化</td>
-                </tr>
-                <tr>
-                    <td>ChatGPT</td>
-                    <td>OpenAI</td>
-                    <td>12.8万tokens</td>
-                    <td>优秀</td>
-                    <td>★★★★☆</td>
-                    <td>付费</td>
-                    <td>英文年报分析、全球对标</td>
-                </tr>
-                <tr>
-                    <td>通义千问</td>
-                    <td>阿里云</td>
-                    <td>100万tokens</td>
-                    <td>良好</td>
-                    <td>★★★★☆</td>
-                    <td>免费+付费</td>
-                    <td>A股年报分析、数据提取</td>
-                </tr>
-                <tr>
-                    <td>智谱清言</td>
-                    <td>智谱AI</td>
-                    <td>12.8万tokens</td>
-                    <td>良好</td>
-                    <td>★★★☆☆</td>
-                    <td>免费+付费</td>
-                    <td>简单数据提取、问答</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>NLP读年报</h2>
-
-        <p>在财务文本分析中，<strong>"管理层讨论与分析"</strong>（MD&A）是最有价值的部分。因为MD&A不像财务报表数字那样需要遵循严格的会计准则——它是管理层用自己的话向股东汇报经营情况。这里面信息量巨大，而且往往"字里行间有文章"。</p>
-
-        <h3>文本情感分析</h3>
-
-        <p>AI可以量化分析MD&A中的语言情感倾向。比如统计积极词汇（"增长""突破""创新""领先"）和消极词汇（"挑战""下滑""不确定性""风险"）的出现频率和上下文语境。研究发现，MD&A情感得分与公司未来业绩存在显著相关性——<strong>管理层集体表现出悲观情绪的公司，未来6个月股价下跌的概率显著更高</strong>。</p>
-
-        <p>一个实战技巧：将AI对MD&A的情感分析结果量化为一个"管理层信心指数"（0-100分）。如果一家公司的营收数据很好看（增长30%），但信心指数只有40分，那么一定是某些报表上看不到的问题让管理层感到不安——可能是行业政策变化、核心客户流失、或者技术路线被颠覆。</p>
-
-        <h3>叙事框架识别</h3>
-
-        <p>更高级的分析是对公司"叙事框架"的识别。同一件事情，管理层可以用完全不同的方式说出来：</p>
-
-        <ul>
-            <li><strong>"业绩下滑"框架：</strong>"公司2024年营收下降15%，主要受宏观经济下行影响"——这是直接面对问题。</li>
-            <li><strong>"甩锅"框架：</strong>"面对复杂的市场环境和诸多不可抗力因素，公司业绩出现阶段性调整"——用模糊语言弱化问题。</li>
-            <li><strong>"画饼"框架：</strong>"虽然短期业绩承压，但公司在新赛道上的布局已经初见成效，未来可期"——用未来故事对冲当前问题。</li>
-        </ul>
-
-        <p>AI可以识别出公司的叙事策略是否发生了显著变化。比如一家一直在用"直接面对"框架的公司，突然改用"甩锅"框架——这本身就是一个重要的预警信号。</p>
-
-        <div class="highlight">
-            <strong>实战技巧：</strong>把同一家公司过去3-5年的MD&A文本放在一起，让AI做"纵向对比分析"。如果发现管理层描述同一类问题（如行业竞争）时的语气逐年变得悲观，或者对同一指标（如市占率）越来越模糊——这就是需要深挖的信号。
-        </div>
-
-        <h3>区分"讲故事"和"讲真话"</h3>
-
-        <p>AI虽然不能完全替代人的判断，但在帮助识别"包装性语言"方面非常有效。例如，AI可以标记出以下模式：</p>
-
-        <ul>
-            <li><strong>信息密度低的长段落：</strong>用大量行业通用术语堆砌，但实质信息很少——典型的"凑字数"。</li>
-            <li><strong>数据与描述不匹配：</strong>文字说"取得了突破性进展"，但对应的业务数据却在下滑。</li>
-            <li><strong>选择性披露：</strong>详细讨论成功的业务，对失败的业务线只字不提或一笔带过。</li>
-        </ul>
-
-        <div class="warning">
-            <strong>踩坑故事——AI幻觉：</strong>2025年初，一位朋友在投资交流群里分享了用某AI工具生成的"宁德时代深度分析报告"。报告写得非常专业——有数据、有图表、有结论，甚至引用了"2024年Q4财报"的具体数字。群里有十几个人觉得分析得很到位。但恰好群里有一位券商研究员，他仔细一查发现：AI引用的"2024年Q4营收数据"和实际年报数据差了将近20%。AI自行"脑补"了一些数字来填补分析框架的空白，而这些脑补的数字看起来非常真实——因为AI的语言流畅性太强了，让人下意识地相信它说得对。更可怕的是，如果不逐项核实，几乎不可能发现这些错误。这件事给群里的所有人上了一课：<strong>AI的输出永远不能100%信任</strong>，尤其是在涉及具体数字的时候。一定要要求每个数字都有原始出处，并且自己抽查至少3-5个关键数据点。
-        </div>
-
-        <h2>AI异常检测</h2>
-
-        <p>除了文本分析，AI在数字层面的异常检测能力也值得关注。</p>
-
-        <h3>用机器学习识别异常财务比率</h3>
-
-        <p>传统的财务比率分析依赖预设的阈值和规则（比如资产负债率超过70%就是高风险），但这种方法有两个问题：第一，不同行业的阈值差别很大；第二，真正的危险往往不是某个指标超标，而是<strong>多个指标的组合模式异常</strong>。</p>
-
-        <p>机器学习中的无监督学习方法（如Isolation Forest、One-Class SVM、Autoencoder）可以很好地解决这个问题。这些模型会学习大量上市公司的财务数据分布，然后自动标记出那些"与众不同的公司"——不是只针对某个指标，而是综合所有指标的模式识别。</p>
-
-        <pre><code>AI异常检测的实战流程（以Isolation Forest为例）：
-
-1. 数据准备
-   从Wind/Tushare获取同行业所有上市公司最近3年的财务数据
-   选取30-50个核心指标（毛利率、净利率、ROE、资产负债率、流动比率
-         存货周转率、应收账款周转率、经营现金流/净利润……）
-
-2. 特征工程
-   标准化所有指标（Z-score归一化）
-   添加同比变化量（Delta毛利率、Delta应收账款占比等）
-   去除高度相关的冗余指标（保留信息量最大的）
-
-3. 模型训练
-   用Isolation Forest对标准化后的数据进行训练
-   设置污染率（contamination）为5%——行业里大约5%的公司是异常样本
-
-4. 结果解读
-   对每家公司得到"异常得分"（越高越异常）
-   对标记的异常公司，用SHAP值解释是哪些指标导致了高异常得分
-   重点关注"没有被新闻覆盖过"的安静异常公司——可能藏着尚未被发现的财务问题
-
-5. 人工复核
-   对AI标记的异常公司，逐家进行人工尽调
-   AI负责"圈定范围"（大幅缩小需要人工检查的名单）
-   人负责"深度判断"（对每家公司做实质性分析）</code></pre>
-
-        <div class="tip">
-            <strong>最佳实践：</strong>AI异常检测在"行业内部对比"时效果最好——把同一行业的一百家公司放在一起跑模型。跨行业的异常检测意义不大，因为不同行业的财务结构差异本身就很大。另外，建议把异常检测作为"初步筛选"工具，而不是"最终判断"工具。
-        </div>
-
-        <p>AI驱动的财报分析正在快速进化，但它的核心价值不是"替代分析师"，而是"放大分析师"。好的分析师+AI工具，可以做到原来5-10个人的工作量。但同时，如果你不具备基本的财报分析功底——看不懂三张表、不会算比率、不理解业务逻辑——那AI给你的帮助也有限，因为你没有能力判断AI输出的质量。</p>
-
-        <p>下一章，咱们将从"AI辅助分析"更进一步，进入<strong>量化财务模型构建</strong>。咱们会用三大经典模型——Piotroski F-Score、Beneish M-Score、Altman Z-Score——来搭建一套客观、可复用的财务评分体系。这些模型不靠直觉、不靠感觉，靠数据和逻辑说话。准备好了吗？下一章见！</p>
-
-        <div class="footer-nav">
-            <a href="25.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="27.html">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 26 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">AI 能做什么、不能做什么</a>
+<a href="#workflow">人机分工与验证回路</a>
+<a href="#hallucination">幻觉与逐条核对</a>
+<a href="#mdna">读年报文本：情感与叙事</a>
+<a href="#anomaly">异常检测的正确用法</a>
+<a href="#calculator">AI 输出核对工作台</a>
+<a href="#checklist">核查清单与自测</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 26 / 28</span>
+<h1>AI 驱动的财报分析：把生成变成可验证</h1>
+<p class="lead">大语言模型能快速读完全文、抽取要点、圈出异常，但它会流畅地编造数字，也无法对结论负责。使用 AI 的正确姿势不是“相信输出”，而是把它放在一条带核对环节的流程里。</p>
+<p class="meta">2026-11 更新 · 原理 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">AI 能做什么、不能做什么</h2>
+<p>大语言模型（LLM）在财报分析中的核心能力，是在短时间内处理大量文本与数字，把“找线索”这一步加速：摘要长文档、抽取关键数字、比较不同年份的表述、按预设框架生成初稿。</p>
+<p>它不能做的同样清楚：它无法验证自己说的是不是真的，也不会告诉你哪个数字是编的。它的输出是一个“看起来很完整的草稿”，而不是已经核对过的结论。<strong>AI 不能对结论负责，能负责的只有签字的分析者</strong>。</p>
+<div class="callout">
+<p><strong>先说结论：</strong>AI 输出需要 100% 核对，尤其是具体数字、页码与引文。“模型很强”与“结果可信”是两回事——流畅的语言本身不能作为正确性的证据。</p>
 </div>
+<p>由此，本章把 AI 的用法拆成三块：人机分工的流程（什么交给 AI、什么必须人做）、幻觉与核对的方法、以及异常检测工具的正确位置。</p>
+</section>
+<section id="workflow" aria-labelledby="workflow-title">
+<h2 id="workflow-title">人机分工与验证回路</h2>
+<p>把 AI 放进流程时，关键是分清哪一段交给它、哪一段必须由人接手。一个可用的分工是：AI 负责“缩小范围”（提取、初筛、生成草稿），人负责“核对与判断”（回到原文验数字、结合业务做结论）。</p>
+<figure>
+<img src="../assets/figures/26-ai-workflow.svg" alt="流程：年报与数据经 AI 提取初筛生成草稿，再经人工抽样核对回到原文，最后进入判断与决策；核对是不能跳过的验证回路" width="840" height="300" loading="lazy">
+<figcaption>图 1：AI 加速的是“找线索”，不是“下结论”。抽样核对这条回路一旦被省略，整个流程就只是更快地传递未经核实的数字。</figcaption>
+</figure>
+<p>下面这张表把常见任务按“适合交给 AI”到“必须人做”排列；表中不列任何具体产品的参数，因为模型版本、上下文长度与价格会随时变化，应以厂商官方说明为准。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>任务</th><th>交由 AI 的部分</th><th>必须人做的部分</th></tr></thead>
+<tbody>
+<tr><td>长文阅读</td><td>摘要、按章节提取要点</td><td>逐一核对数字与引文是否在原文中</td></tr>
+<tr><td>比率计算</td><td>根据给定口径算出结果</td><td>确认分母口径、期间与合并范围</td></tr>
+<tr><td>异常筛查</td><td>圈出指标组合异常的候选公司</td><td>对候选公司做实质尽调，判断异常成因</td></tr>
+<tr><td>报告初稿</td><td>生成结构化草稿</td><td>删除无法溯源的句子，补上出处与判断依据</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="hallucination" aria-labelledby="hallucination-title">
+<h2 id="hallucination-title">幻觉与逐条核对</h2>
+<p>大语言模型是“生成”模型，不是“检索”模型：当它需要填满一个分析框架而找不到对应事实时，可能生成一个看起来很像真的数字。这类错误被称为“幻觉”（hallucination），而它的危险之处在于语言越流畅，越容易被当成已经核实的内容。</p>
+<figure>
+<img src="../assets/figures/26-hallucination-check.svg" alt="教学示意：三条 AI 生成的结论，前两条可在原文定位，第三条数字在原文中无法找到，属于需删除或核实的疑似生成内容" width="840" height="320" loading="lazy">
+<figcaption>图 2：判断输出是否可用，不看它写得多完整，而看每个数字能否指回原文。图中为教学示意，不对应任何真实公司或报告。</figcaption>
+</figure>
+<p>降低幻觉的可操作做法：</p>
+<ul>
+<li><strong>要求可溯源的引用：</strong>让 AI 对每个结论标注原文段落或页码，然后你来抽查；无法定位的句子直接删除。</li>
+<li><strong>分步提问：</strong>先提取数据、再算比率、再做趋势、最后判断，比“一步给出投资建议”更可控。</li>
+<li><strong>固定口径：</strong>在提问时写明期间、单位、合并范围与分母口径，避免 AI 自行“补充”口径。</li>
+<li><strong>把计算交给确定性工具：</strong>比率与折现交给表格或代码，AI 只负责解释结果，不让它心算。</li>
+</ul>
+<div class="callout warning">
+<p><strong>一个具体纪律：</strong>对涉及金额、比例、页码的每一个数字，至少抽查 3–5 个关键数据点回到原文；核对不上的，一律视为未验证。</p>
+</div>
+</section>
+<section id="mdna" aria-labelledby="mdna-title">
+<h2 id="mdna-title">读年报文本：情感与叙事</h2>
+<p>除数字表格外，年报中的“管理层讨论与分析”（MD&A）、业务概要、风险提示等文字部分信息密度很高。它们不像报表数字那样受严格准则约束，因此表述本身也值得看。</p>
+<h3>情感分析：只能当线索</h3>
+<p>AI 可以统计积极词与消极词的频率，输出一个“语气得分”。但这里有三层限制：一是词典与分词方式不同，得分会变；二是同一句在不同语境下情感可能相反；三是部分学术研究发现年报语气与后续业绩存在统计相关，但<strong>相关不等于因果</strong>，不同研究的结论并不一致，也不构成交易信号。</p>
+<p>因此，“利润好看但语气得分低”只能作为一个<strong>需要进一步核实的提示</strong>，不能直接推断出“一定存在报表外的问题”。正确的下一步是回到附注与公告，看是否真的有未解决的风险事项。</p>
+<h3>叙事框架：看变化，不看单年</h3>
+<p>同一件事可以用不同方式描述：直接陈述、模糊化（“阶段性调整”）、用未来故事对冲当前问题（“新赛道初见成效”）。单独看一年很难判断，但把同一家公司连续几年的 MD&A 放在一起做纵向对比，语气与措辞的变化本身就是一个可选线索。</p>
+<ul>
+<li><strong>看具体性：</strong>同一类问题是否一年比一年说得模糊（如不再给市占率具体数字）。</li>
+<li><strong>看能与数据对应的部分：</strong>文字声称“突破”时，对应业务的分部收入是否真的在增长。</li>
+<li><strong>看披露的平衡性：</strong>是否只详述成功业务，对失败业务一笔带过。</li>
+</ul>
+<p>注意：这些信号定义较主观，容易受到行业术语与公司惯例影响；把它作为尽调的方向，而不是直接评级依据。</p>
+</section>
+<section id="anomaly" aria-labelledby="anomaly-title">
+<h2 id="anomaly-title">异常检测的正确用法</h2>
+<p>传统比率分析依赖预设阈值（如资产负债率超过某值即高风险），但阈值因行业而异，真正危险往往不是单个指标超标，而是多个指标的组合模式异常。无监督学习方法（如 Isolation Forest、One-Class SVM、Autoencoder）可以学习同业财务数据的分布，标记出“与大多数公司不同的样本”。</p>
+<div class="step-list">
+<div class="step"><b>1</b><p>数据准备：取同一行业上市公司的财务数据，选取一组核心指标（毛利率、ROE、资产负债率、周转率、经营现金流/净利润等）。</p></div>
+<div class="step"><b>2</b><p>特征工程：标准化指标，加入同比变化量（如毛利率变化、应收占比变化），剔除高度相关的冗余指标。</p></div>
+<div class="step"><b>3</b><p>模型训练：用无监督模型打分；注意污染率（预期异常比例）是人为设定的参数，它会直接决定被标出的公司数量，而不是由数据自动得出。</p></div>
+<div class="step"><b>4</b><p>结果解读：用 SHAP 等工具看哪些指标拉高了异常分；重点看“没有被新闻覆盖”的安静异常公司。</p></div>
+<div class="step"><b>5</b><p>人工复核：AI 负责“圈定名单”，人负责“实质尽调”。</p></div>
+</div>
+<div class="callout warning">
+<p><strong>三个必须声明的边界：</strong>一，异常不等于舞弊，它只说明“与同业不同”；二，一般应在行业内比较，跨行业的财务结构差异本身就会造成大量假阳性；三，模型结果受参数与样本区间影响，必须由人工复核，不能直接当作交易信号。</p>
+</div>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">AI 输出核对工作台</h2>
+<p>把 AI 引用的数字与年报原文的数字放在一起，算一次差异率。默认演示：AI 引用 58.3 亿元、原文 54.6 亿元，差异率约 6.78%，超过 1% 即应视为未核对。</p>
+<div class="lab" data-calculator="aicheck">
+<h3>核对一个数字</h3>
+<p>两个输入需为同一指标、同一期间、同一单位。</p>
+<div class="lab-grid">
+<label>AI 引用的数值<input type="number" name="ai" value="58.3" step="any" aria-label="AI 引用的数值"></label>
+<label>年报原文的数值<input type="number" name="source" value="54.6" step="any" aria-label="年报原文的数值"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示差异。</div>
+</div>
+<p>这个工作台只做一个括号运算，它不能替你确认口径是否一致。如果差异很大，先怀疑口径（单位、合并范围、期间）而不是马上判定“AI 错了”。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">核查清单与自测</h2>
+<div class="step-list">
+<div class="step"><b>1</b><p>每个结论后标注原文页码或段落，无法定位的句子直接删除。</p></div>
+<div class="step"><b>2</b><p>对金额、比例、页码至少抽查 3–5 个关键数据点回到原文。</p></div>
+<div class="step"><b>3</b><p>比率与折现交给表格或代码，不让 AI 心算。</p></div>
+<div class="step"><b>4</b><p>情感与叙事分析只当线索，回到附注与公告核实具体事项。</p></div>
+<div class="step"><b>5</b><p>异常检测限行业内比较，异常名单一律人工复核，不作交易信号。</p></div>
+</div>
+<details class="exercise"><summary>自测一：AI 生成的报告语言流畅、结构完整，能否直接使用？</summary><p>不能。流畅与完整不是正确性的证据。需要把每个数字回到原文核对，删除无法溯源的句子，能核对的才能进入结论。</p></details>
+<details class="exercise"><summary>自测二：异常检测模型把某公司标为“行业内最异常”，断定它造假吗？</summary><p>不能。异常只说明它与同业不同，成因可能是业务模式、会计政策差异或真实的新情况；是否构成造假需监管或司法程序认定。模型的作用是确定尽调优先级。</p></details>
+<p><strong>结论：</strong>AI 的价值在于把信息处理的速度提上去，而不是把判断外包出去。把模型放在“提取—核对—判断”的流程里，它才是工具；去掉核对环节，它只是更快地产生不可靠的结论。</p>
+</section>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字与图例均为<strong>教学示意</strong>，不指向任何真实公司或真实报告，也不构成投资建议。AI 工具不是会计准则或监管强制要求，模型能力与参数会随时变化；引用具体产品时必须注明版本与日期。</p>
+<p>关于“年报文本语气与后续业绩的统计关系”，学术研究结论并不一致，且相关不等于因果；本页不给出具体相关系数或预测概率，以避免误用。</p>
+<ol>
+<li><a href="https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements" target="_blank" rel="noopener noreferrer">SEC · Beginners' Guide to Financial Statements（年报与附注结构）</a></li>
+<li><a href="https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques" target="_blank" rel="noopener noreferrer">CFA Institute · Financial Analysis Techniques（分析中的信息验证与局限）</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+</ol>
+</section>
+<nav class="article-nav" aria-label="相邻章节"><a href="25.html">← 上一章</a><a href="27.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 26</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>
