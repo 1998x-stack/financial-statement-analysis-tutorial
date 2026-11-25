@@ -1,319 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第24章 Python财报分析入门</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Python 用来做批量数据获取、比率计算、可视化与自动化报告。本页讲清工具链、脚本流程，以及分析中最易出错的一步——净利润有三种口径，用错分母会让市盈率整体偏掉。">
+<title>Python 财报分析：把重复劳动自动化 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html" class="active">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <p>大家好，我是你们的讲师。上一章咱们用Excel搭建了一个漂亮的财报分析框架——但不知道你有没有遇到这些问题：当你想分析10家公司5年的数据时，Excel变得巨慢；当你想做一个复杂的统计回归时，Excel做不了；当你想定期获取最新数据并自动更新报告时，Excel全靠手动操作。</p>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 24 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">Python 的定位</a>
+<a href="#toolchain">工具链与责任边界</a>
+<a href="#data">数据与口径核对</a>
+<a href="#ratios">比率计算与可视化</a>
+<a href="#automation">自动化脚本</a>
+<a href="#calculator">口径差异工作台</a>
+<a href="#checklist">核查清单与自测</a>
+<a href="#references">依据与边界</a>
+</div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 24 / 28</span>
+<h1>Python 财报分析：把重复劳动自动化</h1>
+<p class="lead">当公司数量、年份或数据源变多，手工复制粘贴会成为瓶颈。Python 的价值是批量、可复现、可自动化；但脚本算得再快，也无法替你确认口径——分析中最常见的错误恰恰出在分母上。</p>
+<p class="meta">2026-11 更新 · 流程 / 代码示意 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">Python 的定位</h2>
+<p>Python 不取代表格软件：临时查看、手工勾稽用表格更快；公司数量多、需要重复运行、需要把口径写成代码固定下来时，Python 更合适。两者的分工是“人做判断、脚本做重复”。</p>
+<figure>
+<img src="../assets/figures/24-pipeline.svg" alt="Python 财报分析流程：数据源、清洗与口径核对、比率计算、可视化、报告导出，其中口径核对是关键环节" width="840" height="260" loading="lazy">
+<figcaption>图 1：脚本只是流水线。清洗与口径核对是唯一无法自动化的人为判断环节，它决定后面所有比率的分子与分母。</figcaption>
+</figure>
+<div class="callout">
+<p><strong>预期管理：</strong>学 Python 不是为了“一键生成结论”。脚本能保证同一口径下反复算得一致，不能保证口径选对；也不要把任何库的输出当成已经核对过的数据。</p>
+</div>
+</section>
+<section id="toolchain" aria-labelledby="toolchain-title">
+<h2 id="toolchain-title">工具链与责任边界</h2>
+<p>常见工具分为两类：数据接口（获取报表与行情）与数据处理/绘图（计算与可视化）。它们都是第三方库，接口名称、可用性与数据质量会随版本变化。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>工具</th><th>大致定位</th><th>使用时要核对什么</th></tr></thead>
+<tbody>
+<tr><td>akshare / baostock</td><td>A 股数据接口（开源、免费为主）</td><td>字段含义、单位、复权与报告期口径；与年报原文抽查比对</td></tr>
+<tr><td>tushare</td><td>A 股数据接口（部分接口需权限或积分）</td><td>同上；不同数据源口径可能不一致</td></tr>
+<tr><td>yfinance 等</td><td>境外市场数据</td><td>币种、会计准则（IFRS/US GAAP）与期间差异</td></tr>
+<tr><td>pandas</td><td>表格数据处理</td><td>数据类型、缺失值与索引对齐（易静默出错）</td></tr>
+<tr><td>matplotlib / seaborn</td><td>绘图与可视化</td><td>中文字体与坐标轴单位；图形不能代替数据核对</td></tr>
+</tbody>
+</table>
+</div>
+<p>边界提醒：这些库<strong>不是会计准则或监管披露本身</strong>，它们只是搬运与加工数据的工具。任何进入报告的数字，都应以公司年报、交易所披露或监管网站为准，并记录取数日期。</p>
+</section>
+<section id="data" aria-labelledby="data-title">
+<h2 id="data-title">数据与口径核对</h2>
+<p>获取财务数据的流程通常分三步：安装依赖、调用接口取回表格、把长表整理成“年份 × 科目”的宽表。下面是<strong>流程示意</strong>，接口名称与参数会随版本变化，不能照抄当作保证可用的代码：</p>
+<pre><code># 流程示意（库名/接口名可能随版本变化）
+df = fetch_income_statement(stock_code)   # 取回长表
+annual = df[df['报告期'].str.endswith('12-31')]   # 只留年报
+wide = annual.pivot_table(index='报告期', columns='科目', values='数值', aggfunc='first')
+print(df.columns)   # 第 1 件事：打印列名与口径
+</code></pre>
+<p>取回数据后的第一件事不是算比率，而是核对口径。<strong>“净利润”至少有三种含义</strong>，用错分母会让市盈率、每股收益、ROE 整体偏掉：</p>
+<figure>
+<img src="../assets/figures/24-netprofit-scope.svg" alt="教学示意：合并净利润等于归母净利润加少数股东损益；归母净利润可分为扣非归母净利润与非经常性损益" width="840" height="300" loading="lazy">
+<figcaption>图 2：三种口径是嵌套关系，不是同义词。用更大的合并净利润作分母会把市盈率算低。图为教学示意。</figcaption>
+</figure>
+<ul>
+<li><strong>合并净利润：</strong>含少数股东损益，反映集团整体。</li>
+<li><strong>归母净利润：</strong>只属于母公司股东，是估值最常用的口径。</li>
+<li><strong>扣非归母净利润：</strong>再扣除一次性损益，反映主业盈利能力。</li>
+</ul>
+<p>除口径外，还要核对单位（元/万元/亿元）、期间（年报/季报/滚动十二个月）与合并范围。最可靠的做法是：拿脚本算出的一个关键科目，与公司年报原文逐一比对。</p>
+</section>
+<section id="ratios" aria-labelledby="ratios-title">
+<h2 id="ratios-title">比率计算与可视化</h2>
+<p>比率的优点是可以批量计算并复现。下面是一段<strong>不依赖任何外部数据源</strong>的纯函数示意，可直接在本地 Python 里运行并验证结果：</p>
+<pre><code>def ratios(revenue, cogs, net_profit, avg_assets, avg_equity):
+    if revenue <= 0 or avg_assets <= 0:
+        return {'毛利率': None, '净利率': None, 'ROA': None, 'ROE': None}
+    if avg_equity <= 0:
+        return {'毛利率': None, '净利率': None,
+                'ROA': None, 'ROE': None}  # 负权益时 ROE 失效
+    return {
+        '毛利率': (revenue - cogs) / revenue,
+        '净利率': net_profit / revenue,
+        'ROA': net_profit / avg_assets,
+        'ROE': net_profit / avg_equity,
+    }
 
-        <p>这就是咱们今天要学Python的原因。<strong>Python不是为了取代Excel，而是为了填补Excel做不到的那些事</strong>。在专业投资机构里，Excel和Python是并存的：Excel用来做快速查看和临时分析，Python用来做批量处理、统计建模和自动化报告生成。两者相辅相成，缺一不可。</p>
-
-        <p>别担心你没有编程基础。咱们这章不是Python编程课，而是一堂"用Python做财报分析"的实战课。你不需要成为程序员，你只需要能看懂和修改代码就够了——这就跟会用Excel公式是一个道理。</p>
-
-        <h2>Python财务分析工具链</h2>
-
-        <p>做Python财报分析，你需要了解以下几个核心工具：</p>
-
-        <ul>
-            <li><strong>akshare：</strong>开源的A股数据接口库，免费、数据源多、更新快。支持获取A股个股的三大报表、财务指标、行情数据等。这是目前国内做A股分析最推荐的免费数据源。</li>
-            <li><strong>tushare：</strong>老牌的A股数据接口库，数据质量高，但部分接口需要积分（付费）。如果你做深度研究且预算允许，tushare的财务数据质量会比akshare更稳定。</li>
-            <li><strong>baostock：</strong>免费的A股数据接口，无需注册，但数据覆盖面和更新速度略逊于akshare。</li>
-            <li><strong>yfinance：</strong>获取美股（如苹果、特斯拉）财务数据的利器，通过雅虎财经接口获取数据。做跨境比较分析时非常有用。</li>
-            <li><strong>pandas：</strong>Python数据分析的核心库。处理表格数据、计算财务比率、数据清洗全靠它。相当于"Excel的Python版本"。</li>
-            <li><strong>matplotlib + seaborn：</strong>画图库。做趋势图、柱状图、热力图、雷达图等财务图表。</li>
-        </ul>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>库名</th>
-                    <th>覆盖市场</th>
-                    <th>免费程度</th>
-                    <th>数据范围</th>
-                    <th>推荐场景</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>akshare</td>
-                    <td>A股 + 基金 + 期货</td>
-                    <td>完全免费</td>
-                    <td>三大报表、财务指标、行情</td>
-                    <td>入门首选、个人研究</td>
-                </tr>
-                <tr>
-                    <td>tushare</td>
-                    <td>A股 + 基金 + 指数</td>
-                    <td>基础免费，高级需积分</td>
-                    <td>三大报表、财务指标、估值数据</td>
-                    <td>专业研究、量化分析</td>
-                </tr>
-                <tr>
-                    <td>baostock</td>
-                    <td>A股</td>
-                    <td>完全免费</td>
-                    <td>日K、分钟K、基本面</td>
-                    <td>零门槛快速上手</td>
-                </tr>
-                <tr>
-                    <td>yfinance</td>
-                    <td>美股为主</td>
-                    <td>完全免费</td>
-                    <td>财务报表、行情、分红</td>
-                    <td>美股分析、跨境比较</td>
-                </tr>
-                <tr>
-                    <td>pandas</td>
-                    <td>——</td>
-                    <td>完全免费</td>
-                    <td>数据处理核心库</td>
-                    <td>所有分析场景必用</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>数据获取实战</h2>
-
-        <p>咱们用一个具体的例子来演示。假设我们要分析贵州茅台（600519.SH）近5年的财务状况。</p>
-
-        <p>首先安装必要的库（只需运行一次）：</p>
-
-        <pre><code>pip install akshare pandas matplotlib seaborn openpyxl</code></pre>
-
-        <p>然后获取财务数据：</p>
-
-        <pre><code>import akshare as ak
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# 设置中文显示
-plt.rcParams['font.sans-serif'] = ['SimHei', 'PingFang SC']
-plt.rcParams['axes.unicode_minus'] = False
-
-# 获取贵州茅台的利润表（按年度）
-# akshare提供了按报告期获取的接口
-stock_code = "600519"  # 贵州茅台
-
-# 获取资产负债表
-balance_sheet = ak.stock_financial_balance_sheet_by_report_em(
-    symbol=stock_code
-)
-# 获取利润表
-income_stmt = ak.stock_financial_profit_by_report_em(
-    symbol=stock_code
-)
-# 获取现金流量表
-cash_flow = ak.stock_financial_cash_flow_by_report_em(
-    symbol=stock_code
-)
-
-# 查看数据结构
-print(income_stmt.head())
-print(income_stmt.columns.tolist())</code></pre>
-
-        <p>获取到的数据是一个DataFrame（类似Excel表格），每一行是一个报告期的某个科目，列是报告期名称和数据值。接下来就是数据清洗和整理的步骤——选择需要的报告期（注意区分"年报"和"季报"）、筛选关键科目、构造适合计算的数据结构：</p>
-
-        <pre><code># 筛选年报数据（报告期包含'12-31'的为年报）
-annual_reports = income_stmt[
-    income_stmt['报告期'].str.contains('12-31')
-].copy()
-
-# 选取关键科目
-key_items = ['营业收入', '营业成本', '净利润', '归属于母公司所有者的净利润']
-
-# 转置数据：行=年份，列=科目
-annual_data = annual_reports.pivot_table(
-    index='报告期', columns='科目', values='数值', aggfunc='first'
-)
-
-# 提取需要的科目
-if '营业收入' in annual_data.columns:
-    revenue = annual_data['营业收入']
-if '净利润' in annual_data.columns:
-    net_profit = annual_data['净利润']
-
-print(revenue)</code></pre>
-
-        <h2>比率计算与可视化</h2>
-
-        <p>数据到手后，咱们就可以用pandas快速计算所有核心财务比率了。不同于Excel需要一个个写公式，Python可以批量计算：</p>
-
-        <pre><code># 创建一个比率分析DataFrame
-ratios = pd.DataFrame(index=annual_reports['报告期'].unique())
-
-# 计算毛利率
-if '营业收入' in annual_data.columns and '营业成本' in annual_data.columns:
-    ratios['毛利率'] = (
-        (annual_data['营业收入'] - annual_data['营业成本'])
-        / annual_data['营业收入'] * 100
-    )
-
-# 计算净利率
-if '营业收入' in annual_data.columns and '净利润' in annual_data.columns:
-    ratios['净利率'] = (
-        annual_data['净利润'] / annual_data['营业收入'] * 100
-    )
-
-# 从资产负债表获取总资产和净资产数据
-total_assets = balance_sheet_data['资产总计']
-total_equity = balance_sheet_data['归属于母公司股东权益合计']
-
-# 计算ROA和ROE
-ratios['ROA'] = net_profit / total_assets * 100
-ratios['ROE'] = net_profit / total_equity * 100
-
-# 计算营收增长率
-ratios['营收增长率'] = revenue.pct_change() * 100
-
-# 打印结果
-print(ratios.round(2))</code></pre>
-
-        <p>有了这些比率，画趋势图就是几行代码的事：</p>
-
-        <pre><code># 绘制核心比率趋势图
-fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-
-# 毛利率和净利率趋势
-ratios[['毛利率', '净利率']].plot(
-    ax=axes[0, 0], marker='o', title='盈利能力趋势'
-)
-axes[0, 0].set_ylabel('%')
-
-# ROE和ROA趋势
-ratios[['ROE', 'ROA']].plot(
-    ax=axes[0, 1], marker='o', title='回报率趋势'
-)
-axes[0, 1].set_ylabel('%')
-
-# 营收增长率趋势
-ratios['营收增长率'].plot(
-    ax=axes[1, 0], marker='o', title='营收增长率', color='green'
-)
-axes[1, 0].axhline(y=0, color='red', linestyle='--')
-
-# 营收和净利润双轴图
-ax1 = axes[1, 1]
-revenue.plot(ax=ax1, marker='o', color='blue', label='营收(亿)')
-ax2 = ax1.twinx()
-net_profit.plot(ax=ax2, marker='s', color='orange', label='净利润(亿)')
-ax1.set_title('营收与净利润趋势')
-ax1.legend(loc='upper left')
-ax2.legend(loc='upper right')
-
-plt.tight_layout()
-plt.savefig('financial_trends.png', dpi=150)
-plt.show()</code></pre>
-
-        <p>你还可以用雷达图来综合对比多家公司的财务健康度——把ROE、毛利率、资产负债率、营收增长率、经营现金流/营收等指标画在同一个雷达图上，每家公司占据一个多边形，一眼就能看出哪家公司最"均衡"。</p>
-
-        <div class="tip">
-            <strong>效率对比：</strong>同样的分析在Excel中需要手动复制粘贴数据、拖拽公式、调整图表——总共大约40分钟。用Python脚本，从数据获取到图表生成，<strong>全程不到10秒钟</strong>。而且下次你想分析另一家公司时，只需要改一行代码（股票代码），整个报告自动生成。这才是Python的真正价值——自动化、可复现、可批量。
-        </div>
-
-        <h2>构建自动化分析脚本</h2>
-
-        <p>掌握了基础操作后，咱们可以更进一步——构建一个自动化分析脚本，输入股票代码，输出完整的分析报告。</p>
-
-        <p>这里提供一个概念框架：</p>
-
-        <pre><code>def financial_analysis_report(stock_code, company_name):
-    """
-    输入股票代码，输出完整财报分析报告
-    """
-    # 1. 获取数据
-    balance = get_balance_sheet(stock_code)
-    income = get_income_stmt(stock_code)
-    cashflow = get_cash_flow(stock_code)
-
-    # 2. 数据清洗与比率计算
-    ratios = calculate_all_ratios(balance, income, cashflow)
-
-    # 3. 打分系统（Piotroski F-Score）
-    f_score = calculate_piotroski_fscore(balance, income, cashflow)
-    print(f"{company_name} Piotroski F-Score: {f_score}/9")
-
-    # 4. 生成图表
-    generate_charts(ratios, company_name)
-
-    # 5. 导出Excel报告
-    with pd.ExcelWriter(f'{company_name}_财报分析.xlsx') as writer:
-        ratios.to_excel(writer, sheet_name='财务比率')
-        balance.to_excel(writer, sheet_name='资产负债表')
-        income.to_excel(writer, sheet_name='利润表')
-
-    print(f"报告已生成：{company_name}_财报分析.xlsx")
-    return ratios, f_score</code></pre>
-
-        <p>其中Piotroski F-Score是一个经典的基本面评分模型，从盈利能力、杠杆/流动性、运营效率三个维度对公司打分（满分9分）。实现起来并不复杂，核心是判断9个条件是否满足：</p>
-
-        <pre><code>def calculate_piotroski_fscore(balance, income, cashflow):
-    """计算Piotroski F-Score (0-9分)"""
-    score = 0
-
-    # === 盈利能力 (4分) ===
-    # 1. 资产收益率(ROA)为正
-    if roa > 0: score += 1
-    # 2. 经营活动现金流为正
-    if operating_cf > 0: score += 1
-    # 3. ROA同比改善
-    if roa_change > 0: score += 1
-    # 4. 经营现金流 > 净利润（盈利质量高）
-    if operating_cf > net_income: score += 1
-
-    # === 杠杆/流动性 (3分) ===
-    # 5. 资产负债率同比下降
-    if debt_ratio_change < 0: score += 1
-    # 6. 流动比率同比上升
-    if current_ratio_change > 0: score += 1
-    # 7. 未增发新股（稀释度下降）
-    if not issued_new_shares: score += 1
-
-    # === 运营效率 (2分) ===
-    # 8. 毛利率同比改善
-    if gross_margin_change > 0: score += 1
-    # 9. 资产周转率同比改善
-    if asset_turnover_change > 0: score += 1
-
-    return score</code></pre>
-
-        <p>F-Score > 7表示公司基本面很强，< 4表示存在风险。这个模型虽然简单，但在学术研究中被验证长期有效——高F-Score组合的收益率显著跑赢市场。</p> <h3>踩坑故事——用错数据字段导致分析结果完全相反</h3> <p>2022年，有个量化团队在做A股基本面因子研究时，犯了一个非常"低级"但后果严重的错误。他们的Python脚本在计算各公司的市盈率（PE-TTM）时，使用了<strong>扣非净利润</strong>作为分母——但隔壁团队在验证时，用的是<strong>归母净利润</strong>。</p> <p>结果发现：扣非净利润口径下筛选出的"低PE组合"年化收益率16%，而归母净利润口径下只有11%。两个团队争论了整整两周，谁也说服不了谁。最后复盘发现，问题的根源在于akshare的接口文档中，字段名<code>净利润</code>实际上对应的是<strong>"归属于母公司所有者的净利润"（归母净利润）</strong>，而不是他们以为的"合并报表净利润"。</p> <p>这件事的教训是什么？在A股财务分析中，<strong>"净利润"有至少三种不同的口径</strong>：</p> <ul> <li><strong>合并报表净利润：</strong>集团整体利润，包含少数股东损益</li> <li><strong>归母净利润：</strong>属于母公司股东的利润（A股估值最常用的口径）</li> <li><strong>扣非净利润：</strong>扣除非经常性损益后的归母净利润（反映主业盈利能力）</li> </ul> <p>用错口径，分析结论可能完全相反。特别是对于少数股东损益占比较大的公司（比如那些有大量非全资子公司的集团型企业），合并净利润和归母净利润之间可能相差30%以上。</p> <div class="warning"> <strong>血泪教训：</strong>用Python获取财经数据时，<strong>永远不要相信字段名</strong>。拿到数据后第一件事：打印列名，核对数据的单位和口径。最好的做法是在脚本中加一个"数据校验"步骤——比如从两个不同数据源获取同一数据做交叉比对（akshare vs tushare），或者将Python获取的数字与公司年报原文核对一个关键科目。这个步骤只需要5分钟，但能避免99%的数据口径错误。 </div> <p>好了，Python自动化分析的威力你已经看到了。但Python有一个短板——<strong>交互式可视化</strong>。Python生成的图表是静态的，不能点、不能钻取、不能联动筛选。这正是咱们下一章要讲的内容——<strong>BI工具与可视化看板</strong>。用Power BI把Python分析出的结果做成动态看板，让管理层和技术分析人员都能直观地理解财务数据，咱们下章见！</p> <div class="footer-nav"> <a href="23.html">← 上一章</a> <a href="index.html">📖 返回目录</a> <a href="25.html">下一章 →</a> </div> </div> </div> </div> </body> </html>
+print(ratios(1000, 600, 120, 2000, 800))
+# 毛利率 0.4，净利率 0.12，ROA 0.06，ROE 0.15
+</code></pre>
+<p>可视化把趋势画出来。绘图只负责呈现，不负责发现错误：坐标轴单位、基数（例如营收用“亿元”还是“元”）与是否同口径，都需人在图外核对。对比多家公司时，先把口径拉平再画在同一张图上。</p>
+<div class="callout">
+<p><strong>不要把结果自动当成结论：</strong>比率算错往往不是公式错，而是输入口径错（如把合并净利润当作归母净利润、分母用了期末而不均余额）。脚本里的防御式写法（分母为 0 或负时返回不适用）比“算出个数字”更重要。</p>
+</div>
+</section>
+<section id="automation" aria-labelledby="automation-title">
+<h2 id="automation-title">自动化脚本</h2>
+<p>自动化的核心是把重复步骤串起来：取数 → 清洗 → 算比率 → 画图 → 导出。下面只给出结构，不给出可运行的完整实现（因为它依赖具体数据源，而数据源接口会变）：</p>
+<pre><code>def report(stock_code):
+    raw = fetch_reports(stock_code)          # 1. 取数
+    wide = clean_and_check(raw)              # 2. 清洗 + 口径核对
+    r = compute_ratios(wide)                 # 3. 比率
+    save_charts(r, stock_code)               # 4. 图表
+    export_workbook(r, f'{stock_code}.xlsx') # 5. 导出
+</code></pre>
+<p>其中第 2 步不能省。一个可执行的自动化流程应包含：</p>
+<ul>
+<li><strong>断言：</strong>关键科目缺失、单位异常、分母为负时主动报错，而不是静默产出错误数字。</li>
+<li><strong>可追溯：</strong>记录数据来源、取数日期与口径声明，写入报告页脚。</li>
+<li><strong>交叉比对：</strong>至少用一个关键科目与年报原文核对，或对比两个数据源。</li>
+</ul>
+<p>关于把 F-Score 等评分接入脚本：可以自动算分，但阈值与权重来自特定样本（详见第 27 章），脚本只能保证计算一致，不能保证阈值适用于当下；评分结果应作为筛查优先级，而不是自动买卖信号。</p>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">口径差异工作台</h2>
+<p>默认演示（合并净利润 10.0、归母净利润 8.5、扣非归母净利润 7.0，单位一致）可手工复算：少数股东损益 = 1.5，占合并净利润 15%；非经常性损益 = 1.5，占归母净利润 17.6%。</p>
+<div class="lab" data-calculator="netprofit">
+<h3>三种口径的差额</h3>
+<p>三个金额需同一期间、同一合并范围与单位；差额为负时需核查输入或口径。</p>
+<div class="lab-grid">
+<label>合并净利润<input type="number" name="consolidated" value="10" step="any" aria-label="合并净利润"></label>
+<label>归母净利润<input type="number" name="attributable" value="8.5" step="any" aria-label="归母净利润"></label>
+<label>扣非归母净利润<input type="number" name="recurring" value="7" step="any" aria-label="扣非归母净利润"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+<p>这个工作台只做减法与除法。差额大不等于有问题：少数股东损益占比高可能只是子公司结构复杂，非经常性损益大可能来自真实处置；关键在于报告里声明用了哪个口径。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">核查清单与自测</h2>
+<div class="step-list">
+<div class="step"><b>1</b><p>取数后先打印列名与单位，再把一个关键科目与年报原文核对。</p></div>
+<div class="step"><b>2</b><p>净利润分母声明口径：归母还是扣非，期间是年报还是 TTM。</p></div>
+<div class="step"><b>3</b><p>比率分母使用同期平均余额（如 ROE 用平均权益），不做期末数替代。</p></div>
+<div class="step"><b>4</b><p>脚本对分母为 0 或负、科目缺失要主动报错，不静默输出。</p></div>
+<div class="step"><b>5</b><p>把数据来源与取数日期写进报告；不把库输出当成已核实数据。</p></div>
+</div>
+<details class="exercise"><summary>自测一：脚本算出 ROE = 15%，是否可以直接用？</summary><p>不能直接用。需先确认三个前提：分子是归母净利润还是合并净利润、分母是期末权益还是平均权益、权益是否为正。负权益时 ROE 直接失效，必须声明不适用。</p></details>
+<details class="exercise"><summary>自测二：两个数据源取到的营收不一致，该怎么办？</summary><p>先回到年报原文核对，确认是口径（合并范围、追溯重述、单位）差异还是数据源误差；在此之前不应把任一数字写进报告。</p></details>
+<p><strong>结论：</strong>Python 把重复劳动自动化，把口径固定成代码。它顺便也把口径固化在了代码里——所以口径核对才是脚本里最值得花时间的那一步。</p>
+</section>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字、代码与图例均为<strong>教学示意</strong>，不指向任何真实公司，也不构成投资建议。文中提到的第三方库与接口<strong>不是会计准则或监管披露</strong>，其名称、参数与数据质量会随版本变化；本页不对任何库作推荐。</p>
+<p>报表项目与利润子项目的定义以财政部《企业会计准则》（含合并财务报表、财务报表列报等准则，以最新版本为准）为准；披露要求以证监会与交易所现行规定为准。</p>
+<ol>
+<li><a href="https://www.csrc.gov.cn/c106256/c1653948/content.shtml" target="_blank" rel="noopener noreferrer">中国证监会 · 上市公司信息披露管理办法</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/201709/t20170908_2694655.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第22号（金融工具与披露口径参考）</a></li>
+</ol>
+</section>
+<nav class="article-nav" aria-label="相邻章节"><a href="23.html">← 上一章</a><a href="25.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 24</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
+</body>
+</html>
