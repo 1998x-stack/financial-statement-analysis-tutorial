@@ -1,252 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>第20章 相对估值法</title>
-    <link rel="stylesheet" href="theme.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="相对估值法用可比对象的倍数给公司定价。市盈率有静态、TTM、动态三种口径，周期股与亏损股会失真；PB 要先查资产质量，PS 的分母也可能被操纵，EV/EBITDA 忽略资本支出。本页讲清适用边界与分位数陷阱。">
+<title>相对估值法：市盈率背后的市场预期 · 财务报表分析</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="double-border">
-<div class="container">
-    <div class="sidebar">
-        <h3>📊 课程目录</h3>
-        <ul class="chapter-list">
-            <li><a href="01.html">第1章 财报分析概述</a></li>
-            <li><a href="02.html">第2章 资产负债表精读</a></li>
-            <li><a href="03.html">第3章 利润表精读</a></li>
-            <li><a href="04.html">第4章 现金流量表精读</a></li>
-            <li><a href="05.html">第5章 读懂报表附注</a></li>
-            <li><a href="06.html">第6章 会计政策与盈余管理</a></li>
-            <li><a href="07.html">第7章 财报分析基本框架</a></li>
-            <li><a href="08.html">第8章 盈利能力分析</a></li>
-            <li><a href="09.html">第9章 偿债能力分析</a></li>
-            <li><a href="10.html">第10章 营运能力分析</a></li>
-            <li><a href="11.html">第11章 成长能力分析</a></li>
-            <li><a href="12.html">第12章 现金流质量分析</a></li>
-            <li><a href="13.html">第13章 杜邦分析与综合评分</a></li>
-            <li><a href="14.html">第14章 同业比较与行业分析</a></li>
-            <li><a href="15.html">第15章 财务粉饰手法全解</a></li>
-            <li><a href="16.html">第16章 财务造假红旗信号</a></li>
-            <li><a href="17.html">第17章 A股经典暴雷案例</a></li>
-            <li><a href="18.html">第18章 审计意见与公司治理</a></li>
-            <li><a href="19.html">第19章 绝对估值法</a></li>
-            <li><a href="20.html" class="active">第20章 相对估值法</a></li>
-            <li><a href="21.html">第21章 行业特化分析</a></li>
-            <li><a href="22.html">第22章 并购与商誉分析</a></li>
-            <li><a href="23.html">第23章 Excel财报分析实战</a></li>
-            <li><a href="24.html">第24章 Python财报分析入门</a></li>
-            <li><a href="25.html">第25章 BI工具与可视化看板</a></li>
-            <li><a href="26.html">第26章 AI驱动的财报分析</a></li>
-            <li><a href="27.html">第27章 量化财务模型构建</a></li>
-            <li><a href="28.html">第28章 综合实战项目</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <p>大家好，我是你们的讲师。上一章咱们学了DCF模型——把未来的现金流折现到今天，算出公司的内在价值。逻辑上，DCF是最"正确"的估值方法。但现实是：在华尔街和A股的机构投资者中，使用频率最高的估值方法并不是DCF，而是<strong>相对估值法</strong>。</p>
-
-        <p>为什么？因为DCF需要太多的假设——增长率、利润率、资本支出、WACC、永续增长率——任何一个假设偏差5%，最终结果可能差30%。而相对估值法就简单直接多了：找到一家可比公司，看看市场给了它多少倍的PE（市盈率），然后乘以目标公司的净利润——得出估值。虽然没有DCF那么"精确"，但它在实操中更接地气、更高效。</p>
-
-        <p>但问题来了：各个估值指标都有它的"适用场景"。用错了指标，估值就会全盘皆输。今天咱们就系统地把相对估值法的几大指标讲透。</p>
-
-        <h2>PE市盈率的正确用法</h2>
-
-        <p>PE = 股价 / 每股收益（EPS）。它回答的是"以当前的盈利水平，多少年能回本"这个问题。如果PE=20，意味着保持当前利润不变，需要20年才能通过利润赚回你的投资。</p>
-
-        <p>但PE有几种不同的"口味"，你一定要分清楚：</p>
-        <ul>
-            <li><strong>静态PE</strong>——用最新年报的EPS计算。数据最确定，但反映的是去年的盈利水平，可能已经过时了。</li>
-            <li><strong>动态PE</strong>——用预测的当年EPS计算。前瞻性最强，但预测可能不准。</li>
-            <li><strong>TTM PE</strong>（Trailing Twelve Months）——用最近四个季度的EPS计算。在A股中最常用，既反映了最新情况，又不需要依赖预测。你可以这样理解：TTM是"当下"的盈利水平。</li>
-        </ul>
-
-        <p><strong>哪些公司不适合用PE？</strong></p>
-        <ul>
-            <li><strong>周期股</strong>——钢铁、煤炭、有色金属这类强周期行业。在行业顶峰时，利润最高、PE最低（看起来最"便宜"），但恰恰是最高点；在行业低谷时，利润最低甚至亏损、PE最高或为负（看起来最"贵"），但恰恰是最低点。用PE给周期股估值，你会"买在顶峰、卖在谷底"——完全做反。</li>
-            <li><strong>亏损公司</strong>——净利润为负，PE为负值或无穷大，失去意义。比如很多早期创新药企业，连年亏损但管线价值巨大，PE完全无法反映其真实价值。</li>
-            <li><strong>金融股的特殊处理</strong>——银行股的PE普遍在4-8倍之间，看起来"很便宜"，但这是因为高杠杆经营放大了利润基数（后面第21章会详细讲）。</li>
-        </ul>
-
-        <div class="tip">
-            <strong>实战口诀：</strong>PE用在稳定盈利的消费股、医药股上最有效；用在周期股和亏损股上会误导决策。对于后两类，需要用PB、PS或EV/EBITDA。
-        </div>
-
-        <h2>PB市净率的适用场景</h2>
-
-        <p>PB = 股价 / 每股净资产。它回答的是"如果公司现在就破产清算，每股能分到多少钱"。PB<1叫做"破净"——意味着市场认为公司的资产质量很差，或者资产价值被高估了。</p>
-
-        <p>PB最适用的行业：</p>
-        <ul>
-            <li><strong>银行股</strong>——银行的资产主要是贷款和金融资产，账面价值相对接近真实价值。银行股当前普遍在0.5-0.8倍PB，长期破净。但注意：银行的不良贷款可能侵蚀账面净资产，所以实际PB可能比看起来的要高。</li>
-            <li><strong>保险公司</strong>——保险公司用内含价值（Embedded Value, EV）替代账面净资产进行估值，但底层逻辑和PB一致。</li>
-            <li><strong>重资产行业</strong>——钢铁、化工、公用事业等。这些公司的价值主要来自厂房、设备等实物资产，用PB比用PE更可靠。</li>
-        </ul>
-
-        <p><strong>破净股分析：</strong>A股中有大量上市公司长期处于破净状态（PB<1）。低PB不等于"便宜货"——你需要判断：</p>
-        <ul>
-            <li>资产是不是"真资产"（有没有水分？应收账款能收回来吗？存货能卖掉吗？）</li>
-            <li>公司能不能持续盈利？如果持续亏损，净资产会逐年减少，现在看起来低的PB会越来越高</li>
-            <li>行业是否处于下行周期？银行股破净往往反映了市场对不良贷款的担忧</li>
-        </ul>
-
-        <h2>PS市销率和EV/EBITDA</h2>
-
-        <p>除了PE和PB，还有两个常见的估值倍数，在某些场景下比PE更管用。</p>
-
-        <p><strong>PS（市销率）= 市值 / 营业收入</strong></p>
-        <p>PS最大的优点：营业收入很难被操纵（相比于净利润）。而且对于亏损公司来说，当PE失效时，PS仍然有效。</p>
-        <p>典型的PS应用场景：</p>
-        <ul>
-            <li><strong>SaaS公司</strong>——早期可能大幅亏损，但只要收入在快速增长，市场愿意给高PS倍数。例如一家SaaS公司年收入5亿，PS=10意味着市场给它50亿估值，相当于"市场为每1元收入支付10元"。</li>
-            <li><strong>电商公司</strong>——京东常年亏损但收入巨大，PS比PE更有意义。</li>
-            <li><strong>零售企业</strong>——连锁超市、百货公司的收入体量巨大，利润率很低但稳定，PS估值有参考价值。</li>
-        </ul>
-
-        <p><strong>EV/EBITDA（企业价值倍数）</strong></p>
-        <p>这是机构投资者最爱的估值指标之一。EV（企业价值）= 市值 + 负债总额 - 现金及等价物。EBITDA = 息税前利润 + 折旧摊销。</p>
-        <p>EV/EBITDA为什么好？因为它：</p>
-        <ul>
-            <li>消除了资本结构（负债/股权比例）的影响——两个公司即使负债率不同，也可以直接用EV/EBITDA比较</li>
-            <li>消除了折旧摊销政策的影响——不同公司折旧政策不同会扭曲净利润，但EBITDA不受折旧影响</li>
-            <li>包含了负债——PE只考虑了股权价值，EV/EBITDA把负债也纳入了估值框架</li>
-        </ul>
-
-        <div class="highlight">
-            <strong>机构内部的"潜规则"：</strong>很多买方研究员私下说，"PE是给散户看的，EV/EBITDA是给自己用的"。因为EV/EBITDA排除了资本结构的影响，更真实地反映了公司的"运营价值"。但EV/EBITDA也有不适用的时候——对于固定资产极少的轻资产公司（如互联网平台），折旧很少，EBITDA和净利润差别不大，EV/EBITDA的优势就不明显了。
-        </div>
-
-        <h2>分位数分析与历史估值</h2>
-
-        <p>任何估值倍数的一个数字本身没有意义——PE=15到底贵不贵？你得知道它<strong>相对于谁</strong>。两个最重要的参照系是：历史的自己和行业的同行。</p>
-
-        <p><strong>历史分位数：</strong>把一家公司过去5年或10年的PE/PB数据从低到高排序，看看当前估值处于什么位置。</p>
-        <ul>
-            <li>如果当前PE处于历史90%分位数——意味着过去90%的时间里估值都比现在便宜，那现在大概率是偏贵的</li>
-            <li>如果当前PE处于历史10%分位数——意味着过去90%的时间里估值都比现在贵，那现在可能是低估了</li>
-        </ul>
-
-        <p>但注意：历史分位数不是万能的。基本面变差了，历史低分位数可能不是"低估"，而是"价值陷阱"——看起来便宜，但实际上公司出了问题，合理估值就应该更低。</p>
-
-        <p><strong>行业分位数对比：</strong>在同一行业中，把所有公司的PE/PB排序，看看目标公司在行业中处于什么位置。例如，白酒行业平均PE=25，如果某白酒龙头PE=18且在行业中处于25%分位数，说明它相对同行可能被低估了。</p>
-
-        <h3>踩坑故事——净利润暴增1015%，股价却跌了26%</h3>
-
-        <p>2023年，A股有一只股票引发了市场的广泛关注：<strong>正丹股份</strong>。这一年，它的净利润从上一年的约0.2亿元暴增至约2.2亿元，同比增幅高达<strong>1015%</strong>！看到这个数字，很多散户投资者开始兴奋了——"净利润翻了10倍，股价至少也该翻倍吧？"</p>
-
-        <p>于是不少人冲进去买入。结果呢？公司的股价不但没有涨，反而从高点一路下跌，跌幅超过<strong>26%</strong>。很多投资者想不通：业绩这么好，为什么股价不涨反跌？</p>
-
-        <p>原因在于：市场早就预期到了这个业绩。在正丹股份发布业绩预告之前，股价已经从底部涨了将近<strong>4倍</strong>。等到利好真正落地时（"买预期，卖事实"的经典演绎），机构投资者已经开始获利了结。更关键的是，分析公司历史估值分位数就会发现：在业绩兑现之前，公司的PE已经从之前的40多倍跌到了个位数——看起来PE很低是不是？但真正的逻辑是：在股价高位买入时，你支付的是"业绩已经充分price in"的价格。后面即使业绩达标，也没有新的预期差来推动股价继续上涨。</p>
-
-        <p>这就是"PE陷阱"的典型表现——静态PE看起来便宜，但市场已经提前把利润增长"贴现"到股价中了。</p>
-
-        <div class="warning">
-            <strong>教训：</strong>不要只看PE的绝对值，更要看<strong>估值分位数</strong>和<strong>市场预期</strong>。低PE不一定意味着低估——可能是因为市场认为这个高利润不可持续。高PE也不一定意味着高估——可能是因为市场预期未来利润会大幅增长。永远要问：价格里已经"包含"了多高的预期？
-        </div>
-
-        <p>下面这个表格总结了各个估值指标的适用行业和注意事项：</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>估值指标</th>
-                    <th>适用行业</th>
-                    <th>不适用行业</th>
-                    <th>注意事项</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>PE（市盈率）</td>
-                    <td>消费、医药、科技（盈利稳定）</td>
-                    <td>周期股、亏损股、金融股</td>
-                    <td>分清静态/动态/TTM；结合增长看PEG</td>
-                </tr>
-                <tr>
-                    <td>PB（市净率）</td>
-                    <td>银行、保险、钢铁、化工</td>
-                    <td>科技(轻资产)、互联网</td>
-                    <td>注意资产质量；<1破净不等于便宜</td>
-                </tr>
-                <tr>
-                    <td>PS（市销率）</td>
-                    <td>SaaS、电商、零售</td>
-                    <td>高利润率的奢侈品、品牌消费</td>
-                    <td>要结合毛利率看；收入不等于利润</td>
-                </tr>
-                <tr>
-                    <td>EV/EBITDA</td>
-                    <td>资本密集型行业、高杠杆公司</td>
-                    <td>轻资产公司（折旧少）</td>
-                    <td>机构最常用；排除资本结构影响</td>
-                </tr>
-                <tr>
-                    <td>PEG</td>
-                    <td>高成长公司</td>
-                    <td>负增长或稳定增长公司</td>
-                    <td>PEG<1可能低估；增长率的持续性很关键</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>最后，咱们来看一个简单的估值分位数计算逻辑，你可以用Python或SQL来实现：</p>
-
-        <pre><code># 估值分位数计算逻辑（Python伪代码）
-import numpy as np
-
-def calculate_percentile(current_value, historical_values):
-    """
-    计算当前估值在历史数据中的分位数位置
-
-    参数:
-        current_value: 当前的PE/PB/PS值
-        historical_values: 过去N年的历史估值数据列表
-    返回:
-        percentile: 当前值在历史数据中的百分位 (0-100)
-    """
-    sorted_values = sorted(historical_values)
-    count_below = sum(1 for v in sorted_values if v < current_value)
-    percentile = (count_below / len(sorted_values)) * 100
-    return percentile
-
-# 示例：计算某白酒股PE的历史分位数
-pe_history_5y = [
-    22.1, 23.5, 24.0, 25.3, 26.8,  # 2019年 每月末数据
-    28.2, 30.1, 31.5, 29.8, 27.3,
-    25.6, 24.8,  # ... 等等共60个月数据
-]
-
-current_pe = 26.5
-result = calculate_percentile(current_pe, pe_history_5y)
-print(f"当前PE={current_pe}，处于历史{result:.1f}%分位数")
-# 输出: 当前PE=26.5，处于历史XX%分位数
-
-# 行业分位数对比
-def industry_percentile(company_pe, industry_pe_list):
-    """计算目标公司在同行业中的估值分位数"""
-    sorted_industry = sorted(industry_pe_list)
-    # 排除负PE（亏损公司）
-    sorted_industry = [p for p in sorted_industry if p > 0]
-    position = sum(1 for p in sorted_industry if p < company_pe)
-    return (position / len(sorted_industry)) * 100
-
-# 使用示例：
-# 白酒行业PE列表
-baijiu_pe_list = [18.5, 22.3, 25.1, 28.7, 31.2, 35.8, 40.6]
-target_pe = 25.1
-result = industry_percentile(target_pe, baijiu_pe_list)
-print(f"目标公司在行业中处于{result:.1f}%分位数")</code></pre>
-
-        <p>好了，本章咱们深入学习了相对估值法的四大核心指标——PE、PB、PS、EV/EBITDA，以及历史分位数和行业分位数的分析逻辑。每一种指标都有自己的"主场"和"禁区"，用对指标是估值分析的第一步。</p>
-
-        <p>下一章咱们进入一个更加进阶的话题——<strong>行业特化分析</strong>。不同行业的公司，财报分析的侧重点完全不同：看银行股你要关注拨备覆盖率，看科技股你要关注研发费用资本化，看制造业你要关注产能利用率……每个行业都有自己的一套"独门秘籍"。咱们下篇见！</p>
-
-        <div class="footer-nav">
-            <a href="19.html">← 上一章</a>
-            <a href="index.html">📖 返回目录</a>
-            <a href="21.html">下一章 →</a>
-        </div>
-    </div>
+<a class="skip" href="#article">跳至文章</a>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-symbol" aria-hidden="true">∑</span> FINANCIAL NOTES <span class="brand-cn">财报分析</span></a>
+<nav aria-label="顶部导航"><a href="../index.html">全部章节</a><a href="https://github.com/1998x-stack/financial-statement-analysis-tutorial">源代码</a></nav>
+</header>
+<div class="reading-layout">
+<nav class="reading-toc" aria-label="本章目录">
+<h2>CHAPTER 20 / CONTENTS</h2>
+<div class="toc-links">
+<a href="#opening">相对估值法在做什么</a>
+<a href="#pe">PE 的三种口径与误用</a>
+<a href="#pbps">PB 与 PS 的修正项</a>
+<a href="#ev">EV/EBITDA 的取舍</a>
+<a href="#expectation">预期与分位数陷阱</a>
+<a href="#calculator">倍数工作台</a>
+<a href="#checklist">核查清单与自测</a>
+<a href="#references">依据与边界</a>
 </div>
+<a class="back-home" href="../index.html">← 返回课程首页</a>
+</nav>
+<main id="article">
+<article class="article">
+<header class="article-head">
+<span class="eyebrow">FINANCIAL STATEMENT ANALYSIS · 20 / 28</span>
+<h1>相对估值法：市盈率背后的市场预期</h1>
+<p class="lead">相对估值法用一个可比对象的倍数给自己定价。它比 DCF 少一些假设，代之以一个隐含前提：参照对象是被合理定价的。倍数选错、口径混用或忽略预期，都会让结论失真。</p>
+<p class="meta">2026-11 更新 · 原理 / 图解 / 算例 / 反证</p>
+</header>
+<section id="opening" aria-labelledby="opening-title">
+<h2 id="opening-title">相对估值法在做什么</h2>
+<p>相对估值法不回答“这家公司本身值多少”，而是回答“如果参照对象的价格是对的，这家公司按同样的倍数应该值多少”。它用一个倍数的分子（价格或企业价值）除分母（利润、净资产、收入等），再把这个倍数应用到目标公司。</p>
+<p>它比 DCF 少一些显式假设，但代价是把主角换成了参照对象：你隐含地假设可比公司是被合理定价的，而且两者真的可比。一旦可比组选错，或者市场整体处于极值，结论就会系统性偏离。</p>
+<div class="callout">
+<p><strong>纠正两个常见误解：</strong>一是“DCF 更正确、相对估值只是权宜之计”——两者都是工具，DCF 的假设不可验证，相对估值则把假设隐藏在了可比对象里，谈不上谁更“准”。二是“相对估值更简单所以更可靠”——倍数计算确实简单，但“选谁作参照、用哪个口径、要不要修正”每一步都可能错。</p>
 </div>
+<p>因此本页的重点不是背公式，而是把每个倍数的分母弄准、把最容易出错的场景标出来，并学会用分位数而不是单个数来判断“贵不贵”。</p>
+</section>
+<section id="pe" aria-labelledby="pe-title">
+<h2 id="pe-title">PE 的三种口径与误用</h2>
+<p>市盈率 PE = 市值 ÷ 归属母公司净利润（或 股价 ÷ 每股收益）。它隐含“利润不变时多少年回本”，但这个含义只在利润可持续时才成立。按分母取哪一期利润，PE 至少有三类：</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>口径</th><th>分母</th><th>优点</th><th>最容易被误用之处</th></tr></thead>
+<tbody>
+<tr><td>静态 PE（LYR）</td><td>上一完整年度利润</td><td>数据已审计、确定</td><td>已过时；周期股上一年高利润会压低 PE</td></tr>
+<tr><td>TTM PE</td><td>最近连续四个季度的利润</td><td>无需预测、滚动更新</td><td>季报未经审计；含季节性需同口径对比</td></tr>
+<tr><td>动态 PE（Forward）</td><td>未来一年预测利润</td><td>前瞻性强</td><td>分母是预测值，不同机构不一致，容易“自证便宜”</td></tr>
+</tbody>
+</table>
+</div>
+<p>分母还需额外确认：用<strong>归母净利润</strong>还是<strong>扣非归母净利润</strong>（扣除一次性损益）？用基本每股收益还是摊薄？不声明口径的 PE 无法比较。</p>
+<p>三类最典型的失真场景：<strong>周期股</strong>在盈利高点时 PE 最低，恰是最危险的时候；<strong>亏损公司</strong> PE 为负或无意义；<strong>金融股</strong>由于高杠杆经营，PE 天然偏低，不能与其他行业直接比（详见第 21 章）。</p>
+<figure>
+<img src="../assets/figures/20-multiple-choice.svg" alt="按公司特征选择估值倍数的决策路径：盈利稳定选 PE，金融或重资产选 PB，亏损但收入增长选 PS，高杠杆或资本密集选 EV/EBITDA，并列出各自最易出错之处" width="840" height="400" loading="lazy">
+<figcaption>图 1：没有万能倍数。先判断公司价值靠什么衡量，再选倍数，并修正常见扭曲；图中列出的适用行业只是经验判断，不是强制规则。</figcaption>
+</figure>
+</section>
+<section id="pbps" aria-labelledby="pbps-title">
+<h2 id="pbps-title">PB 与 PS 的修正项</h2>
+<h3>PB 市净率：先把净资产分清</h3>
+<p>PB = 市值 ÷ 归母净资产。常见说法是“PB 回答破产时每股能分多少”，这是不准确的：<strong>账面净资产不等于清算价值</strong>。净资产里可能包含商誉、递延所得税资产等难以变现的项目，而清算时资产常要折价、负债可能超预期。</p>
+<ul>
+<li><strong>破净（PB &lt; 1）不等于便宜。</strong>它可能反映市场担忧资产水分（应收、存货、商誉减值）或持续亏损会侵蚀净资产。</li>
+<li><strong>银行股要先把拨备放进去看。</strong>不良贷款若需补提拨备，会直接减少净资产，账面 PB 会变大；因此银行的低 PB 需要结合不良率、拨备覆盖率与资产质量一起读。</li>
+<li><strong>轻资产公司慎用。</strong>软件、平台、品牌类公司的价值主要不在账面净资产，PB 会系统性偏离其真实价值来源。</li>
+</ul>
+<h3>PS 市销率：分母同样可能被操纵</h3>
+<p>PS = 市值 ÷ 营业收入。流行的说法是“收入比利润难操纵”，这并不成立。收入同样会被提前确认、通过关联交易做大，或在总额法与净额法之间选择（例如平台型与自营型业务的收入口径完全不同，直接比较 PS 会得出错误结论）。</p>
+<ul>
+<li><strong>PS 忽略了利润率。</strong>同样 1 元收入，毛利率 10% 的贸易商与毛利率 60% 的软件公司价值差异极大，因此 PS 必须结合毛利率与费用率一起看。</li>
+<li><strong>适用场景是“微利或亏损但收入可持续增长”。</strong>此时要额外验证收入的可持续性（获客成本、续费率、客户集中度），而不是只看增速。</li>
+<li><strong>口径可比性先于倍数高低。</strong>比较前先确认合并范围、收入确认方法是否一致，否则倍数高低没有意义。</li>
+</ul>
+</section>
+<section id="ev" aria-labelledby="ev-title">
+<h2 id="ev-title">EV/EBITDA 的取舍</h2>
+<p>EV（企业价值）与 EBITDA 都对应“全体资本提供者”，因此 EV/EBITDA 常用于比较负债率不同的资本密集同业。</p>
+<div class="equation math-scroll" data-math-scroll tabindex="0" role="region" aria-label="企业价值与 EBITDA 定义">
+<div class="equation-label">企业价值与 EBITDA（常见定义）</div>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="企业价值约等于股权市值加有息负债再减去现金及现金等价物，必要时还应加少数股东权益；EBITDA 约等于净利润加所得税、利息、折旧与摊销">
+<mrow>
+<mi>EV</mi><mo>≈</mo><mtext>股权市值</mtext><mo>+</mo><mtext>有息负债</mtext><mo>−</mo><mtext>现金</mtext>
+<mo>+</mo><mtext>少数股东权益</mtext>
+<mo>,</mo><mspace width="1em"/>
+<mi>EBITDA</mi><mo>≈</mo><mtext>净利润</mtext><mo>+</mo><mtext>所得税</mtext><mo>+</mo><mtext>利息</mtext><mo>+</mo><mtext>折旧摊销</mtext>
+</mrow>
+</math>
+</div>
+<p>两个提醒：第一，EBITDA <strong>不是会计准则规定的报表行次</strong>，是分析者加回利息、税、折旧摊销后的派生指标，不同人对“折旧摊销”范围的取法不一致，需要声明口径。第二，EV 里的“有息负债”应排除经营性负债（应付账款等），否则会重复计算营运资本。</p>
+<div class="compare">
+<div><h3>它解决了什么</h3><p>剔除资本结构与折旧政策的差异，使负债率与折旧年限不同的两家的“运营层面”倍数可以放在一起看。</p></div>
+<div><h3>它掩盖了什么</h3><p>忽略了资本支出与营运资本需求。一家 EBITDA 高但分红前必须持续投入大量资本支出的公司，用 EV/EBITDA 会显得比实际便宜。</p></div>
+</div>
+<p>所以对固定资产很少的轻资产公司，EBITDA 与净利润差别不大，EV/EBITDA 的优势并不明显；此时应回到现金流与增长质量上。</p>
+</section>
+<section id="expectation" aria-labelledby="expectation-title">
+<h2 id="expectation-title">预期与分位数陷阱</h2>
+<p>一个倍数本身没有意义，“贵不贵”必须相对两个参照系：公司自己的历史，和同业。把过去 5–10 年的倍数从低到高排序，看当前处于哪个百分位；或在同业内排序，看目标公司的位置。但分位数有两个陷阱：</p>
+<ul>
+<li><strong>价值陷阱：</strong>基本面恶化时，历史低分位不代表低估，而是“合理估值本身就应该更低”。所以分位数必须配合基本面趋势看。</li>
+<li><strong>预期已被定价：</strong>市场会提前交易未来利润。当高增长落地时，价格可能已经反映完毕。此时低 PE 的来源是“分母（利润）变大”，而不是股价便宜。</li>
+</ul>
+<p>下面的时间轴用一个<strong>教学示意</strong>说明第二点（数值为假设指数，不对应任何真实公司或真实行情）：</p>
+<figure>
+<img src="../assets/figures/20-expectation-cycle.svg" alt="教学示意图：业绩披露前股价指数从 100 升至约 380，披露后回落至约 280，说明高增长可能已在披露前被定价" width="840" height="320" loading="lazy">
+<figcaption>图 2：“买预期、卖事实”。披露前市场连续上调预期，股价已把高增长贴现；披露后没有新的预期差，价格回落。低 PE 不等于便宜——要同时问“价格里已经包含多高的预期”。</figcaption>
+</figure>
+<p>至于 PEG（= PE ÷ 盈利增速），它只对“高成长且增长可持续”的公司才有讨论价值；增速为负或接近零时，PEG 没有意义，不能反过来当作便宜的证据。</p>
+</section>
+<section id="calculator" aria-labelledby="calculator-title">
+<h2 id="calculator-title">倍数工作台</h2>
+<p>默认值（股价 20 元、每股收益 1.0 元、每股净资产 8 元、每股收入 5 元、预期增速 15%）可手工复算：PE = 20、PB = 2.5、PS = 4、PEG = 1.33。分母口径如有调整（如改用扣非利润），结果会随之变化。</p>
+<div class="lab" data-calculator="multiple">
+<h3>修改数据，即时复算</h3>
+<p>所有每股数据需采用同一口径与同一时期；增速填百分数（如 15 表示 15%）。PEG 仅在增速为正时有意义。</p>
+<div class="lab-grid">
+<label>股价（元）<input type="number" name="price" value="20" step="any" aria-label="股价（元）"></label>
+<label>每股收益 EPS（元）<input type="number" name="eps" value="1" step="any" aria-label="每股收益 EPS（元）"></label>
+<label>每股净资产（元）<input type="number" name="bvps" value="8" step="any" aria-label="每股净资产（元）"></label>
+<label>每股营业收入（元）<input type="number" name="sps" value="5" step="any" aria-label="每股营业收入（元）"></label>
+<label>预期盈利增速（%）<input type="number" name="growth" value="15" step="any" aria-label="预期盈利增速，百分数"></label>
+</div>
+<div class="lab-output" data-result aria-live="polite">默认数值可依本页公式手工复算；启用脚本后将显示结果。</div>
+</div>
+<p>工作台只做除法，不做任何可比性判断。负的 EPS 会让 PE 变成负数，这并不代表“便宜”，应改用其他倍数并说明原因。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">核查清单与自测</h2>
+<div class="step-list">
+<div class="step"><b>1</b><p>声明 PE 的口径（静态 / TTM / 动态）与分母（归母还是扣非、基本还是摊薄）。</p></div>
+<div class="step"><b>2</b><p>判断公司是否适用该倍数：周期股、亏损股、金融股、轻资产公司各有禁区。</p></div>
+<div class="step"><b>3</b><p>比较前先统一口径：合并范围、收入确认方法、折旧政策、每股数据的时期。</p></div>
+<div class="step"><b>4</b><p>贵不贵用分位数，但要把分位数与基本面趋势一起看，避免价值陷阱。</p></div>
+<div class="step"><b>5</b><p>问一句“价格里包含了多高的预期”，而不是只看倍数高低。</p></div>
+</div>
+<details class="exercise"><summary>自测一：某周期股在行业高点 PE 只有 6 倍，是否可以认为它很便宜？</summary><p>不能。周期股在盈利高点时利润最大、PE 最低，这往往对应行业高点；一旦利润回落，分母变小、PE 会降得很快。对周期股应改用 PB、重置成本或正常化盈利，而不能拿峰顶的 PE 比。</p></details>
+<details class="exercise"><summary>自测二：两家公司 PS 都是 5，能否直接说估值水平一样？</summary><p>不能。PS 的分母是收入，而不同业务模式的毛利率与费用率差异极大，且自营与平台型业务的收入口径不同。至少要结合毛利率、费用率和收入确认方法后，才能讨论可比性。</p></details>
+<p><strong>结论：</strong>相对估值法把“公司值多少”换成了“参照对象值多少”。选对参照、统一口径、修正禁区、看预期，四步缺一不可。</p>
+</section>
+<section class="sources" id="references" aria-labelledby="references-title">
+<h2 id="references-title">依据与边界</h2>
+<p>本页所有数字与图例均为<strong>教学示意</strong>，不指向任何真实公司或真实行情，也不构成投资建议。PE、PB、PS、EV/EBITDA 与 PEG 均为分析者采用的估值工具，<strong>不是会计准则或监管强制披露项</strong>；EBITDA 也不是报表法定行次。</p>
+<p>具体公司的历史估值分位数依赖数据区间、频率与复权口径，不同数据源可能不同；引用时需声明样本区间与数据来源。</p>
+<ol>
+<li><a href="https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/financial-analysis-techniques" target="_blank" rel="noopener noreferrer">CFA Institute · Financial Analysis Techniques（价格倍数与可比公司分析）</a></li>
+<li><a href="https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements" target="_blank" rel="noopener noreferrer">SEC · Beginners' Guide to Financial Statements（净利润、每股收益与净资产口径）</a></li>
+<li><a href="https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/202608/t20260806_3995008.htm" target="_blank" rel="noopener noreferrer">财政部 · 企业会计准则第30号——财务报表列报（2026修订）</a></li>
+</ol>
+</section>
+<nav class="article-nav" aria-label="相邻章节"><a href="19.html">← 上一章</a><a href="21.html">下一章 →</a></nav>
+</article>
+</main>
+</div>
+<footer class="site-footer"><span>FINANCIAL NOTES / 20</span><span>教学虚构 · 非投资建议</span><a href="../index.html">课程首页</a></footer>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 320" role="img" aria-labelledby="t20e d20e">
+<title id="t20e">买预期卖事实：股价在业绩落地前已反映高增长，落地后回落</title>
+<desc id="d20e">教学示意图。纵轴为股价指数（非真实数据），横轴为时间。业绩披露前股价由 100 升至约 380，业绩发布当天之后回落至约 280，说明高增长可能已在披露前被定价。</desc>
+<rect x="0" y="0" width="840" height="320" fill="#f8f7f2"/>
+<text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">“买预期、卖事实”：业绩好，但价格里已经装好了</text>
+<text x="40" y="62" font-size="12.5" fill="#9e493b">教学示意：数值为假设指数，不对应任何真实公司或真实行情</text>
+<line x1="60" y1="250" x2="800" y2="250" stroke="#333" stroke-width="1.5"/>
+<line x1="60" y1="60" x2="60" y2="250" stroke="#333" stroke-width="1.5"/>
+<text x="30" y="70" font-size="12" fill="#666">400</text>
+<text x="30" y="160" font-size="12" fill="#666">240</text>
+<text x="30" y="250" font-size="12" fill="#666">80</text>
+<text x="24" y="160" font-size="11.5" fill="#666" transform="rotate(-90 24 160)" text-anchor="middle">股价指数（示意）</text>
+<polyline points="60,238 200,220 340,170 480,100 560,72" fill="none" stroke="#116d69" stroke-width="3"/>
+<polyline points="560,72 620,90 700,118 780,131" fill="none" stroke="#9e493b" stroke-width="3"/>
+<line x1="560" y1="60" x2="560" y2="250" stroke="#577173" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="560" y="270" font-size="12.5" fill="#395253" text-anchor="middle">业绩披露</text>
+<text x="300" y="96" font-size="13" fill="#116d69" text-anchor="middle">预期期：市场连续上调盈利预期</text>
+<text x="690" y="160" font-size="13" fill="#9e493b" text-anchor="middle">披露后：没有新的预期差</text>
+<text x="690" y="180" font-size="12" fill="#9e493b" text-anchor="middle">高增长已被 price in</text>
+<text x="40" y="302" font-size="12" fill="#555">图注：低 PE 不等于便宜——若当期高利润已被股价提前反映，市盈率的分母变大反而让 PE 显得更低。判断便宜与否，要同时看分位数与市场预期。</text>
+</svg>
