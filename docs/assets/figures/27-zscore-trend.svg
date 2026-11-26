@@ -9,15 +9,15 @@
 <rect x="80" y="164" width="680" height="76" fill="#fbeee9"/>
 <line x1="80" y1="108" x2="760" y2="108" stroke="#577173" stroke-dasharray="5 4"/>
 <line x1="80" y1="164" x2="760" y2="164" stroke="#9e493b" stroke-dasharray="5 4"/>
-<text x="768" y="113" font-size="11.5" fill="#577173">Z=2.99</text>
-<text x="768" y="169" font-size="11.5" fill="#9e493b">Z=1.81</text>
-<text x="86" y="82" font-size="12" fill="#116d69">安全区</text>
-<text x="86" y="140" font-size="12" fill="#b66a38">灰色区</text>
-<text x="86" y="196" font-size="12" fill="#9e493b">危险区</text>
+<text x="768" y="113" font-size="12.5" fill="#577173">Z=2.99</text>
+<text x="768" y="169" font-size="12.5" fill="#9e493b">Z=1.81</text>
+<text x="86" y="82" font-size="12.5" fill="#116d69">安全区</text>
+<text x="86" y="140" font-size="12.5" fill="#b66a38">灰色区</text>
+<text x="86" y="196" font-size="12.5" fill="#9e493b">危险区</text>
 <polyline points="80,88 240,107 400,140 560,162 720,188" fill="none" stroke="#1c3133" stroke-width="2.6"/>
-<g fill="#1c3133" font-size="11">
+<g fill="#1c3133" font-size="12.5">
 <circle cx="80" cy="88" r="4"/><circle cx="240" cy="107" r="4"/><circle cx="400" cy="140" r="4"/><circle cx="560" cy="162" r="4"/><circle cx="720" cy="188" r="4"/>
 <text x="80" y="240" text-anchor="middle">第1年</text><text x="240" y="240" text-anchor="middle">第2年</text><text x="400" y="240" text-anchor="middle">第3年</text><text x="560" y="240" text-anchor="middle">第4年</text><text x="720" y="240" text-anchor="middle">第5年</text>
 </g>
-<text x="40" y="284" font-size="12" fill="#555">图注：若只看第 4 年，Z=1.85 刚跌入灰色区；但把五年连起来看，方向是持续恶化。阈值为原论文对制造业的口径，跨行业套用会有偏差。</text>
+<text x="40" y="284" font-size="12.5" fill="#555">图注：若只看第 4 年，Z=1.85 刚跌入灰色区；但把五年连起来看，方向是持续恶化。阈值为原论文对制造业的口径，跨行业套用会有偏差。</text>
 </svg>

@@ -7,17 +7,17 @@
 <rect x="120" y="90" width="255" height="56" fill="#cfe3f6" stroke="#2b6cb0"/>
 <text x="247" y="124" font-size="13" fill="#1c3133" text-anchor="middle">归母净利润 85</text>
 <rect x="375" y="90" width="45" height="56" fill="#d9d4c5" stroke="#8a8578"/>
-<text x="397" y="116" font-size="10.5" fill="#333" text-anchor="middle">少数</text>
-<text x="397" y="132" font-size="10.5" fill="#333" text-anchor="middle">15</text>
+<text x="397" y="116" font-size="12.5" fill="#333" text-anchor="middle">少数</text>
+<text x="397" y="132" font-size="12.5" fill="#333" text-anchor="middle">15</text>
 <text x="120" y="82" font-size="12.5" fill="#395253">① 合并净利润 = 归母净利润 + 少数股东损益（合计 100）</text>
 <rect x="120" y="180" width="210" height="56" fill="#e8f3ef" stroke="#116d69"/>
 <text x="225" y="214" font-size="13" fill="#116d69" text-anchor="middle">扣非归母 70</text>
 <rect x="330" y="180" width="45" height="56" fill="#fbeee9" stroke="#9e493b"/>
-<text x="352" y="206" font-size="10.5" fill="#9e493b" text-anchor="middle">非经常</text>
-<text x="352" y="222" font-size="10.5" fill="#9e493b" text-anchor="middle">15</text>
+<text x="352" y="206" font-size="12.5" fill="#9e493b" text-anchor="middle">非经常</text>
+<text x="352" y="222" font-size="12.5" fill="#9e493b" text-anchor="middle">15</text>
 <text x="120" y="172" font-size="12.5" fill="#395253">② 归母净利润 = 扣非归母净利润 + 非经常性损益（合计 85）</text>
 <line x1="247" y1="146" x2="247" y2="180" stroke="#2b6cb0" stroke-dasharray="4 3"/>
-<text x="430" y="214" font-size="12" fill="#577173">← 这一列只在归母口径下再拆分</text>
-<text x="40" y="272" font-size="12" fill="#555">图注：市盈率、每股收益的分母通常用归母净利润（或扣非归母），少数股东损益不归母公司股东；用更大的合并净利润当分母会高估利润、把市盈率算低。</text>
-<text x="40" y="292" font-size="12" fill="#555">具体口径以公司披露与会计准则为准；本页仅示意三者关系。</text>
+<text x="430" y="214" font-size="12.5" fill="#577173">← 这一列只在归母口径下再拆分</text>
+<text x="40" y="272" font-size="12.5" fill="#555">图注：市盈率、每股收益的分母通常用归母净利润（或扣非归母），少数股东损益不归母公司股东；用更大的合并净利润当分母会高估利润、把市盈率算低。</text>
+<text x="40" y="292" font-size="12.5" fill="#555">具体口径以公司披露与会计准则为准；本页仅示意三者关系。</text>
 </svg>
