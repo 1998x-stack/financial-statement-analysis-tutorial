@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 320" role="img" aria-labelledby="t25b d25b">
+<title id="t25b">看板布局原则：一个可视化只回答一个问题</title>
+<desc id="d25b">四个面板各自只回答一个问题：整体健康度、趋势方向、同业差异、是否触发预警。把多个问题塞进同一张图会让读者无法判断结论，也无法核对该结论对应哪一个指标。</desc>
+<rect width="840" height="320" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">一个图，一个问题</text>
+<g font-size="14" font-family="system-ui, sans-serif">
+<rect x="32" y="66" width="182" height="118" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="123" y="98" text-anchor="middle" font-weight="700" fill="#1c2a38">KPI 卡片</text>
+<text x="123" y="126" text-anchor="middle" fill="#3c4a58">问：现在健康吗？</text>
+<text x="123" y="150" text-anchor="middle" fill="#3c4a58">答：4 个核心指标</text>
+<text x="123" y="170" text-anchor="middle" fill="#3c4a58">最新值</text>
+<rect x="226" y="66" width="182" height="118" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="317" y="98" text-anchor="middle" font-weight="700" fill="#1c2a38">折线</text>
+<text x="317" y="126" text-anchor="middle" fill="#3c4a58">问：在变好吗？</text>
+<text x="317" y="150" text-anchor="middle" fill="#3c4a58">答：单指标</text>
+<text x="317" y="170" text-anchor="middle" fill="#3c4a58">多年趋势</text>
+<rect x="420" y="66" width="182" height="118" rx="8" fill="#f6efe4" stroke="#b07d2b"/>
+<text x="511" y="98" text-anchor="middle" font-weight="700" fill="#1c2a38">对比条</text>
+<text x="511" y="126" text-anchor="middle" fill="#3c4a58">问：比同行好吗？</text>
+<text x="511" y="150" text-anchor="middle" fill="#3c4a58">答：本公司 vs</text>
+<text x="511" y="170" text-anchor="middle" fill="#3c4a58">3–5 家同业</text>
+<rect x="614" y="66" width="194" height="118" rx="8" fill="#f3e9ef" stroke="#9c4b74"/>
+<text x="711" y="98" text-anchor="middle" font-weight="700" fill="#1c2a38">预警卡</text>
+<text x="711" y="126" text-anchor="middle" fill="#3c4a58">问：越界了吗？</text>
+<text x="711" y="150" text-anchor="middle" fill="#3c4a58">答：与预设阈值</text>
+<text x="711" y="170" text-anchor="middle" fill="#3c4a58">对比后的状态</text>
+</g>
+<g font-size="14" font-family="system-ui, sans-serif">
+<rect x="32" y="208" width="776" height="86" rx="8" fill="#f7f5ef" stroke="#b9b2a0"/>
+<text x="50" y="238" fill="#1c2a38"><tspan font-weight="700">反例：</tspan>把营收、利润、毛利率、应收账款画进同一张堆叠柱状图——</text>
+<text x="50" y="262" fill="#3c4a58">读者既看不出趋势，也无法判断哪一根对应哪个指标，更无法核对结论。</text>
+</g>
+</svg>

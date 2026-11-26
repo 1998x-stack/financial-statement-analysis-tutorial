@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" role="img" aria-labelledby="t25a d25a">
+<title id="t25a">报表看板的星型模型：一张事实表连接公司、时间、科目三张维度表</title>
+<desc id="d25a">中心是事实表，每行是一条“公司—年度—科目—数值”记录；周围三张维度表分别提供公司属性、时间标签与科目分类。度量值按维度筛选后汇总，保证同一口径可被多个看板复用。</desc>
+<rect width="840" height="360" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">星型模型：事实表居中，维度表环绕</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="300" y="140" width="240" height="96" rx="10" fill="#e8eef6" stroke="#3b6ca8" stroke-width="2"/>
+<text x="420" y="176" text-anchor="middle" font-weight="700" fill="#1c2a38">事实表</text>
+<text x="420" y="200" text-anchor="middle" fill="#3c4a58" font-size="14">公司 × 年度 × 科目 × 数值</text>
+<text x="420" y="222" text-anchor="middle" fill="#3c4a58" font-size="14">一行一条记录</text>
+<rect x="40" y="60" width="200" height="76" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="140" y="90" text-anchor="middle" font-weight="700" fill="#1c2a38">公司维度</text>
+<text x="140" y="114" text-anchor="middle" fill="#3c4a58" font-size="14">名称 · 行业 · 板块</text>
+<rect x="600" y="60" width="200" height="76" rx="8" fill="#f6efe4" stroke="#b07d2b"/>
+<text x="700" y="90" text-anchor="middle" font-weight="700" fill="#1c2a38">时间维度</text>
+<text x="700" y="114" text-anchor="middle" fill="#3c4a58" font-size="14">年 · 季 · 是否年报</text>
+<rect x="320" y="268" width="200" height="76" rx="8" fill="#f3e9ef" stroke="#9c4b74"/>
+<text x="420" y="298" text-anchor="middle" font-weight="700" fill="#1c2a38">科目维度</text>
+<text x="420" y="322" text-anchor="middle" fill="#3c4a58" font-size="14">科目名 · 类别 · 报表</text>
+</g>
+<g stroke="#7b8794" stroke-width="2">
+<line x1="240" y1="98" x2="322" y2="150"/>
+<line x1="600" y1="98" x2="518" y2="150"/>
+<line x1="420" y1="268" x2="420" y2="236"/>
+</g>
+<text x="46" y="200" font-size="14" fill="#5a6672" font-family="system-ui, sans-serif">关系方向：多对一，</text>
+<text x="46" y="222" font-size="14" fill="#5a6672" font-family="system-ui, sans-serif">由事实表指向维度表</text>
+</svg>

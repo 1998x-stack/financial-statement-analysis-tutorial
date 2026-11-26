@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 REVIEWED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            19, 20, 21, 22, 23, 24, 26, 27, 28]
+            19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in REVIEWED]
 OUT = ROOT / "reports" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -53,6 +53,7 @@ with sync_playwright() as p:
                 "21.html": ("不良贷款率 1.5%", "拨备覆盖率 160%"),
                 "22.html": ("商誉/归母净资产 60%", "商誉/总资产 25%"),
                 "23.html": ("同比增长 10%", "CAGR（2 年） 10%", "营业成本占收入（共同比） 60%"),
+                "25.html": ("40%", "50%", "相差 10 个百分点"),
                 "24.html": ("少数股东损益 1.5", "占归母净利润 17.65%"),
                 "26.html": ("相对差异 6.78%"),
                 "27.html": ("F-Score 7 / 9", "未满足：F6、F7"),
