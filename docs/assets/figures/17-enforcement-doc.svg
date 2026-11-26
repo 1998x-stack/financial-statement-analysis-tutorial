@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" role="img" aria-labelledby="t17a d17a">
+<title id="t17a">监管处罚决定书的固定结构：当事人、认定事实、违反规定、处罚结果四段</title>
+<desc id="d17a">一份处罚决定书通常先列当事人与调查来源，再逐项认定事实并指明证据，随后列出违反的具体规则，最后给出处罚。图中说明每一段都应能追溯到具体科目、凭证或公告，而不是概括性的判断。</desc>
+<rect width="840" height="340" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">处罚决定书的四段结构（自上而下）</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="32" y="64" width="776" height="50" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="52" y="95" fill="#1c2a38"><tspan font-weight="700">① 当事人与调查来源</tspan>　谁被查、谁立案、是否移送、当事人有无申辩</text>
+<rect x="32" y="126" width="776" height="66" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="52" y="152" fill="#1c2a38"><tspan font-weight="700">② 认定的事实</tspan>　逐项写明金额、期间、科目与证据</text>
+<text x="52" y="178" fill="#3c4a58" font-size="14">可核对处：哪一年、哪张表、哪个科目、哪张凭证或对账单</text>
+<rect x="32" y="204" width="776" height="50" rx="8" fill="#f6efe4" stroke="#b07d2b"/>
+<text x="52" y="235" fill="#1c2a38"><tspan font-weight="700">③ 违反的规定</tspan>　引用具体条文（如信息披露、会计准则条款）</text>
+<rect x="32" y="266" width="776" height="50" rx="8" fill="#f3e9ef" stroke="#9c4b74"/>
+<text x="52" y="297" fill="#1c2a38"><tspan font-weight="700">④ 处罚结果</tspan>　对主体与责任人的罚款、市场禁入、移送司法等</text>
+</g>
+</svg>

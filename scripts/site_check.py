@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 # Chapters that have been technically reviewed and must meet the full content bar
 # (figures, semantic sections, fictional-data disclaimer, primary-source section).
-REVIEWED = {*range(1, 17), 18, 19, 20, 21, 22, 24, 26, 27, 28}
+REVIEWED = {*range(1, 19), 19, 20, 21, 22, 24, 26, 27, 28}
 errors = []
 
 def err(message):

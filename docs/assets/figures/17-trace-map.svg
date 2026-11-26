@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 380" role="img" aria-labelledby="t17b d17b">
+<title id="t17b">四类造假手法与它们在报表上留下的可核对痕迹</title>
+<desc id="d17b">左侧列出四类手法：虚增货币资金、资金被归集占用、生物资产跨期调节、门店与订单数据虚增。右侧对应每类手法在报表或公开信息中留下的具体痕迹，供分析者提前核对，而非用于对任何真实公司下结论。</desc>
+<rect width="840" height="380" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">手法 → 报表痕迹（均为教学概括）</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="32" y="62" width="360" height="66" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="50" y="90" font-weight="700" fill="#1c2a38">虚增货币资金</text>
+<text x="50" y="114" fill="#3c4a58" font-size="14">把不存在的存款记入账上</text>
+<rect x="424" y="62" width="384" height="66" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="442" y="90" fill="#1c2a38"><tspan font-weight="700">痕迹：</tspan>存贷双高、利息收入与货币资金不匹配</text>
+<text x="442" y="114" fill="#3c4a58" font-size="14">核对点：利息收入 ÷ 平均货币资金</text>
+<rect x="32" y="142" width="360" height="66" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="50" y="170" font-weight="700" fill="#1c2a38">资金被归集占用</text>
+<text x="50" y="194" fill="#3c4a58" font-size="14">账上有钱，但已被划走</text>
+<rect x="424" y="142" width="384" height="66" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="442" y="170" fill="#1c2a38"><tspan font-weight="700">痕迹：</tspan>高质押、其他应收款、受限资金披露</text>
+<text x="442" y="194" fill="#3c4a58" font-size="14">核对点：大股东质押比例与资金占用专项说明</text>
+<rect x="32" y="222" width="360" height="66" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="50" y="250" font-weight="700" fill="#1c2a38">生物资产跨期调节</text>
+<text x="50" y="274" fill="#3c4a58" font-size="14">盘点困难，减值时点可安排</text>
+<rect x="424" y="222" width="384" height="66" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="442" y="250" fill="#1c2a38"><tspan font-weight="700">痕迹：</tspan>存货跌价准备计提比例与同业背离</text>
+<text x="442" y="274" fill="#3c4a58" font-size="14">核对点：计提比例的多期走势与减值测试假设</text>
+<rect x="32" y="302" width="360" height="60" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="50" y="330" font-weight="700" fill="#1c2a38">门店与订单数据虚增</text>
+<text x="50" y="352" fill="#3c4a58" font-size="14">单店销量与客单价被夸大</text>
+<rect x="424" y="302" width="384" height="60" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="442" y="330" fill="#1c2a38"><tspan font-weight="700">痕迹：</tspan>门店销量与原材料采购量不匹配</text>
+<text x="442" y="352" fill="#3c4a58" font-size="14">核对点：采购量、坪效与同店增速的交叉验证</text>
+</g>
+</svg>

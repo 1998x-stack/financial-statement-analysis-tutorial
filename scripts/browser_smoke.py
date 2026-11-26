@@ -4,7 +4,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-REVIEWED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18,
+REVIEWED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
             19, 20, 21, 22, 24, 26, 27, 28]
 paths = [ROOT / "docs" / "index.html"] + [ROOT / "docs" / "chapters" / f"{i:02}.html" for i in REVIEWED]
 OUT = ROOT / "reports" / "qa"
@@ -46,6 +46,7 @@ with sync_playwright() as p:
                 "14.html": ("参照组中位数 22", "均值 23", "按升序排名第 2"),
                 "15.html": ("收入增长 20%", "期末应收增长 80%", "收现比 0.88"),
                 "16.html": ("DSRI 1.25", "GMI 1.2", "SGI 2"),
+                "17.html": ("货币资金占总资产 30%", "有息负债占总资产 40%", "利息收益率 1%"),
                 "18.html": ("控股股东质押比例 80%", "关联方销售占营业收入 50%"),
                 "19.html": ("企业价值 18.16", "终值现值占比 73.93%"),
                 "20.html": ("PE 20", "PB 2.5", "PEG 1.33"),
@@ -92,4 +93,4 @@ with sync_playwright() as p:
 if fail:
     print("\n".join("FAIL: "+x for x in fail))
     raise SystemExit(1)
-print("OK: 25 chapter pages + index × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
+print(f"OK: {len(paths)-1} chapter pages + index × 4 widths (1440/768/390/360), images, search, financial calculator, self-check")
