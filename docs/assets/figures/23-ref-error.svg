@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" role="img" aria-labelledby="t23b d23b">
+<title id="t23b">单元格引用脱靶如何沿公式链放大：空引用被当作零，逐层传播到估值</title>
+<desc id="d23b">假设区的无风险利率单元格为空，被公式引用后按零计算，使折现率偏低，最终高估估值。图中用同一链条的“正确引用”与“脱靶引用”对照，说明错误不会报错，只会静默传播。</desc>
+<rect width="840" height="300" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">引用脱靶：错误不报错，只静默传播</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="32" y="66" width="220" height="64" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="50" y="94" fill="#1c2a38"><tspan font-weight="700">假设区</tspan>：无风险利率</text>
+<text x="50" y="118" fill="#3c4a58" font-size="14">应引用含数值的单元格</text>
+<rect x="300" y="66" width="220" height="64" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="318" y="94" fill="#1c2a38"><tspan font-weight="700">折现率 WACC</tspan></text>
+<text x="318" y="118" fill="#3c4a58" font-size="14">引用无风险利率后计算</text>
+<rect x="568" y="66" width="240" height="64" rx="8" fill="#f3e9ef" stroke="#9c4b74"/>
+<text x="586" y="94" fill="#1c2a38"><tspan font-weight="700">DCF 估值</tspan></text>
+<text x="586" y="118" fill="#3c4a58" font-size="14">折现率偏低 → 估值偏高</text>
+</g>
+<path d="M136 130 V160 H420 V150" fill="none" stroke="#c0392b" stroke-width="2.5" marker-end="url(#b23)"/>
+<defs><marker id="b23" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#c0392b"/></marker></defs>
+<text x="150" y="182" font-size="14" fill="#c0392b" font-family="system-ui, sans-serif">错：引用到空白单元格，Excel 按 0 参与计算</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="32" y="208" width="776" height="66" rx="8" fill="#f7f5ef" stroke="#b9b2a0"/>
+<text x="50" y="236" fill="#1c2a38"><tspan font-weight="700">校验做法：</tspan>用“显示公式”通查引用；在图表旁设独立校验区，</text>
+<text x="50" y="260" fill="#3c4a58" font-size="14">对关键假设（利率、增长率）手工算一遍再与公式结果比对。</text>
+</g>
+</svg>

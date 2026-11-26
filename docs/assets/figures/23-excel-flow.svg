@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" role="img" aria-labelledby="t23a d23a">
+<title id="t23a">Excel 财报分析工作流：原始文件只读，Power Query 清洗，分析表计算，图表与校验</title>
+<desc id="d23a">四阶段流向：原始财报文件保持只读；Power Query 负责统一口径与列名并可重复刷新；分析表用公式或透视表计算比率；图表与校验区核对结果。环形箭头表示刷新可重跑全部步骤。</desc>
+<rect width="840" height="300" fill="#fbfaf7"/>
+<text x="32" y="40" font-size="20" font-weight="700" fill="#1c2a38">一条可重复执行的 Excel 流水线</text>
+<g font-size="15" font-family="system-ui, sans-serif">
+<rect x="32" y="70" width="176" height="120" rx="8" fill="#e8eef6" stroke="#3b6ca8"/>
+<text x="50" y="104" font-weight="700" fill="#1c2a38">① 原始文件</text>
+<text x="50" y="130" fill="#3c4a58" font-size="14">按年份存放</text>
+<text x="50" y="152" fill="#3c4a58" font-size="14">保持只读，</text>
+<text x="50" y="174" fill="#3c4a58" font-size="14">不改原件</text>
+<rect x="228" y="70" width="176" height="120" rx="8" fill="#eef4ea" stroke="#4b8b53"/>
+<text x="246" y="104" font-weight="700" fill="#1c2a38">② Power Query</text>
+<text x="246" y="130" fill="#3c4a58" font-size="14">统一口径、单位</text>
+<text x="246" y="152" fill="#3c4a58" font-size="14">与科目名</text>
+<text x="246" y="174" fill="#3c4a58" font-size="14">步骤可重跑</text>
+<rect x="424" y="70" width="176" height="120" rx="8" fill="#f6efe4" stroke="#b07d2b"/>
+<text x="442" y="104" font-weight="700" fill="#1c2a38">③ 分析表</text>
+<text x="442" y="130" fill="#3c4a58" font-size="14">公式 / 透视表</text>
+<text x="442" y="152" fill="#3c4a58" font-size="14">算比率、共同比</text>
+<text x="442" y="174" fill="#3c4a58" font-size="14">增长率</text>
+<rect x="620" y="70" width="188" height="120" rx="8" fill="#f3e9ef" stroke="#9c4b74"/>
+<text x="638" y="104" font-weight="700" fill="#1c2a38">④ 图表 + 校验区</text>
+<text x="638" y="130" fill="#3c4a58" font-size="14">图表引用分析表；</text>
+<text x="638" y="152" fill="#3c4a58" font-size="14">旁边单独列</text>
+<text x="638" y="174" fill="#3c4a58" font-size="14">关键值复核</text>
+</g>
+<path d="M420 220 H136 V196" fill="none" stroke="#7b8794" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a23)"/>
+<defs><marker id="a23" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7b8794"/></marker></defs>
+<text x="300" y="252" font-size="14" fill="#5a6672" font-family="system-ui, sans-serif">新数据到达后一键刷新，从②到④自动重算</text>
+</svg>
