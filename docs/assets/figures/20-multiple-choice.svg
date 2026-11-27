@@ -14,30 +14,30 @@
 <g>
 <rect x="40" y="150" width="200" height="96" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="140" y="176" font-size="15" font-weight="700" fill="#116d69" text-anchor="middle">PE 市盈率</text>
-<text x="140" y="202" font-size="12" fill="#395253" text-anchor="middle">盈利稳定、周期弱</text>
-<text x="140" y="222" font-size="12" fill="#9e493b" text-anchor="middle">先分清静态 / TTM / 动态</text>
-<text x="140" y="240" font-size="12" fill="#9e493b" text-anchor="middle">周期股会“高利润低 PE”</text>
+<text x="140" y="202" font-size="12.5" fill="#395253" text-anchor="middle">盈利稳定、周期弱</text>
+<text x="140" y="222" font-size="12.5" fill="#9e493b" text-anchor="middle">先分清静态 / TTM / 动态</text>
+<text x="140" y="240" font-size="12.5" fill="#9e493b" text-anchor="middle">周期股会“高利润低 PE”</text>
 </g>
 <g>
 <rect x="247" y="150" width="160" height="96" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="327" y="176" font-size="15" font-weight="700" fill="#116d69" text-anchor="middle">PB 市净率</text>
-<text x="327" y="202" font-size="12" fill="#395253" text-anchor="middle">金融、重资产</text>
-<text x="327" y="220" font-size="12" fill="#9e493b" text-anchor="middle">先查资产质量：</text>
-<text x="327" y="238" font-size="12" fill="#9e493b" text-anchor="middle">应收、存货、拨备</text>
+<text x="327" y="202" font-size="12.5" fill="#395253" text-anchor="middle">金融、重资产</text>
+<text x="327" y="220" font-size="12.5" fill="#9e493b" text-anchor="middle">先查资产质量：</text>
+<text x="327" y="238" font-size="12.5" fill="#9e493b" text-anchor="middle">应收、存货、拨备</text>
 </g>
 <g>
 <rect x="433" y="150" width="160" height="96" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="513" y="176" font-size="15" font-weight="700" fill="#116d69" text-anchor="middle">PS 市销率</text>
-<text x="513" y="202" font-size="12" fill="#395253" text-anchor="middle">亏损但收入增长</text>
-<text x="513" y="220" font-size="12" fill="#9e493b" text-anchor="middle">收入也可能被操纵：</text>
-<text x="513" y="238" font-size="12" fill="#9e493b" text-anchor="middle">总额/净额、关联交易</text>
+<text x="513" y="202" font-size="12.5" fill="#395253" text-anchor="middle">亏损但收入增长</text>
+<text x="513" y="220" font-size="12.5" fill="#9e493b" text-anchor="middle">收入也可能被操纵：</text>
+<text x="513" y="238" font-size="12.5" fill="#9e493b" text-anchor="middle">总额/净额、关联交易</text>
 </g>
 <g>
 <rect x="619" y="150" width="181" height="96" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="709" y="176" font-size="15" font-weight="700" fill="#116d69" text-anchor="middle">EV/EBITDA</text>
-<text x="709" y="202" font-size="12" fill="#395253" text-anchor="middle">高杠杆、资本密集</text>
-<text x="709" y="220" font-size="12" fill="#9e493b" text-anchor="middle">忽略资本支出与</text>
-<text x="709" y="238" font-size="12" fill="#9e493b" text-anchor="middle">营运资本需求</text>
+<text x="709" y="202" font-size="12.5" fill="#395253" text-anchor="middle">高杠杆、资本密集</text>
+<text x="709" y="220" font-size="12.5" fill="#9e493b" text-anchor="middle">忽略资本支出与</text>
+<text x="709" y="238" font-size="12.5" fill="#9e493b" text-anchor="middle">营运资本需求</text>
 </g>
 <rect x="40" y="286" width="760" height="76" rx="8" fill="#f9eee5" stroke="#b66a38"/>
 <text x="60" y="314" font-size="13" font-weight="700" fill="#b66a38">没有万能倍数</text>
