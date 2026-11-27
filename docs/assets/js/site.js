@@ -38,3 +38,43 @@ document.querySelectorAll('[data-calculator]').forEach(box=>{
  controls.forEach(c=>c.addEventListener('input',update));controls.forEach(c=>c.addEventListener('change',update));update();
 });
 })();
+/* Chapter 11–15 workbenches: transparent ratios, no external data or risk scores. */
+(()=>{'use strict';
+const n=x=>Number.isFinite(x)?Number(x.toFixed(2)).toLocaleString('zh-CN',{maximumFractionDigits:2}):'不适用';
+const p=x=>Number.isFinite(x)?n(x*100)+'%':'不适用';
+const signed=x=>(x>0?'+':'')+n(x);
+const models={
+ growth:v=>{
+  if(v.priorRevenue<=0||v.currentRevenue<0||v.acquiredRevenue<0||v.acquiredRevenue>v.currentRevenue||v.roe<0||v.roe>=100||v.retention<0||v.retention>100)return '检查输入：上期收入>0，并购贡献≤本期收入，ROE须在0至100%之间，留存率须在0至100%之间。';
+  const reported=(v.currentRevenue-v.priorRevenue)/v.priorRevenue,organic=(v.currentRevenue-v.acquiredRevenue-v.priorRevenue)/v.priorRevenue,rb=(v.roe/100)*(v.retention/100),sgr=rb<1?rb/(1-rb):NaN;
+  return '报告收入增长 '+p(reported)+'；简化同口径有机增长 '+p(organic)+'；并购贡献 '+p(v.acquiredRevenue/v.priorRevenue)+'（占上期收入百分点）；ROE×留存率 '+p(rb)+'；模型 SGR '+p(sgr)+'。SGR依赖稳定杠杆与经营政策假设。';
+ },
+ cashflow:v=>{
+  if(Object.values(v).some(x=>!Number.isFinite(x))||v.capex<0)return '检查输入：所有数值须有效，资本开支不能为负。';
+  const cfo=v.netIncome+v.depreciation+v.impairment-v.gain-v.deltaAR-v.deltaInventory+v.deltaAP+v.other,fcf=cfo-v.capex;
+  return '经营现金流 CFO '+n(cfo)+' 万；CFO/净利润 '+(v.netIncome!==0?p(cfo/v.netIncome):'净利润为0，不适用')+'；简化 FCF '+n(fcf)+' 万；FCF/净利润 '+(v.netIncome!==0?p(fcf/v.netIncome):'净利润为0，不适用')+'。';
+ },
+ dupont:v=>{
+  if(v.pretax<=0||v.ebit<=0||v.revenue<=0||v.assets<=0||v.equity<=0||v.netIncome<0)return '检查输入：税前利润、EBIT、收入、平均资产和平均权益须大于0；本演示要求净利润非负。';
+  const tax=v.netIncome/v.pretax,interest=v.pretax/v.ebit,margin=v.ebit/v.revenue,turn=v.revenue/v.assets,lev=v.assets/v.equity,roe=v.netIncome/v.equity;
+  return '税负因子 '+p(tax)+'；利息负担 '+p(interest)+'；EBIT利润率 '+p(margin)+'；资产周转 '+n(turn)+' 次；权益乘数 '+n(lev)+' 倍；五因素 ROE '+p(tax*interest*margin*turn*lev)+'（直接计算 '+p(roe)+'）。';
+ },
+ peers:v=>{
+  const a=[v.peer1,v.peer2,v.peer3,v.peer4].sort((x,y)=>x-y);if([v.target,...a].some(x=>!Number.isFinite(x)))return '请填写所有有效数值。';
+  const median=(a[1]+a[2])/2,mean=a.reduce((s,x)=>s+x,0)/a.length,rank=a.filter(x=>x<=v.target).length/a.length;
+  return '同行中位数 '+n(median)+'%；同行均值 '+n(mean)+'%；目标值 '+n(v.target)+'%；目标在同行样本中的“越高越好”百分位 '+p(rank)+'。该样本仅4家，分位数只作描述。';
+ },
+ 'fraud-screen':v=>{
+  if(v.q4Share<0||v.q4Share>100)return '检查输入：第四季度收入占比须在0至100之间。';
+  const gap=v.arGrowth-v.revenueGrowth,ratio=v.netIncome!==0?p(v.cfo/v.netIncome):'净利润为0，不适用';
+  return '应收增速−收入增速 '+signed(gap)+' 个百分点；第四季度收入占比 '+n(v.q4Share)+'%；CFO/净利润 '+ratio+'。只展示差异，不生成舞弊概率或风险评级。';
+ }
+};
+document.querySelectorAll('[data-calculator]').forEach(box=>{
+ const type=box.getAttribute('data-calculator');if(!models[type])return;
+ const controls=[...box.querySelectorAll('input[type=number]')],out=box.querySelector('[data-result]');if(!out)return;
+ const update=()=>{if(controls.some(c=>c.value===''||!Number.isFinite(Number(c.value)))){out.textContent='请输入全部有效数值。';return;}
+ const v=Object.fromEntries(controls.map(c=>[c.name,Number(c.value)]));out.textContent=models[type](v);};
+ controls.forEach(c=>c.addEventListener('input',update));update();
+});
+})();

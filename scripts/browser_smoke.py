@@ -25,6 +25,11 @@ with sync_playwright() as p:
             page.wait_for_timeout(400)
             page.evaluate("() => window.scrollTo(0, 0)")
             page.wait_for_timeout(120)
+            page.evaluate("""async () => {
+                const images = [...document.images];
+                images.forEach(img => { img.loading = "eager"; });
+                await Promise.all(images.map(img => img.decode().catch(() => null)));
+            }""")
             page.screenshot(path=str(OUT / f"{width}-{path.stem}.png"), full_page=True)
             info = page.evaluate("""() => ({
                 scroll:document.documentElement.scrollWidth,

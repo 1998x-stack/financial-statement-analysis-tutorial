@@ -1,0 +1,50 @@
+{
+  "chapter": "15",
+  "claims": [
+    {
+      "id": "revenue",
+      "claim": "收入确认应以履约义务和客户取得商品控制权为基础，主要责任人与代理人判断关注转让前控制权。",
+      "kind": "accounting_rule",
+      "source_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/201709/t20170907_2694006.htm",
+      "locator": "企业会计准则第14号，第4条、第11–13条、第34条",
+      "status": "verified",
+      "notes": "不能用发货日期单一决定收入确认，也不能仅凭货物流向决定总额/净额。"
+    },
+    {
+      "id": "rd",
+      "claim": "研发支出区分研究阶段与开发阶段，开发阶段支出需满足全部确认条件。",
+      "kind": "accounting_rule",
+      "source_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46242.htm",
+      "locator": "企业会计准则第6号，第7–13条",
+      "status": "verified",
+      "notes": "资本化并不自动等于操纵，须核对条件与证据。"
+    },
+    {
+      "id": "regulator",
+      "claim": "证监会2026专项行动重点关注空转走单虚假贸易、滥用总额法夸大营收和调节收入确认时点。",
+      "kind": "regulatory_context",
+      "source_url": "https://www.csrc.gov.cn/csrc/c100028/c7628221/content.shtml",
+      "locator": "2026年4月24日专项行动新闻稿",
+      "status": "verified",
+      "notes": "监管重点不代表任何具有贸易业务或总额法的企业均有违规。"
+    },
+    {
+      "id": "audit",
+      "claim": "PCAOB AS 2401讨论期末异常分录、重大异常交易、关联方与商业实质的审计关注。",
+      "kind": "audit_reference",
+      "source_url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2401",
+      "locator": "AS 2401 paragraphs .59–.66A and Appendix A",
+      "status": "verified",
+      "notes": "美国审计准则，仅作比较参考，不是中国法律依据。"
+    },
+    {
+      "id": "example",
+      "claim": "收入增长30%、应收增长80%、Q4占比45%、CFO为负为教学筛查数据。",
+      "kind": "illustrative",
+      "source_url": "",
+      "locator": "本章教学虚构数据",
+      "status": "illustrative",
+      "notes": "只展示差异，不输出舞弊概率或风险评级。"
+    }
+  ]
+}
