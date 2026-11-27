@@ -7,8 +7,8 @@
 <line x1="80" y1="260" x2="790" y2="260" stroke="#333" stroke-width="1.5"/>
 <line x1="80" y1="60" x2="80" y2="260" stroke="#333" stroke-width="1.5"/>
 <line x1="80" y1="227" x2="790" y2="227" stroke="#9e493b" stroke-dasharray="5 4"/>
-<text x="792" y="231" font-size="11.5" fill="#9e493b">150% 监管下限</text>
-<g font-size="11.5" fill="#666" text-anchor="middle">
+<text x="788" y="231" font-size="12.5" fill="#9e493b" text-anchor="end">150% 监管下限</text>
+<g font-size="12.5" fill="#666" text-anchor="middle">
 <line x1="80" y1="260" x2="80" y2="266" stroke="#333"/><text x="80" y="282">0</text>
 <line x1="216" y1="260" x2="216" y2="266" stroke="#333"/><text x="216" y="282">1%</text>
 <line x1="352" y1="260" x2="352" y2="266" stroke="#333"/><text x="352" y="282">2%</text>
@@ -16,14 +16,14 @@
 <line x1="624" y1="260" x2="624" y2="266" stroke="#333"/><text x="624" y="282">4%</text>
 <line x1="760" y1="260" x2="760" y2="266" stroke="#333"/><text x="760" y="282">5%</text>
 </g>
-<text x="435" y="306" font-size="12" fill="#666" text-anchor="middle">不良贷款率</text>
-<g font-size="11.5" fill="#666" text-anchor="end">
+<text x="435" y="306" font-size="12.5" fill="#666" text-anchor="middle">不良贷款率</text>
+<g font-size="12.5" fill="#666" text-anchor="end">
 <text x="72" y="264">100%</text><text x="72" y="197">200%</text><text x="72" y="130">300%</text><text x="72" y="63">400%</text>
 </g>
-<text x="30" y="160" font-size="11.5" fill="#666" text-anchor="middle" transform="rotate(-90 30 160)">拨备覆盖率</text>
+<text x="30" y="160" font-size="12.5" fill="#666" text-anchor="middle" transform="rotate(-90 30 160)">拨备覆盖率</text>
 <circle cx="284" cy="220" r="6" fill="#b66a38"/>
 <text x="284" y="205" font-size="12.5" fill="#b66a38" text-anchor="middle">A：不良 1.5%、拨备 160%</text>
 <circle cx="325" cy="93" r="6" fill="#116d69"/>
 <text x="325" y="79" font-size="12.5" fill="#116d69" text-anchor="middle">B：不良 1.8%、拨备 350%</text>
-<text x="40" y="322" font-size="12" fill="#555">图注：B 项不良率更高，但缓冲垫更厚；A 项虽不良更低，却几乎没有多余弹药。单看不良率会得出相反结论。</text>
+<text x="40" y="322" font-size="12.5" fill="#555">图注：B 项不良率更高，但缓冲垫更厚；A 项虽不良更低，却几乎没有多余弹药。单看不良率会得出相反结论。</text>
 </svg>

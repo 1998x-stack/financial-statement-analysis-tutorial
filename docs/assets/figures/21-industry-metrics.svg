@@ -10,7 +10,7 @@
 <rect x="520" y="56" width="150" height="34" fill="#116d69"/><text x="595" y="78" fill="#fff" font-size="14">制造业</text>
 <rect x="670" y="56" width="150" height="34" fill="#116d69"/><text x="745" y="78" fill="#fff" font-size="14">消费</text>
 </g>
-<g font-size="12" text-anchor="middle" fill="#1c3133">
+<g font-size="12.5" text-anchor="middle" fill="#1c3133">
 <rect x="40" y="90" width="180" height="56" fill="#eef2ed"/><text x="130" y="123">核心盈利</text>
 <rect x="220" y="90" width="150" height="56" fill="#f5f7f4"/><text x="295" y="116">净息差 NIM</text><text x="295" y="134">ROA</text>
 <rect x="370" y="90" width="150" height="56" fill="#f5f7f4"/><text x="445" y="123">毛利率、ARPU</text>
@@ -32,5 +32,5 @@
 <rect x="520" y="272" width="150" height="56" fill="#f5f7f4"/><text x="595" y="305">EV/EBITDA</text>
 <rect x="670" y="272" width="150" height="56" fill="#f5f7f4"/><text x="745" y="305">PE、PEG</text>
 </g>
-<text x="40" y="350" font-size="12" fill="#555">图注：表中的“关键指标”是经验性的分析起点，不含统一阈值；具体判断必须结合公司披露、行业周期与监管口径。</text>
+<text x="40" y="350" font-size="12.5" fill="#555">图注：表中的“关键指标”是经验性的分析起点，不含统一阈值；具体判断必须结合公司披露、行业周期与监管口径。</text>
 </svg>
