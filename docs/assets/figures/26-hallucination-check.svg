@@ -7,13 +7,13 @@
 <g font-size="13">
 <rect x="40" y="86" width="760" height="58" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="58" y="112" fill="#1c3133">“营业收入同比增长 12%，主要来自 A 产品线放量。”</text>
-<text x="58" y="132" fill="#116d69" font-size="12">✓ 可在“管理层讨论与分析”第 23 页定位到对应数字与表述</text>
+<text x="58" y="132" fill="#116d69" font-size="12.5">✓ 可在“管理层讨论与分析”第 23 页定位到对应数字与表述</text>
 <rect x="40" y="154" width="760" height="58" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="58" y="180" fill="#1c3133">“第四季度单季毛利率环比下降 3 个百分点。”</text>
-<text x="58" y="200" fill="#116d69" font-size="12">✓ 可在主要财务指标附注中复算出同幅度变化</text>
+<text x="58" y="200" fill="#116d69" font-size="12.5">✓ 可在主要财务指标附注中复算出同幅度变化</text>
 <rect x="40" y="222" width="760" height="58" rx="8" fill="#fbeee9" stroke="#9e493b"/>
 <text x="58" y="248" fill="#1c3133">“第四季度单季营业收入为 58.3 亿元。”</text>
-<text x="58" y="268" fill="#9e493b" font-size="12">✗ 全文无法找到该数字，需删除或重新核对（疑似生成）</text>
+<text x="58" y="268" fill="#9e493b" font-size="12.5">✗ 全文无法找到该数字，需删除或重新核对（疑似生成）</text>
 </g>
-<text x="40" y="306" font-size="12" fill="#555">图注：语言越流畅，越容易让人省略核对。抽查不是不信任，而是把“输出”变成“可验证的结论”的唯一方式。</text>
+<text x="40" y="306" font-size="12.5" fill="#555">图注：语言越流畅，越容易让人省略核对。抽查不是不信任，而是把“输出”变成“可验证的结论”的唯一方式。</text>
 </svg>
