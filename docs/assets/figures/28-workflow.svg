@@ -3,7 +3,7 @@
 <desc id="d28w">五步依次为行业与公司背景、三张表深度解析、核心比率与同业对比、排雷检查、估值与投资决策，分别对应第 14 与 21 章、第 2 至 5 与 12 章、第 8 至 13 章、第 15 至 18 与 27 章、第 19 至 20 章。</desc>
 <rect x="0" y="0" width="840" height="300" fill="#f8f7f2"/>
 <text x="40" y="38" font-size="18" font-weight="700" fill="#1a1a1a">五步走完一家公司的完整分析</text>
-<g font-size="12">
+<g font-size="12.5">
 <rect x="30" y="80" width="146" height="120" rx="8" fill="#e8f3ef" stroke="#116d69"/>
 <text x="103" y="108" font-size="13.5" font-weight="700" fill="#116d69" text-anchor="middle">① 背景</text>
 <text x="103" y="132" fill="#395253" text-anchor="middle">行业定位</text>
@@ -34,6 +34,6 @@
 <line x1="176" y1="140" x2="190" y2="140"/><line x1="338" y1="140" x2="352" y2="140"/><line x1="500" y1="140" x2="514" y2="140"/><line x1="662" y1="140" x2="676" y2="140"/>
 </g>
 <defs><marker id="a28" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#577173"/></marker></defs>
-<text x="40" y="248" font-size="12" fill="#555">图注：五步的产出不是一句买卖结论，而是一份能把每个判断指回报表、附注与公告的证据链；前三步定性，后两步用于定优先级与安全边际。</text>
-<text x="40" y="272" font-size="12" fill="#555">本图为流程示意，不包含任何真实公司数据。</text>
+<text x="40" y="248" font-size="12.5" fill="#555">图注：五步的产出不是一句买卖结论，而是一份能把每个判断指回报表、附注与公告的证据链；</text>
+<text x="40" y="272" font-size="12.5" fill="#555">前三步定性，后两步用于定优先级与安全边际。本图为流程示意，不包含任何真实公司数据。</text>
 </svg>

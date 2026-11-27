@@ -11,7 +11,7 @@
 <text x="50" y="162" fill="#395253">商誉占净资产比例偏高</text>
 <text x="50" y="184" fill="#395253">利息费用不大而现金收益极少</text>
 <text x="50" y="206" fill="#395253">实控人质押比例高</text>
-<text x="50" y="232" fill="#577173" font-size="11.5">（阈值均为经验判断，非监管标准）</text>
+<text x="50" y="232" fill="#577173" font-size="12.5">（阈值均为经验判断，非监管标准）</text>
 <rect x="315" y="66" width="200" height="180" rx="8" fill="#eef2ed" stroke="#577173"/>
 <text x="415" y="92" font-size="13.5" font-weight="700" fill="#577173" text-anchor="middle">需要更多证据</text>
 <text x="415" y="122" fill="#395253" text-anchor="middle">回到报表与附注</text>
