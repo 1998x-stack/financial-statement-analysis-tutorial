@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 260" role="img" aria-labelledby="t19r d19r">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 288" role="img" aria-labelledby="t19r d19r">
 <title id="t19r">DCF 假设网格下企业价值落在一个区间，而非单一数值</title>
 <desc id="d19r">横轴为企业价值（亿元）。同一组自由现金流投入，在折现率 9% 至 11%、永续增长 2% 至 4% 的九种组合下，企业价值落在 14.5 亿至 24.7 亿元之间；基准情形为 18.2 亿元。</desc>
-<rect x="0" y="0" width="840" height="260" fill="#f8f7f2"/>
+<rect x="0" y="0" width="840" height="288" fill="#f8f7f2"/>
 <text x="40" y="40" font-size="18" font-weight="700" fill="#1a1a1a">同一套自由现金流，九种参数组合 → 一个价值区间</text>
 <text x="40" y="66" font-size="13" fill="#555">FCF₀ = 1.0 亿元 · 前 5 年增长 8% · 折现率 9%–11% · 永续增长 2%–4%（教学示意）</text>
 <line x1="60" y1="170" x2="800" y2="170" stroke="#333" stroke-width="1.5"/>
 <rect x="189" y="150" width="524" height="40" fill="#cfe3f6" opacity="0.85"/>
-<g font-size="12" fill="#666" text-anchor="middle">
+<g font-size="12.5" fill="#666" text-anchor="middle">
 <line x1="60" y1="170" x2="60" y2="178" stroke="#333"/>
 <text x="60" y="196">12</text>
 <line x1="163" y1="170" x2="163" y2="178" stroke="#333"/>
@@ -24,7 +24,7 @@
 <line x1="780" y1="170" x2="780" y2="178" stroke="#333"/>
 <text x="780" y="196">26</text>
 </g>
-<text x="430" y="222" font-size="12" fill="#666" text-anchor="middle">企业价值（亿元）</text>
+<text x="430" y="222" font-size="12.5" fill="#666" text-anchor="middle">企业价值（亿元）</text>
 <line x1="189" y1="130" x2="189" y2="150" stroke="#2b6cb0" stroke-width="1.2"/>
 <line x1="713" y1="130" x2="713" y2="150" stroke="#2b6cb0" stroke-width="1.2"/>
 <text x="189" y="120" font-size="13" fill="#2b6cb0" text-anchor="middle">14.5</text>
@@ -33,5 +33,6 @@
 <circle cx="379" cy="150" r="6" fill="#b83232"/>
 <line x1="379" y1="150" x2="379" y2="100" stroke="#b83232" stroke-width="1.2" stroke-dasharray="4 3"/>
 <text x="379" y="92" font-size="13" font-weight="700" fill="#b83232" text-anchor="middle">基准 18.2（折现率 10%、永续增长 3%）</text>
-<text x="40" y="248" font-size="12" fill="#555">图注：即使每个参数仅取常见的三档，价值区间也已达到基准值的约 1.4 倍跨度；因此 DCF 的输出应写成区间与敏感性表，而不是小数点后两位的“目标价”。</text>
+<text x="40" y="244" font-size="12.5" fill="#555">图注：即使每个参数仅取常见的三档，价值区间也已达到基准值的约 1.4 倍跨度；</text>
+<text x="40" y="266" font-size="12.5" fill="#555">因此 DCF 的输出应写成区间与敏感性表，而不是小数点后两位的“目标价”。</text>
 </svg>
